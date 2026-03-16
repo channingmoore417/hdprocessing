@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – HD Processing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #DAB367; --gold2: #C9A254; --black: #030404; --ink: #0a0a0a; --card: #0a0a0a; --border:rgba(255,255,255,0.07); --muted:rgba(255,255,255,0.45); --white:#FFFFFF; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:110px;background:rgba(3,4,4,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:6px;transition:color .2s,background .2s;}
+  .nav-links a:hover{color:#111111;background:rgba(0,0,0,0.05);}
+  .nav-links a.active{color:var(--gold);font-weight:600;}
+  .dropdown{position:relative;}
+  .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#ffffff;border:1px solid var(--border);border-radius:10px;min-width:210px;padding:6px;z-index:10;}
+  .dropdown:hover .dropdown-menu{display:block;}
+  .dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;font-size:13px;color:rgba(255,255,255,0.65);}
+  .nav-phone{color:var(--gold)!important;border:1px solid rgba(218,179,103,0.35)!important;font-weight:600!important;}
+  .nav-phone:hover{background:rgba(218,179,103,0.1)!important;}
+  .nav-cta{background:var(--gold)!important;color:var(--black)!important;font-weight:600!important;padding:8px 18px!important;border-radius:6px!important;}
+  .nav-cta:hover{background:var(--gold2)!important;}
+
+  /* HERO */
+  .page-hero{padding:130px 48px 80px;background:var(--ink);position:relative;overflow:hidden;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(218,179,103,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(218,179,103,0.05) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black 0%,transparent 100%);}
+  .hero-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,0.12) 0%,transparent 70%);right:-80px;top:50%;transform:translateY(-50%);pointer-events:none;}
+  .page-hero-inner{position:relative;z-index:1;max-width:760px;}
+  .section-tag{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+  .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,7vw,88px);line-height:.92;letter-spacing:1px;margin-bottom:20px;}
+  .page-hero h1 span{color:var(--gold);}
+  .page-hero p{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.6);max-width:520px;}
+
+  /* MAIN LAYOUT */
+  .contact-section{padding:80px 48px;}
+  .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start;}
+
+  /* INFO CARDS */
+  .info-stack{display:flex;flex-direction:column;gap:16px;}
+  .info-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 28px;display:flex;gap:18px;align-items:flex-start;transition:border-color .25s;}
+  .info-card:hover{border-color:rgba(218,179,103,0.3);}
+  .info-icon{width:44px;height:44px;background:rgba(218,179,103,0.1);border:1px solid rgba(218,179,103,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .info-text h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:6px;}
+  .info-text p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.65;}
+  .info-text a{color:var(--white);text-decoration:none;font-weight:500;transition:color .2s;}
+  .info-text a:hover{color:var(--gold);}
+
+  /* HOURS TABLE */
+  .hours-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;}
+  .hours-card h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .hours-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-row .day{color:var(--muted);font-weight:400;}
+  .hours-row .time{color:var(--white);font-weight:500;}
+  .hours-row .closed{color:rgba(255,255,255,0.25);}
+  .hours-row.today .day{color:var(--gold);font-weight:600;}
+  .hours-row.today .time{color:var(--gold);}
+
+  /* REVIEW STRIP */
+  .review-strip{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 28px;display:flex;align-items:center;gap:20px;}
+  .review-score{text-align:center;flex-shrink:0;}
+  .review-score .score{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:var(--gold);letter-spacing:1px;}
+  .review-score .stars{color:var(--gold);font-size:14px;letter-spacing:2px;}
+  .review-score .label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+  .review-divider{width:1px;height:60px;background:var(--border);flex-shrink:0;}
+  .review-text p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.6;}
+  .review-text strong{color:var(--white);}
+  .google-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--muted);margin-top:8px;}
+
+  /* FORM */
+  .form-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px;}
+  .form-wrap h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;margin-bottom:6px;}
+  .form-wrap .form-sub{font-size:14px;font-weight:300;color:var(--muted);margin-bottom:36px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px;}
+  .form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;outline:none;transition:border-color .2s,background .2s;appearance:none;}
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold);background:rgba(218,179,103,0.04);}
+  .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.2);}
+  .form-group select option{background:#ffffff;color:var(--white);}
+  .form-group textarea{resize:vertical;min-height:120px;line-height:1.6;}
+  .btn-submit{width:100%;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;padding:17px;border:none;border-radius:8px;cursor:pointer;letter-spacing:.3px;transition:background .2s,transform .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .btn-submit:hover{background:var(--gold2);transform:translateY(-1px);}
+  .form-note{font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:14px;font-weight:300;}
+
+  /* MAP PLACEHOLDER */
+  .map-section{padding:0 48px 80px;}
+  .map-inner{max-width:1200px;margin:0 auto;}
+  .map-embed{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;height:420px;position:relative;}
+  .map-embed iframe{width:100%;height:100%;border:none;}
+  .map-overlay{position:absolute;bottom:20px;left:20px;background:rgba(3,4,4,0.9);border:1px solid var(--border);border-radius:10px;padding:16px 20px;backdrop-filter:blur(10px);}
+  .map-overlay h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:4px;}
+  .map-overlay p{font-size:12px;color:var(--muted);font-weight:300;}
+  .map-overlay a{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gold);text-decoration:none;font-weight:600;margin-top:8px;}
+
+  /* CTA */
+  .cta-band{background:var(--gold);padding:80px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .cta-band h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);color:var(--black);line-height:.95;letter-spacing:1px;}
+  .cta-band p{color:rgba(0,0,0,0.6);font-size:16px;font-weight:300;margin-top:10px;}
+  .btn-dark{display:inline-flex;align-items:center;gap:8px;background:var(--black);color:var(--white);font-size:14px;font-weight:700;padding:18px 40px;border-radius:6px;text-decoration:none;white-space:nowrap;}
+  .btn-dark:hover{background:#222;}
+
+  /* FOOTER */
+  footer{background:#060606;border-top:1px solid var(--border);padding:64px 48px 36px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:64px;padding-bottom:40px;border-bottom:1px solid var(--border);}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none;display:inline-block;margin-bottom:14px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;max-width:280px;}
+  .footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:var(--white);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13px;font-weight:300;color:var(--muted);text-decoration:none;padding:4px 0;transition:color .2s;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;font-size:11px;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:10px;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  .page-hero h1{animation:fadeUp .6s .1s both;}
+  .page-hero p{animation:fadeUp .6s .25s both;}
+
+  @media(max-width:768px){
+    nav{padding:0 24px;}.nav-links{display:none;}
+    .page-hero{padding:110px 24px 60px;}
+    .contact-section{padding:60px 24px;}
+    .contact-inner{grid-template-columns:1fr;gap:40px;}
+    .form-row{grid-template-columns:1fr;}
+    .form-wrap{padding:32px 24px;}
+    .map-section{padding:0 24px 60px;}
+    .cta-band{padding:64px 24px;flex-direction:column;align-items:flex-start;}
+    footer{padding:56px 24px 32px;}.footer-top{grid-template-columns:1fr;gap:36px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:96px;width:auto;display:block;filter:brightness(0) invert(1);"></a>
+  <ul class="nav-links">
+    <li class="dropdown"><a href="#">Solutions ▾</a>
+      <div class="dropdown-menu">
+        <a href="mobile.html">Mobile Processing</a>
+        <a href="pos.html">Point of Sale Systems</a>
+        <a href="ecommerce.html">Online Payments & Ecommerce</a>
+      </div>
+    </li>
+    <li><a href="quote.html">Request A Quote</a></li>
+    <li><a href="contact.html" class="active">Contact Us</a></li>
+    <li><a href="support.html">Support Ticket</a></li>
+    <li><a href="tel:3373668550" class="nav-phone">📞 337-366-8550</a></li>
+    <li><a href="quote.html" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="page-hero-inner">
+    <span class="section-tag">Contact Us</span>
+    <h1>Let's <span>Talk</span></h1>
+    <p>We're here to help. Reach out with questions, concerns, or just to get a feel for what we can do for your business. We're a real team — we pick up.</p>
+  </div>
+</div>
+
+<!-- CONTACT CONTENT -->
+<div class="contact-section">
+  <div class="contact-inner">
+
+    <!-- LEFT: INFO -->
+    <div>
+      <div class="info-stack">
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div class="info-text">
+            <h4>Call Us</h4>
+            <p><a href="tel:3373668550">(337) 366-8550</a></p>
+            <p style="margin-top:4px;">Monday – Friday, 12 AM – 5 PM</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">✉️</div>
+          <div class="info-text">
+            <h4>Email Us</h4>
+            <p><a href="mailto:support@hdprocessing.com">support@hdprocessing.com</a></p>
+            <p style="margin-top:4px;">We respond within one business day.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <h4>Visit Us</h4>
+            <p><a href="https://maps.google.com/?q=1027+Johnston+St+Lafayette+LA+70501" target="_blank">1027 Johnston St<br>Lafayette, LA 70501</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOURS -->
+      <div class="hours-card" style="margin-top:16px;">
+        <h4>🕐 Business Hours</h4>
+        <div class="hours-row"><span class="day">Monday</span><span class="time">12:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="day">Tuesday</span><span class="time">12:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="day">Wednesday</span><span class="time">12:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="day">Thursday</span><span class="time">12:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="day">Friday</span><span class="time">12:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span class="closed">Closed</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="review-strip" style="margin-top:16px;">
+        <div class="review-score">
+          <div class="score">5.0</div>
+          <div class="stars">★★★★★</div>
+          <div class="label">Google Rating</div>
+        </div>
+        <div class="review-divider"></div>
+        <div class="review-text">
+          <p><strong>Trusted by Louisiana businesses.</strong> HD Processing is rated 5.05 stars on Google — backed by real merchants who count on us every day.</p>
+          <div class="google-badge">🔍 Google Reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-wrap">
+      <h2>Send Us a Message</h2>
+      <p class="form-sub">Fill out the form below and we'll get back to you within one business day.</p>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe"></div>
+      </div>
+      <div class="form-group"><label>Business Name</label><input type="text" placeholder="Your Business LLC"></div>
+      <div class="form-row">
+        <div class="form-group"><label>Email</label><input type="email" placeholder="john@yourbusiness.com"></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="(337) 000-0000"></div>
+      </div>
+      <div class="form-group">
+        <label>What Can We Help You With?</label>
+        <select>
+          <option value="">Select a topic...</option>
+          <option>Credit Card Processing</option>
+          <option>Point of Sale System</option>
+          <option>Online / E-Commerce Payments</option>
+          <option>Mobile Processing</option>
+          <option>Pricing & Fees Question</option>
+          <option>Existing Account Support</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us a bit about your business and what you're looking for..."></textarea></div>
+      <button class="btn-submit">Send Message →</button>
+      <p class="form-note">We never share your information. No spam, ever.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-inner">
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.6311264679593!2d-92.0174668!3d30.2190739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1773632798653!5m2!1sen!2sus" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-overlay">
+        <h4>HD Processing</h4>
+        <p>1027 Johnston St, Lafayette, LA 70501</p>
+        <a href="https://maps.google.com/?q=1027+Johnston+St+Lafayette+LA+70501" target="_blank">Get Directions →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+
+<!-- PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;height:220px;">
+  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/578877206_25962691373318481_2489204236877024887_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OOAo1YmNZXoQ7kNvwF5fFcX&_nc_oc=AdnuhdPDjNg8yGzokDhHSmNAFMyOZQbV6oPhM3Cd_b_L8RBBy4BPTUty9U3E9B-X_iw&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=tMw0x-o0ehd75xN_gh01_g&_nc_ss=8&oh=00_AfwY4BFA-jak082p-pNi6fuDNdHQFb6vMSuk3IFd3yPo9g&oe=69BD68CD" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
+  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/577883481_25962691389985146_2920750985033225921_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3lAJiqMl2soQ7kNvwFNTEkU&_nc_oc=AdnTU0vFnEkxwcucjPEtc-xySHfAfNbPNr88NKkORHSyjldg9KomFG5EtkaGMTGs3p8&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=Wkv3jgD0-ufk0oF-kAZWGg&_nc_ss=8&oh=00_AfwbRBqti8-TDBFNW8EnIT3VlJ4QTNUYXVOAxrRgh57NoA&oe=69BD4303" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
+  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/577052772_25962691133318505_974522985546482481_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7YYTC8bhbx8Q7kNvwHe1I59&_nc_oc=AdmZKl8h89eXb1n91Y-x_JtGlcV_EbIMkw0pu_eQ_209bYKl42pmiW83v97QwUZjh6U&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=wsL6Gn_fHJ0EqhjMGBe2YQ&_nc_ss=8&oh=00_Afwf8rMdq7xQm8JFB-NJsKLTJd0NTRT2lpfzeCRhW7DmBQ&oe=69BD6991" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
+</div>
+
+<div class="cta-band">
+  <div>
+    <h2>Ready to Get Started?</h2>
+    <p>Request a free consultation and let us build the right solution for your business.</p>
+  </div>
+  <a href="quote.html" class="btn-dark">Request A Free Quote →</a>
+</div>
+
+
+<!-- MAP FOOTER STRIP -->
+<div style="width:100%;height:280px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.07);">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.6311264679593!2d-92.0174668!3d30.2190739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1773632798653!5m2!1sen!2sus" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div style="position:absolute;bottom:16px;left:20px;background:rgba(3,4,4,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;backdrop-filter:blur(10px);pointer-events:none;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#DAB367;margin-bottom:2px;">HD Processing</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:300;">1027 Johnston St, Lafayette, LA 70501</div>
+    <a href="https://maps.google.com/?q=HD+Processing+1027+Johnston+St+Lafayette+LA" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#DAB367;text-decoration:none;font-weight:600;margin-top:6px;pointer-events:all;">Get Directions →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="footer-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:40px;width:auto;display:block;margin-bottom:14px;filter:brightness(0) invert(1);"></a><p class="footer-desc">Committed to delivering secure and reliable credit card processing solutions tailored for your business.</p></div>
+      <div class="footer-col"><h4>Solutions</h4><a href="mobile.html">Mobile Processing</a><a href="pos.html">Point of Sale Systems</a><a href="ecommerce.html">Online & Ecommerce</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="quote.html">Request A Quote</a><a href="contact.html">Contact Us</a><a href="support.html">Support Ticket</a><a href="tel:3373668550">📞 337.366.8550</a><a href="mailto:support@hdprocessing.com">support@hdprocessing.com</a></div>
+    </div>
+    <div class="footer-bottom"><span>©2024 HD Processing. All Rights Reserved.</span><span>Privacy Policy &nbsp;|&nbsp; Made By Amplify</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

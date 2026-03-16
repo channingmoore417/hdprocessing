@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HD Processing – Smart Credit Card Processing & POS Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #DAB367;
+    --gold2: #C9A254;
+    --black: #030404;
+    --ink: #0a0a0a;
+    --card: #0a0a0a;
+    --border: rgba(255,255,255,0.07);
+    --muted: rgba(255,255,255,0.45);
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 110px;
+    background: #030404;
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 2px;
+    color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 4px; list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 13.5px; font-weight: 500;
+    padding: 7px 14px; border-radius: 6px;
+    transition: color .2s, background .2s;
+  }
+  .nav-links a:hover { color: #ffffff; background: rgba(255,255,255,0.07); }
+
+  .dropdown { position: relative; }
+  .dropdown-menu {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0;
+    background: #141414; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    border-radius: 10px; min-width: 210px; padding: 6px; z-index: 10;
+  }
+  .dropdown:hover .dropdown-menu { display: block; }
+  .dropdown-menu a { display: block; padding: 10px 14px; border-radius: 6px; font-size: 13px; color: rgba(255,255,255,0.65); }
+
+  .nav-phone {
+    color: var(--gold) !important;
+    border: 1px solid rgba(218,179,103,0.35) !important;
+    font-weight: 600 !important;
+  }
+  .nav-phone:hover { background: rgba(218,179,103,0.1) !important; }
+
+  .nav-cta {
+    background: var(--gold) !important; color: var(--black) !important;
+    font-weight: 600 !important; padding: 8px 18px !important;
+    border-radius: 6px !important;
+  }
+  .nav-cta:hover { background: var(--gold2) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 68px 0 0;
+    position: relative; overflow: hidden;
+  }
+
+  /* diagonal split */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, #030404 55%, #0a0a0a 55%);
+  }
+
+  /* grid lines */
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(218,179,103,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(218,179,103,0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 80% 70% at 30% 50%, black 0%, transparent 100%);
+  }
+
+  /* glowing orb */
+  .hero-orb {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(218,179,103,0.18) 0%, transparent 70%);
+    right: 5%; top: 50%; transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 48px;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 80px; align-items: center;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+    background: rgba(218,179,103,0.1); border: 1px solid rgba(218,179,103,0.25);
+    padding: 5px 14px; border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 8vw, 108px);
+    line-height: 0.92; letter-spacing: 1px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 .accent { color: var(--gold); display: block; }
+
+  .hero p {
+    font-size: 17px; font-weight: 300; line-height: 1.75;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px; margin-bottom: 40px;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: var(--black);
+    font-size: 14px; font-weight: 700; padding: 15px 32px;
+    border-radius: 6px; text-decoration: none;
+    transition: background .2s, transform .2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--white);
+    font-size: 14px; font-weight: 500; padding: 15px 32px;
+    border-radius: 6px; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: border-color .2s, color .2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* HERO CARD */
+  .hero-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 36px;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-card-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .stat-rows { display: flex; flex-direction: column; gap: 14px; }
+
+  .stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px; background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border); border-radius: 8px;
+  }
+
+  .stat-row-label { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .stat-row-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 1px; color: var(--gold);
+  }
+
+  .hero-card-footer {
+    margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .avatar-stack { display: flex; }
+  .avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--card);
+    margin-left: -8px; overflow: hidden;
+    background: linear-gradient(135deg, #3a3a3a, #222);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: var(--gold);
+  }
+  .avatar:first-child { margin-left: 0; }
+
+  .card-footer-text { font-size: 11px; color: var(--muted); font-weight: 400; }
+  .card-footer-text strong { color: var(--white); }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+  }
+
+  .stats-bar-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-item {
+    padding: 36px 20px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; letter-spacing: 1px;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-desc { font-size: 12px; color: var(--muted); font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ─── SECTION COMMONS ─── */
+  .section {
+    padding: 100px 48px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px; display: block;
+  }
+
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 0.95; letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+
+  .section-body {
+    font-size: 16px; font-weight: 300; line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+  }
+
+  /* ─── SOLUTIONS ─── */
+  .solutions-wrap { background: var(--ink); }
+
+  .solutions-header {
+    max-width: 1200px; margin: 0 auto;
+    padding: 100px 48px 60px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+
+  .solutions-grid {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 48px 100px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+
+  .sol-card {
+    background: var(--card);
+    padding: 40px 32px 36px;
+    transition: background .25s;
+    text-decoration: none; color: inherit;
+    display: block;
+  }
+  .sol-card:hover { background: #151515; }
+  .sol-card:hover .sol-arrow { opacity: 1; transform: translateX(0); }
+
+  .sol-icon {
+    width: 48px; height: 48px;
+    background: rgba(218,179,103,0.08);
+    border: 1px solid rgba(218,179,103,0.18);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 28px;
+  }
+
+  .sol-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 1px;
+    margin-bottom: 12px; line-height: 1;
+  }
+
+  .sol-card p {
+    font-size: 13px; font-weight: 300;
+    color: rgba(255,255,255,0.45); line-height: 1.65;
+  }
+
+  .sol-arrow {
+    display: block; margin-top: 24px;
+    font-size: 13px; font-weight: 600;
+    color: var(--gold); letter-spacing: 0.5px;
+    opacity: 0; transform: translateX(-6px);
+    transition: all .25s;
+  }
+
+  /* ─── ABOUT SPLIT ─── */
+  .about-split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-big-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 48px;
+    text-align: center;
+  }
+
+  .big-pct {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 100px; line-height: 1; color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .big-pct-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .about-mini-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-top: 12px;
+  }
+
+  .mini-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 22px;
+  }
+
+  .mini-card .mc-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 1px; color: var(--white);
+  }
+
+  .mini-card .mc-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted); margin-top: 4px;
+  }
+
+  /* ─── PAIN / SOLUTION ─── */
+  .pain-wrap { background: var(--ink); }
+
+  .pain-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    margin-top: 56px;
+  }
+
+  .pain-col { background: var(--card); padding: 48px 40px; }
+  .pain-col.good { background: #141b12; }
+
+  .pain-col-head {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 2px;
+    color: var(--muted); margin-bottom: 24px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  }
+
+  .pain-col.good .pain-col-head { color: var(--gold); }
+
+  .pain-list { list-style: none; }
+  .pain-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+  .pain-list li:last-child { border-bottom: none; }
+  .pain-list li .pi { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+  .pain-col.good .pain-list li { color: rgba(255,255,255,0.8); }
+
+  /* ─── BUSINESSES ─── */
+  .biz-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    margin-top: 56px;
+  }
+
+  .biz-col { background: var(--card); padding: 32px 28px; }
+
+  .biz-col h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 1px;
+    color: var(--gold); margin-bottom: 16px;
+  }
+
+  .biz-col ul { list-style: none; }
+  .biz-col ul li {
+    font-size: 13px; font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    padding: 4px 0;
+  }
+
+  /* ─── REVIEWS ─── */
+  .reviews-wrap { background: var(--ink); }
+
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 56px;
+  }
+
+  .review-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 36px; position: relative;
+  }
+
+  .review-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; line-height: 0.8;
+    color: rgba(218,179,103,0.12);
+    position: absolute; top: 24px; right: 28px;
+  }
+
+  .stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+
+  .review-card p {
+    font-size: 14px; font-weight: 300; line-height: 1.75;
+    color: rgba(255,255,255,0.65); margin-bottom: 24px;
+  }
+
+  .reviewer-name { font-size: 13px; font-weight: 600; color: var(--white); }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    background: var(--gold);
+    padding: 80px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px; flex-wrap: wrap;
+  }
+
+  .cta-band h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--black); line-height: 0.95;
+    letter-spacing: 1px;
+  }
+
+  .cta-band p {
+    color: rgba(0,0,0,0.6); font-size: 16px;
+    font-weight: 300; margin-top: 10px;
+  }
+
+  .btn-dark {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--black); color: var(--white);
+    font-size: 14px; font-weight: 700; padding: 18px 40px;
+    border-radius: 6px; text-decoration: none; white-space: nowrap;
+    transition: background .2s;
+  }
+  .btn-dark:hover { background: #222; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060606;
+    border-top: 1px solid var(--border);
+    padding: 64px 48px 36px;
+  }
+
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 64px; padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 2px;
+    color: var(--white); text-decoration: none;
+    display: inline-block; margin-bottom: 14px;
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-desc {
+    font-size: 13px; font-weight: 300;
+    color: var(--muted); line-height: 1.7;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; letter-spacing: 1.5px;
+    color: var(--white); margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block; font-size: 13px; font-weight: 300;
+    color: var(--muted); text-decoration: none;
+    padding: 4px 0; transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 28px; font-size: 11px; color: rgba(255,255,255,0.2);
+    flex-wrap: wrap; gap: 10px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp .5s .1s both; }
+  .hero h1      { animation: fadeUp .6s .2s both; }
+  .hero p       { animation: fadeUp .6s .35s both; }
+  .hero-btns    { animation: fadeUp .6s .45s both; }
+  .hero-card    { animation: fadeUp .7s .3s both; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-inner { grid-template-columns: 1fr; padding: 0 24px; }
+    .hero-card { display: none; }
+    .stats-bar { padding: 0 24px; }
+    .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+    .section { padding: 72px 24px; }
+    .solutions-header, .solutions-grid { padding-left: 24px; padding-right: 24px; }
+    .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-split { grid-template-columns: 1fr; gap: 40px; }
+    .pain-grid, .biz-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .cta-band { padding: 64px 24px; flex-direction: column; align-items: flex-start; }
+    footer { padding: 56px 24px 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ──────────────── NAV ──────────────── -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:96px;width:auto;display:block;filter:brightness(0) invert(1);"></a>
+  <ul class="nav-links">
+    <li class="dropdown">
+      <a href="#">Solutions ▾</a>
+      <div class="dropdown-menu">
+        <a href="mobile.html">Mobile Processing</a>
+        <a href="pos.html">Point of Sale Systems</a>
+        <a href="ecommerce.html">Online Payments & Ecommerce</a>
+      </div>
+    </li>
+    <li><a href="quote.html">Request A Quote</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="support.html">Support Ticket</a></li>
+    <li><a href="tel:3373668550" class="nav-phone">📞 337-366-8550</a></li>
+    <li><a href="quote.html" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- ──────────────── HERO ──────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">⚡ Louisiana's Payment Pros</div>
+      <h1>Smart Credit<span class="accent">Card Processing</span></h1>
+      <p>Modern, budget-friendly payment solutions for Louisiana businesses. Secure transactions, transparent pricing, and local support you can actually reach.</p>
+      <div class="hero-btns">
+        <a href="quote.html" class="btn-gold">Get Free Quote →</a>
+        <a href="#solutions" class="btn-ghost">See Solutions</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Your Processing Overview</div>
+      <div class="stat-rows">
+        <div class="stat-row">
+          <span class="stat-row-label">Transaction Security</span>
+          <span class="stat-row-val">PCI ✓</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-row-label">Hidden Fees</span>
+          <span class="stat-row-val">$0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-row-label">Support Availability</span>
+          <span class="stat-row-val">24/7</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-row-label">Setup Time</span>
+          <span class="stat-row-val">Same Day</span>
+        </div>
+      </div>
+      <div class="hero-card-footer">
+        <div class="avatar-stack">
+          <div class="avatar">DR</div>
+          <div class="avatar">KM</div>
+          <div class="avatar">JS</div>
+        </div>
+        <div class="card-footer-text"><strong>100+</strong> Louisiana merchants served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── STATS BAR ──────────────── -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-desc">Customer Support</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$0</div>
+      <div class="stat-desc">Hidden Fees</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-desc">Transparent Pricing</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Local</div>
+      <div class="stat-desc">Louisiana-Based Team</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── SOLUTIONS ──────────────── -->
+<div class="solutions-wrap" id="solutions">
+  <div class="solutions-header">
+    <div>
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-heading">HD Processing<br>Solutions</h2>
+    </div>
+    <p class="section-body" style="margin-bottom:0;">Fast, secure, and reliable payment services built around your business — not the other way around.</p>
+  </div>
+  <div class="solutions-grid">
+    <a href="quote.html" class="sol-card">
+      <div class="sol-icon">💳</div>
+      <h3>Credit Card Processing</h3>
+      <p>Fast, secure, seamless processing for all major credit cards. Cutting-edge technology that handles every transaction reliably.</p>
+      <span class="sol-arrow">Learn More →</span>
+    </a>
+    <a href="pos.html" class="sol-card">
+      <div class="sol-icon">🖥️</div>
+      <h3>Point of Sale Systems</h3>
+      <p>State-of-the-art POS systems designed to be user-friendly and efficient. Manage sales from one central hub.</p>
+      <span class="sol-arrow">Learn More →</span>
+    </a>
+    <a href="ecommerce.html" class="sol-card">
+      <div class="sol-icon">🛒</div>
+      <h3>E-Commerce Integration</h3>
+      <p>Seamless online payment integration with SSL, PCI compliance, and fraud detection. Real-time processing, detailed analytics.</p>
+      <span class="sol-arrow">Learn More →</span>
+    </a>
+    <a href="mobile.html" class="sol-card">
+      <div class="sol-icon">📱</div>
+      <h3>Mobile Payments</h3>
+      <p>Accept payments anywhere with Bluetooth card readers. Compatible with iOS and Android — dip, tap, or swipe from any device.</p>
+      <span class="sol-arrow">Learn More →</span>
+    </a>
+  </div>
+</div>
+
+<!-- ──────────────── ABOUT ──────────────── -->
+<div style="background: var(--black);">
+  <div class="section">
+    <div class="about-split">
+      <div>
+        <span class="section-tag">About HD Processing</span>
+        <h2 class="section-heading">Know Who<br>We Are</h2>
+        <p class="section-body" style="margin-bottom: 32px;">We understand the challenges businesses face managing transactions efficiently and securely. HD Processing specializes in reliable credit card processing solutions so you can focus on what matters most — growing your business.</p>
+        <a href="contact.html" class="btn-gold" style="display:inline-flex;">Get In Touch →</a>
+      </div>
+      <div class="about-visual">
+        <div class="about-big-card">
+          <div class="big-pct">100%</div>
+          <div class="big-pct-label">Transparent Pricing Guaranteed</div>
+        </div>
+        <div class="about-mini-row">
+          <div class="mini-card">
+            <div class="mc-val">24/7</div>
+            <div class="mc-label">Support</div>
+          </div>
+          <div class="mini-card">
+            <div class="mc-val">$0</div>
+            <div class="mc-label">Hidden Fees</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── PAIN / SOLUTION ──────────────── -->
+<div class="pain-wrap">
+  <div class="section">
+    <span class="section-tag">Does This Describe You?</span>
+    <h2 class="section-heading">Struggling with<br>Payment Processing?</h2>
+    <div class="pain-grid">
+      <div class="pain-col">
+        <div class="pain-col-head">The Problem</div>
+        <ul class="pain-list">
+          <li><span class="pi">❌</span> Slow, unreliable payment processing</li>
+          <li><span class="pi">❌</span> Worried about transaction security</li>
+          <li><span class="pi">❌</span> Hidden fees eating into your margins</li>
+          <li><span class="pi">❌</span> No reliable, accessible local support</li>
+        </ul>
+      </div>
+      <div class="pain-col good">
+        <div class="pain-col-head">Our Solution</div>
+        <ul class="pain-list">
+          <li><span class="pi">✅</span> Enhanced Security — PCI compliant, fraud protected</li>
+          <li><span class="pi">✅</span> Transparent Pricing — no surprises, ever</li>
+          <li><span class="pi">✅</span> Versatile solutions for any business type</li>
+          <li><span class="pi">✅</span> Local Customer Support — real people who answer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── BUSINESSES ──────────────── -->
+<div style="background: var(--black);">
+  <div class="section">
+    <span class="section-tag">Industries We Serve</span>
+    <h2 class="section-heading">Built for Your Business</h2>
+    <p class="section-body">From small retail shops and restaurants to large e-commerce platforms — our solutions meet the unique needs of every business type.</p>
+    <div class="biz-grid">
+      <div class="biz-col">
+        <h4>🍽️ Food & Beverage</h4>
+        <ul>
+          <li>Restaurants & Bars</li>
+          <li>Coffee & Tea Shops</li>
+          <li>Pizzerias & Sandwich Shops</li>
+          <li>Bakeries</li>
+          <li>Breweries</li>
+          <li>Delis & Meat Markets</li>
+        </ul>
+      </div>
+      <div class="biz-col">
+        <h4>🏪 Retail</h4>
+        <ul>
+          <li>Clothing Stores</li>
+          <li>Grocery Stores</li>
+          <li>Convenience Stores</li>
+          <li>Gift Shops</li>
+          <li>Book Stores</li>
+          <li>Small & Large Retail</li>
+        </ul>
+      </div>
+      <div class="biz-col">
+        <h4>💆 Services</h4>
+        <ul>
+          <li>Hair Salons & Spas</li>
+          <li>Mechanic Shops</li>
+          <li>Gyms & Fitness</li>
+          <li>Healthcare</li>
+          <li>Doctors & Lawyers</li>
+          <li>Professionals</li>
+        </ul>
+      </div>
+      <div class="biz-col">
+        <h4>🛒 Online</h4>
+        <ul>
+          <li>E-Commerce Stores</li>
+          <li>Online Retailers</li>
+          <li>Service Providers</li>
+          <li>Subscription Businesses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── REVIEWS ──────────────── -->
+<div class="reviews-wrap">
+  <div class="section">
+    <span class="section-tag">Merchant Partners</span>
+    <h2 class="section-heading">Create Your Own<br>Success Story</h2>
+    <p class="section-body">See what our merchants are saying about working with us.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p>I have had a wonderful experience with Dustin and his team. He's even taken time to come and train my staff on several occasions. He's always available to answer any questions I have. I highly recommend this company.</p>
+        <div class="reviewer-name">Debbie Rowell</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p>Affordable, personable, fast and friendly! I have used many payment solutions on the market — without a doubt there is no better option if you are looking for a more personal experience. These guys take exceptional care of you.</p>
+        <div class="reviewer-name">Kody Miller</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="stars">★★★★★</div>
+        <p>Very trustworthy company. I truly feel that they have my best interest at heart. I recommend them to everyone that I know.</p>
+        <div class="reviewer-name">Jenn Stonicher</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── CTA BAND ──────────────── -->
+
+<!-- PHOTO GALLERY -->
+<div style="background:var(--black);padding:0 0 0 0;">
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:4px;">
+    <div style="grid-row:span 2;position:relative;overflow:hidden;">
+      <img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/578877206_25962691373318481_2489204236877024887_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OOAo1YmNZXoQ7kNvwF5fFcX&_nc_oc=AdnuhdPDjNg8yGzokDhHSmNAFMyOZQbV6oPhM3Cd_b_L8RBBy4BPTUty9U3E9B-X_iw&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=tMw0x-o0ehd75xN_gh01_g&_nc_ss=8&oh=00_AfwY4BFA-jak082p-pNi6fuDNdHQFb6vMSuk3IFd3yPo9g&oe=69BD68CD" alt="Coffee shop client" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(transparent,rgba(3,4,4,0.85));font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:rgba(255,255,255,0.7);">CLIENT INSTALLATION — LAFAYETTE, LA</div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/577883481_25962691389985146_2920750985033225921_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3lAJiqMl2soQ7kNvwFNTEkU&_nc_oc=AdnTU0vFnEkxwcucjPEtc-xySHfAfNbPNr88NKkORHSyjldg9KomFG5EtkaGMTGs3p8&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=Wkv3jgD0-ufk0oF-kAZWGg&_nc_ss=8&oh=00_AfwbRBqti8-TDBFNW8EnIT3VlJ4QTNUYXVOAxrRgh57NoA&oe=69BD4303" alt="POS Terminal" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/577052772_25962691133318505_974522985546482481_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7YYTC8bhbx8Q7kNvwHe1I59&_nc_oc=AdmZKl8h89eXb1n91Y-x_JtGlcV_EbIMkw0pu_eQ_209bYKl42pmiW83v97QwUZjh6U&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=wsL6Gn_fHJ0EqhjMGBe2YQ&_nc_ss=8&oh=00_Afwf8rMdq7xQm8JFB-NJsKLTJd0NTRT2lpfzeCRhW7DmBQ&oe=69BD6991" alt="iPad POS" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://scontent-dfw6-1.xx.fbcdn.net/v/t39.30808-6/561378333_25666088406312114_5662629187843993113_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=91wwH2sLqvsQ7kNvwExt1hi&_nc_oc=AdkWfbS6nqcRiA2Nd2REM_DjnNIF19tJ9YoMeuo1bGrwLJmxCM7njf6pW539OYPruwc&_nc_zt=23&_nc_ht=scontent-dfw6-1.xx&_nc_gid=hjtfbcq249M4GiZd7D_WMw&_nc_ss=8&oh=00_AfyWTrxNp1di4JMXfVTaeGWSylPWh4_P3JuoIkphmvyWEA&oe=69BD43A6" alt="Owners at event" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://scontent-dfw6-1.xx.fbcdn.net/v/t39.30808-6/560758173_25666088409645447_1138506873282602832_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=VkheUQC_q9MQ7kNvwG1D6GZ&_nc_oc=AdntVgel2D3N8tPmAFZIrCoBx_HqGtxW89hJup7BJmAvqTLnV0uBXn6WRYED_pZ-AwI&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=C65ew7KirhWTBIO5aXYC8g&_nc_ss=8&oh=00_Afy8flPGOxTeOhEXBfa1q72HHrfGf0c3Rj1ezfxX23ztUg&oe=69BD55D1" alt="Owner at event" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div>
+    <h2>Ready to Simplify Your<br>Payment Processing?</h2>
+    <p>Don't let outdated systems and hidden fees hold your business back.</p>
+  </div>
+  <a href="quote.html" class="btn-dark">Get Your Free Quote →</a>
+</div>
+
+<!-- ──────────────── FOOTER ──────────────── -->
+
+<!-- MAP FOOTER STRIP -->
+<div style="width:100%;height:280px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.07);">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.6311264679593!2d-92.0174668!3d30.2190739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1773632798653!5m2!1sen!2sus" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div style="position:absolute;bottom:16px;left:20px;background:rgba(3,4,4,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;backdrop-filter:blur(10px);pointer-events:none;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#DAB367;margin-bottom:2px;">HD Processing</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:300;">1027 Johnston St, Lafayette, LA 70501</div>
+    <a href="https://maps.google.com/?q=HD+Processing+1027+Johnston+St+Lafayette+LA" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#DAB367;text-decoration:none;font-weight:600;margin-top:6px;pointer-events:all;">Get Directions →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:40px;width:auto;display:block;margin-bottom:14px;filter:brightness(0) invert(1);"></a>
+        <p class="footer-desc">Committed to delivering secure and reliable credit card processing solutions tailored for your business. Enhance your transaction capabilities with us today.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <a href="mobile.html">Mobile Processing</a>
+        <a href="pos.html">Point of Sale Systems</a>
+        <a href="ecommerce.html">Online & Ecommerce</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="quote.html">Request A Quote</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="support.html">Support Ticket</a>
+        <a href="tel:3373668550">📞 337.366.8550</a>
+        <a href="/cdn-cgi/l/email-protection#7605030606190402361e12060419151305051f18115815191b"><span class="__cf_email__" data-cfemail="34474144445b4640745c5044465b575147475d5a531a575b59">[email&#160;protected]</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>©2024 HD Proces

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/mobile", "dest": "/mobile.html" },
+    { "src": "/pos", "dest": "/pos.html" },
+    { "src": "/ecommerce", "dest": "/ecommerce.html" },
+    { "src": "/contact", "dest": "/contact.html" },
+    { "src": "/quote", "dest": "/quote.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

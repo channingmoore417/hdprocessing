@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Payments & Ecommerce – HD Processing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --gold: #DAB367; --gold2: #C9A254; --black: #030404; --ink: #0a0a0a; --card: #0a0a0a; --border:rgba(255,255,255,0.07); --muted:rgba(255,255,255,0.45); --white:#FFFFFF; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:110px;background:rgba(3,4,4,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:6px;transition:color .2s,background .2s;}
+  .nav-links a:hover{color:#111111;background:rgba(0,0,0,0.05);}
+  .nav-links a.active{color:var(--gold);font-weight:600;}
+  .dropdown{position:relative;}
+  .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#ffffff;border:1px solid var(--border);border-radius:10px;min-width:210px;padding:6px;z-index:10;}
+  .dropdown:hover .dropdown-menu{display:block;}
+  .dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;font-size:13px;color:rgba(255,255,255,0.65);}
+  .nav-phone{color:var(--gold)!important;border:1px solid rgba(218,179,103,0.35)!important;font-weight:600!important;}
+  .nav-phone:hover{background:rgba(218,179,103,0.1)!important;}
+  .nav-cta{background:var(--gold)!important;color:var(--black)!important;font-weight:600!important;padding:8px 18px!important;border-radius:6px!important;}
+  .nav-cta:hover{background:var(--gold2)!important;}
+
+  .page-hero{padding:150px 48px 90px;background:var(--ink);position:relative;overflow:hidden;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(218,179,103,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(218,179,103,0.05) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black 0%,transparent 100%);}
+  .hero-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,0.15) 0%,transparent 70%);right:0;top:50%;transform:translateY(-50%);pointer-events:none;}
+  .page-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center;}
+  .section-tag{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+  .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,7vw,96px);line-height:.92;letter-spacing:1px;margin-bottom:24px;}
+  .page-hero h1 span{color:var(--gold);display:block;}
+  .page-hero p{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.6);max-width:480px;margin-bottom:36px;}
+  .btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);font-size:14px;font-weight:700;padding:15px 32px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;}
+  .btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+  .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);font-size:14px;font-weight:500;padding:15px 32px;border-radius:6px;text-decoration:none;border:1px solid rgba(255,255,255,0.18);transition:border-color .2s,color .2s;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* CHECKOUT MOCKUP */
+  .checkout-mockup{animation:floatCard 4s ease-in-out infinite;}
+  @keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .checkout-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+  .checkout-top{background:#060606;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .checkout-top .lock{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .checkout-top .lock span{color:#4CAF50;}
+  .checkout-top .brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);}
+  .checkout-body{padding:24px;}
+  .checkout-summary{background:#060606;border-radius:8px;padding:16px;margin-bottom:20px;}
+  .cs-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;color:rgba(255,255,255,0.6);}
+  .cs-row.total{color:var(--white);font-weight:600;border-top:1px solid var(--border);padding-top:10px;margin-top:5px;}
+  .checkout-field{margin-bottom:14px;}
+  .checkout-field label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .checkout-field .field-box{background:#060606;border:1px solid var(--border);border-radius:6px;padding:11px 14px;font-size:13px;color:rgba(255,255,255,0.5);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .pay-btn{width:100%;background:var(--gold);color:var(--black);border:none;border-radius:8px;padding:15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .badges{display:flex;gap:8px;justify-content:center;margin-top:14px;}
+  .badge{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:10px;font-weight:600;color:var(--muted);letter-spacing:1px;}
+
+  .section-wrap{padding:90px 48px;}
+  .section-wrap.alt{background:var(--ink);}
+  .inner{max-width:1200px;margin:0 auto;}
+  .section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,60px);line-height:.95;letter-spacing:1px;margin-bottom:16px;}
+  .section-body{font-size:16px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.55);max-width:540px;}
+
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px;}
+  .feature-card{background:var(--card);padding:40px 32px;transition:background .25s;border-top:3px solid transparent;}
+  .feature-card:hover{background:#131313;border-top-color:var(--gold);}
+  .feat-icon{font-size:30px;margin-bottom:20px;}
+  .feature-card h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:10px;}
+  .feature-card p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+  /* INTEGRATIONS */
+  .int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px;}
+  .int-card{background:var(--card);padding:36px 28px;transition:background .25s;text-align:center;}
+  .int-card:hover{background:#131313;}
+  .int-card .int-icon{font-size:36px;margin-bottom:14px;}
+  .int-card h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:8px;}
+  .int-card p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.6;}
+
+  /* SECURITY */
+  .security-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .sec-cards{display:flex;flex-direction:column;gap:14px;}
+  .sec-card{display:flex;align-items:flex-start;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 24px;}
+  .sec-card .icon{font-size:24px;flex-shrink:0;}
+  .sec-card h4{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:4px;}
+  .sec-card p{font-size:12px;font-weight:300;color:var(--muted);}
+
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px;}
+  .step-card{background:var(--card);padding:44px 36px;}
+  .step-num{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;color:rgba(218,179,103,0.12);margin-bottom:14px;}
+  .step-card h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:10px;}
+  .step-card p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+  .cta-band{background:var(--gold);padding:80px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .cta-band h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);color:var(--black);line-height:.95;letter-spacing:1px;}
+  .cta-band p{color:rgba(0,0,0,0.6);font-size:16px;font-weight:300;margin-top:10px;}
+  .btn-dark{display:inline-flex;align-items:center;gap:8px;background:var(--black);color:var(--white);font-size:14px;font-weight:700;padding:18px 40px;border-radius:6px;text-decoration:none;white-space:nowrap;}
+  .btn-dark:hover{background:#222;}
+
+  footer{background:#060606;border-top:1px solid var(--border);padding:64px 48px 36px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:64px;padding-bottom:40px;border-bottom:1px solid var(--border);}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none;display:inline-block;margin-bottom:14px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;max-width:280px;}
+  .footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:var(--white);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13px;font-weight:300;color:var(--muted);text-decoration:none;padding:4px 0;transition:color .2s;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;font-size:11px;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:10px;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+  .page-hero h1{animation:fadeUp .6s .1s both;}
+
+  @media(max-width:768px){
+    nav{padding:0 24px;}.nav-links{display:none;}
+    .page-hero{padding:130px 24px 70px;}.page-hero-inner{grid-template-columns:1fr;}.checkout-mockup{display:none;}
+    .section-wrap{padding:70px 24px;}
+    .features-grid{grid-template-columns:1fr;}.int-grid{grid-template-columns:1fr 1fr;}.steps-grid{grid-template-columns:1fr;}
+    .security-grid{grid-template-columns:1fr;}
+    .cta-band{padding:64px 24px;flex-direction:column;align-items:flex-start;}
+    footer{padding:56px 24px 32px;}.footer-top{grid-template-columns:1fr;gap:36px;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:96px;width:auto;display:block;filter:brightness(0) invert(1);"></a>
+  <ul class="nav-links">
+    <li class="dropdown"><a href="#" class="active">Solutions ▾</a>
+      <div class="dropdown-menu">
+        <a href="mobile.html">Mobile Processing</a>
+        <a href="pos.html">Point of Sale Systems</a>
+        <a href="ecommerce.html">Online Payments & Ecommerce</a>
+      </div>
+    </li>
+    <li><a href="quote.html">Request A Quote</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="support.html">Support Ticket</a></li>
+    <li><a href="tel:3373668550" class="nav-phone">📞 337-366-8550</a></li>
+    <li><a href="quote.html" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="page-hero-inner">
+    <div>
+      <span class="section-tag">Online Payments & Ecommerce</span>
+      <h1>Sell Online<span>Without the Hassle</span></h1>
+      <p>In today's digital age, a robust online payment system is essential. We provide secure, reliable, and easy-to-integrate solutions that grow your online sales and keep customers coming back.</p>
+      <div class="btns">
+        <a href="quote.html" class="btn-gold">Get Started →</a>
+        <a href="#features" class="btn-ghost">See Features</a>
+      </div>
+    </div>
+    <div class="checkout-mockup">
+      <div class="checkout-card">
+        <div class="checkout-top">
+          <div class="lock"><span>🔒</span> <span style="color:#4CAF50;">Secure</span> Checkout</div>
+          <div class="brand">HD Pay</div>
+        </div>
+        <div class="checkout-body">
+          <div class="checkout-summary">
+            <div class="cs-row"><span>Order #1042</span><span></span></div>
+            <div class="cs-row"><span>Product × 2</span><span>$98.00</span></div>
+            <div class="cs-row"><span>Shipping</span><span>$7.50</span></div>
+            <div class="cs-row total"><span>Total</span><span>$105.50</span></div>
+          </div>
+          <div class="checkout-field">
+            <label>Card Number</label>
+            <div class="field-box">•••• •••• •••• 4242</div>
+          </div>
+          <div class="field-row">
+            <div class="checkout-field"><label>Expiry</label><div class="field-box">MM / YY</div></div>
+            <div class="checkout-field"><label>CVV</label><div class="field-box">•••</div></div>
+          </div>
+          <button class="pay-btn">🔒 Pay $105.50</button>
+          <div class="badges">
+            <div class="badge">VISA</div>
+            <div class="badge">MC</div>
+            <div class="badge">AMEX</div>
+            <div class="badge">APPLE PAY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section-wrap" id="features">
+  <div class="inner">
+    <span class="section-tag">Features</span>
+    <h2 class="section-heading">Everything Your Online<br>Store Needs</h2>
+    <p class="section-body">From a simple payment link to a full e-commerce integration — we make online selling seamless, secure, and fast.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feat-icon">🔗</div><h3>Seamless Integration</h3><p>Connects with your existing website and back-end systems. Works with Shopify, WooCommerce, custom sites, and more.</p></div>
+      <div class="feature-card"><div class="feat-icon">💳</div><h3>All Payment Methods</h3><p>Accept Visa, Mastercard, Amex, Discover, Apple Pay, Google Pay, and ACH bank transfers — whatever your customers prefer.</p></div>
+      <div class="feature-card"><div class="feat-icon">🔒</div><h3>SSL & PCI Compliance</h3><p>Full SSL encryption, PCI DSS compliance, and advanced fraud detection keep every transaction and customer data protected.</p></div>
+      <div class="feature-card"><div class="feat-icon">🎨</div><h3>Branded Checkout</h3><p>Customize the checkout experience to match your brand — your logo, your colors, your domain. No third-party redirects.</p></div>
+      <div class="feature-card"><div class="feat-icon">⚡</div><h3>Real-Time Processing</h3><p>Instant transaction approvals and real-time reporting. Know the moment a sale hits — no delays, no batch processing lag.</p></div>
+      <div class="feature-card"><div class="feat-icon">📊</div><h3>Sales Analytics</h3><p>Detailed dashboards showing revenue, conversion rates, cart abandonment, top products, and customer behavior — all in one place.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- INTEGRATIONS -->
+<div class="section-wrap alt">
+  <div class="inner">
+    <span class="section-tag">Platform Integrations</span>
+    <h2 class="section-heading">Works With Your<br>Existing Stack</h2>
+    <p class="section-body">No need to rebuild your website. Our payment gateway plugs into the platforms you're already using.</p>
+    <div class="int-grid">
+      <div class="int-card"><div class="int-icon">🛍️</div><h3>Shopify</h3><p>Drop-in payment gateway integration for Shopify stores of any size.</p></div>
+      <div class="int-card"><div class="int-icon">🔧</div><h3>WooCommerce</h3><p>WordPress-native integration that works with your existing theme and product catalog.</p></div>
+      <div class="int-card"><div class="int-icon">🌐</div><h3>Custom Sites</h3><p>API and hosted payment page options for fully custom-built websites and apps.</p></div>
+      <div class="int-card"><div class="int-icon">📧</div><h3>Payment Links</h3><p>No website? Send a payment link via email or text — customers pay in seconds from any device.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY SPLIT -->
+<div class="section-wrap">
+  <div class="inner">
+    <div class="security-grid">
+      <div>
+        <span class="section-tag">Security First</span>
+        <h2 class="section-heading">Protect Every<br>Transaction</h2>
+        <p class="section-body" style="margin-bottom:32px;">We take security seriously. Every transaction processed through HD Processing is protected by multiple layers of fraud prevention and compliance protocols.</p>
+        <a href="quote.html" class="btn-gold">Get Started Today →</a>
+      </div>
+      <div class="sec-cards">
+        <div class="sec-card"><div class="icon">🔒</div><div><h4>SSL Encryption</h4><p>256-bit SSL encryption on every transaction — the same standard used by major banks.</p></div></div>
+        <div class="sec-card"><div class="icon">✅</div><div><h4>PCI DSS Compliant</h4><p>Fully compliant with Payment Card Industry Data Security Standards — required for all merchants.</p></div></div>
+        <div class="sec-card"><div class="icon">🛡️</div><div><h4>Fraud Detection</h4><p>Real-time fraud screening flags suspicious transactions before they become chargebacks.</p></div></div>
+        <div class="sec-card"><div class="icon">🔄</div><div><h4>Chargeback Support</h4><p>We help you respond to and dispute chargebacks — protecting your revenue and your merchant account.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="section-wrap alt">
+  <div class="inner">
+    <span class="section-tag">How It Works</span>
+    <h2 class="section-heading">Launch in<br>3 Simple Steps</h2>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">01</div><h3>Build Your Custom Plan</h3><p>We assess your current website, your volume, and your goals — then we design the integration approach that fits your business best.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h3>Integrate & Go Live</h3><p>Our team handles the technical setup. Whether it's a plugin, API, or payment link — we get you live fast with minimal disruption to your site.</p></div>
+      <div class="step-card"><div class="step-num">03</div><h3>Optimize & Grow</h3><p>With real-time analytics and local support, we help you identify what's working and continuously improve your checkout conversion.</p></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;height:220px;">
+  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/578877206_25962691373318481_2489204236877024887_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OOAo1YmNZXoQ7kNvwF5fFcX&_nc_oc=AdnuhdPDjNg8yGzokDhHSmNAFMyOZQbV6oPhM3Cd_b_L8RBBy4BPTUty9U3E9B-X_iw&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=tMw0x-o0ehd75xN_gh01_g&_nc_ss=8&oh=00_AfwY4BFA-jak082p-pNi6fuDNdHQFb6vMSuk3IFd3yPo9g&oe=69BD68CD" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
+  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/577883481_25962691389985146_2920750985033225921_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3lAJiqMl2soQ7kNvwFNTEkU&_nc_oc=AdnTU0vFnEkxwcucjPEtc-xySHfAfNbPNr88NKkORHSyjldg9KomFG5EtkaGMTGs3p8&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=Wkv3jgD0-ufk0oF-kAZWGg&_nc_ss=8&oh=00_AfwbRBqti8-TDBFNW8EnIT3VlJ4QTNUYXVOAxrRgh57NoA&oe=69BD4303" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
+  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/577052772_25962691133318505_974522985546482481_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7YYTC8bhbx8Q7kNvwHe1I59&_nc_oc=AdmZKl8h89eXb1n91Y-x_JtGlcV_EbIMkw0pu_eQ_209bYKl42pmiW83v97QwUZjh6U&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=wsL6Gn_fHJ0EqhjMGBe2YQ&_nc_ss=8&oh=00_Afwf8rMdq7xQm8JFB-NJsKLTJd0NTRT2lpfzeCRhW7DmBQ&oe=69BD6991" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
+</div>
+
+<div class="cta-band">
+  <div><h2>Ready to Start Selling<br>Online with Confidence?</h2><p>Tired of hidden fees and complicated integrations? We make it simple.</p></div>
+  <a href="quote.html" class="btn-dark">Get Your Free Quote →</a>
+</div>
+
+
+<!-- MAP FOOTER STRIP -->
+<div style="width:100%;height:280px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.07);">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.6311264679593!2d-92.0174668!3d30.2190739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1773632798653!5m2!1sen!2sus" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div style="position:absolute;bottom:16px;left:20px;background:rgba(3,4,4,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;backdrop-filter:blur(10px);pointer-events:none;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#DAB367;margin-bottom:2px;">HD Processing</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:300;">1027 Johnston St, Lafayette, LA 70501</div>
+    <a href="https://maps.google.com/?q=HD+Processing+1027+Johnston+St+Lafayette+LA" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#DAB367;text-decoration:none;font-weight:600;margin-top:6px;pointer-events:all;">Get Directions →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="footer-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:40px;width:auto;display:block;margin-bottom:14px;filter:brightness(0) invert(1);"></a><p class="footer-desc">Committed to delivering secure and reliable credit card processing solutions tailored for your business.</p></div>
+      <div class="footer-col"><h4>Solutions</h4><a href="mobile.html">Mobile Processing</a><a href="pos.html">Point of Sale Systems</a><a href="ecommerce.html">Online & Ecommerce</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="quote.html">Request A Quote</a><a href="contact.html">Contact Us</a><a href="support.html">Support Ticket</a><a href="tel:3373668550">📞 337.366.8550</a><a href="mailto:support@hdprocessing.com">support@hdprocessing.com</a></div>
+    </div>
+    <div class="footer-bottom"><span>©2024 HD Processing. All Rights Reserved.</span><span>Privacy Policy &nbsp;|&nbsp; Made By Amplify</span></div>
+  </div>
+</footer>
+</body>
+</html>
