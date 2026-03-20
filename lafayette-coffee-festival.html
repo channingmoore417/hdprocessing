@@ -33,11 +33,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);
 .top-bar span{font-weight:400;opacity:.7;text-transform:none;margin-left:6px;letter-spacing:0;}
 
 /* ── NAV ── */
-nav{background:var(--black);border-bottom:1px solid var(--border-dk);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+nav{background:var(--white);border-bottom:1px solid var(--border-lt);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
 .nav-logo img{height:32px;width:auto;display:block;}
 .nav-right{display:flex;align-items:center;gap:14px;}
-.nav-phone{color:var(--gold);font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(218,179,103,.3);padding:7px 14px;border-radius:var(--r);white-space:nowrap;transition:background .2s;}
-.nav-phone:hover{background:rgba(218,179,103,.1);}
+.nav-phone{color:var(--text);font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--border-lt);padding:7px 14px;border-radius:var(--r);white-space:nowrap;transition:background .2s;}
+.nav-phone:hover{background:var(--offwhite);}
 .nav-cta{display:none;background:var(--gold);color:var(--black);font-size:13px;font-weight:700;text-decoration:none;padding:8px 18px;border-radius:var(--r);white-space:nowrap;transition:background .2s;}
 .nav-cta:hover{background:var(--gold3);}
 
@@ -64,12 +64,12 @@ nav{background:var(--black);border-bottom:1px solid var(--border-dk);padding:0 3
 
 .field{margin-bottom:13px;}
 .field label{display:block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.4);margin-bottom:6px;}
-.field input,.field select{width:100%;padding:15px 16px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:400;color:var(--white);background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:var(--r);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;}
-.field input::placeholder{color:rgba(255,255,255,.22);font-size:15px;}
-.field input:focus,.field select:focus{border-color:var(--gold);background:rgba(218,179,103,.04);}
-.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 4.5L11 1' stroke='%23DAB367' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-color:rgba(255,255,255,.04);padding-right:44px;cursor:pointer;color:rgba(255,255,255,.5);}
-.field select.chosen{color:var(--white);}
-.field select option{background:#111;color:var(--white);}
+.field input,.field select{width:100%;padding:15px 16px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:400;color:var(--text);background:var(--white);border:1.5px solid var(--border-lt);border-radius:var(--r);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;}
+.field input::placeholder{color:var(--muted);font-size:15px;}
+.field input:focus,.field select:focus{border-color:var(--gold);background:#fffdf8;}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 4.5L11 1' stroke='%23DAB367' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-color:var(--white);padding-right:44px;cursor:pointer;color:var(--muted);}
+.field select.chosen{color:var(--text);}
+.field select option{background:var(--white);color:var(--text);}
 
 .submit-btn{width:100%;margin-top:4px;padding:18px 20px;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15.5px;font-weight:700;letter-spacing:.2px;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 4px 20px rgba(218,179,103,.3);position:relative;overflow:hidden;}
 .submit-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.1),transparent);pointer-events:none;}
@@ -310,7 +310,7 @@ footer{background:var(--black);border-top:1px solid var(--border-dk);padding:36p
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="event-badge"><span class="badge-dot"></span>Live Event Exclusive</div>
+      <div class="event-badge"><span class="badge-dot"></span>Lafayette Coffee Festival</div>
       <h1>Get Your POS<br><span class="gold">for 50% Less.</span><br>Today Only.</h1>
       <p class="hero-sub">
         Tired of high fees, slow deposits, and support that never picks up?
