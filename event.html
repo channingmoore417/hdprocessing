@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#030404">
+<title>Event Offer — HD Processing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+:root{
+  --black:#030404;
+  --black2:#0a0a0a;
+  --gold:#DAB367;
+  --gold2:#C9A254;
+  --gold3:#f0cc8a;
+  --white:#ffffff;
+  --offwhite:#f7f5f1;
+  --text:#1a1a1a;
+  --muted:#6b6b6b;
+  --border-lt:#e4e0d8;
+  --border-dk:rgba(218,179,103,0.18);
+  --r:10px;
+}
+
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── TOP BAR ── */
+.top-bar{background:var(--gold);color:var(--black);text-align:center;padding:10px 20px;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.top-bar span{font-weight:400;opacity:.7;text-transform:none;margin-left:6px;letter-spacing:0;}
+
+/* ── NAV ── */
+nav{background:var(--black);border-bottom:1px solid var(--border-dk);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;}
+.nav-logo img{height:32px;width:auto;display:block;}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.nav-phone{color:var(--gold);font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(218,179,103,.3);padding:7px 14px;border-radius:var(--r);white-space:nowrap;transition:background .2s;}
+.nav-phone:hover{background:rgba(218,179,103,.1);}
+.nav-cta{display:none;background:var(--gold);color:var(--black);font-size:13px;font-weight:700;text-decoration:none;padding:8px 18px;border-radius:var(--r);white-space:nowrap;transition:background .2s;}
+.nav-cta:hover{background:var(--gold3);}
+
+/* ── HERO ── */
+.hero{background:var(--black);padding:48px 24px 44px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,.13) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+
+.event-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(218,179,103,.1);border:1px solid rgba(218,179,103,.3);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-bottom:22px;}
+.badge-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,14vw,82px);line-height:.92;letter-spacing:1px;color:var(--white);margin-bottom:18px;}
+.hero h1 .gold{color:var(--gold);display:block;}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.62);line-height:1.72;margin-bottom:36px;max-width:460px;}
+.hero-sub strong{color:var(--white);font-weight:600;}
+
+/* ── FORM CARD ── */
+.form-card{background:var(--black2);border:1px solid var(--border-dk);border-radius:16px;padding:28px 22px;animation:riseUp .5s cubic-bezier(.22,1,.36,1) both;animation-delay:.1s;}
+@keyframes riseUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.form-headline{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--white);margin-bottom:4px;}
+.form-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:22px;line-height:1.5;}
+.form-desc strong{color:var(--gold);font-weight:600;}
+
+.field{margin-bottom:13px;}
+.field label{display:block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.4);margin-bottom:6px;}
+.field input,.field select{width:100%;padding:15px 16px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:400;color:var(--white);background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:var(--r);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;}
+.field input::placeholder{color:rgba(255,255,255,.22);font-size:15px;}
+.field input:focus,.field select:focus{border-color:var(--gold);background:rgba(218,179,103,.04);}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 4.5L11 1' stroke='%23DAB367' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-color:rgba(255,255,255,.04);padding-right:44px;cursor:pointer;color:rgba(255,255,255,.5);}
+.field select.chosen{color:var(--white);}
+.field select option{background:#111;color:var(--white);}
+
+.submit-btn{width:100%;margin-top:4px;padding:18px 20px;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15.5px;font-weight:700;letter-spacing:.2px;border:none;border-radius:var(--r);cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 4px 20px rgba(218,179,103,.3);position:relative;overflow:hidden;}
+.submit-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.1),transparent);pointer-events:none;}
+.submit-btn:hover{background:var(--gold3);transform:translateY(-1px);}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:13px;font-size:12px;color:rgba(255,255,255,.3);font-weight:400;}
+
+/* ── PROOF STRIP ── */
+.proof-strip{background:var(--white);border-bottom:1px solid var(--border-lt);padding:22px 24px;}
+.proof-strip-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.proof-item{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;}
+.proof-num{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--gold2);line-height:1;}
+.proof-label{font-size:10.5px;font-weight:500;color:var(--muted);text-align:center;line-height:1.3;}
+.proof-divider{width:1px;height:36px;background:var(--border-lt);flex-shrink:0;}
+
+/* ── SHARED SECTION STYLES ── */
+.section-tag{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;display:block;}
+.section-tag.light{color:var(--gold);}
+.section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,7vw,52px);line-height:.95;letter-spacing:1px;color:var(--text);margin-bottom:12px;}
+.section-heading.light{color:var(--white);}
+.section-sub{font-size:15px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:28px;}
+.section-sub.light{color:rgba(255,255,255,.5);}
+
+/* ── ABOUT / ORIGIN STORY (dark) ── */
+.about{background:var(--black);padding:60px 24px;}
+.about-inner{max-width:700px;margin:0 auto;}
+.about-photo-wrap{margin-bottom:28px;position:relative;}
+.about-photo{width:100%;max-width:400px;border-radius:12px;object-fit:cover;aspect-ratio:3/4;display:block;}
+.about-photo-caption{position:absolute;bottom:16px;left:16px;background:rgba(3,4,4,.85);border:1px solid var(--border-dk);padding:10px 16px;border-radius:8px;backdrop-filter:blur(8px);}
+.about-photo-caption strong{display:block;font-size:13px;font-weight:700;color:var(--white);}
+.about-photo-caption span{font-size:11px;color:var(--gold);font-weight:500;}
+.about-body{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.82;}
+.about-body p{margin-bottom:18px;}
+.about-body p:last-child{margin-bottom:0;}
+.about-body strong{color:var(--white);font-weight:600;}
+.about-body em{color:var(--gold);font-style:normal;font-weight:500;}
+
+/* ── CASE STUDY: MOCHA MUGS (white) ── */
+.case-study{background:var(--white);border-top:1px solid var(--border-lt);padding:60px 24px;}
+.case-study-inner{max-width:700px;margin:0 auto;}
+.client-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.client-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold2);}
+.client-name-pill{background:var(--offwhite);border:1px solid var(--border-lt);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--text);}
+
+.case-study-imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;}
+.case-study-imgs img{width:100%;border-radius:var(--r);object-fit:cover;aspect-ratio:4/3;display:block;}
+.case-study-imgs .img-wide{grid-column:span 2;aspect-ratio:16/9;}
+
+.case-body{font-size:15.5px;font-weight:300;color:var(--text);line-height:1.82;}
+.case-body p{margin-bottom:18px;}
+.case-body p:last-child{margin-bottom:0;}
+.case-body strong{font-weight:700;color:var(--text);}
+
+/* Before/After callout */
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0;}
+.ba-col{border-radius:var(--r);padding:20px 18px;}
+.ba-col.before{background:#fff5f5;border:1px solid #fbd5d5;}
+.ba-col.after{background:#f0faf4;border:1px solid #b7e5c8;}
+.ba-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:block;}
+.ba-col.before .ba-label{color:#c0392b;}
+.ba-col.after .ba-label{color:#27ae60;}
+.ba-list{display:flex;flex-direction:column;gap:9px;}
+.ba-item{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.5;color:var(--text);}
+.ba-item .x{color:#c0392b;font-weight:700;flex-shrink:0;font-size:14px;}
+.ba-item .ck{color:#27ae60;font-weight:700;flex-shrink:0;font-size:14px;}
+
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0 0;}
+.result-card{background:var(--offwhite);border:1px solid var(--border-lt);border-left:3px solid var(--gold);border-radius:var(--r);padding:16px;}
+.result-card strong{display:block;font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.result-card span{font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.4;}
+
+/* ── BENEFITS (offwhite) ── */
+.benefits{background:var(--offwhite);border-top:1px solid var(--border-lt);padding:60px 24px;}
+.benefits-inner{max-width:700px;margin:0 auto;}
+.benefit-grid{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
+.benefit-item{display:flex;align-items:center;gap:18px;background:var(--white);border:1px solid var(--border-lt);border-left:3px solid var(--gold);border-radius:var(--r);padding:18px;transition:background .2s;}
+.benefit-item:hover{background:#f0ece4;}
+.bi-icon{font-size:24px;flex-shrink:0;width:36px;text-align:center;}
+.bi-text strong{display:block;font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.bi-text span{font-size:13px;font-weight:300;color:var(--muted);line-height:1.4;}
+
+/* ── PROBLEM (dark) ── */
+.problem{background:var(--black);padding:60px 24px;}
+.problem-inner{max-width:700px;margin:0 auto;}
+.pain-list{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;}
+.pain-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);}
+.pain-x{font-size:15px;color:#e05252;flex-shrink:0;font-weight:700;margin-top:2px;}
+.pain-item p{font-size:14px;font-weight:400;color:rgba(255,255,255,.6);line-height:1.55;}
+.pain-item p strong{color:var(--white);font-weight:600;display:block;margin-bottom:2px;}
+.problem-cta{display:block;width:100%;padding:18px;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15.5px;font-weight:700;text-align:center;text-decoration:none;border-radius:var(--r);transition:background .2s,transform .15s;box-shadow:0 4px 20px rgba(218,179,103,.28);}
+.problem-cta:hover{background:var(--gold3);transform:translateY(-1px);}
+
+/* ── REVIEWS (white) ── */
+.reviews{background:var(--white);border-top:1px solid var(--border-lt);padding:60px 24px;}
+.reviews-inner{max-width:700px;margin:0 auto;}
+.review-grid{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
+.review-card{background:var(--offwhite);border:1px solid var(--border-lt);border-radius:var(--r);padding:22px 20px;}
+.review-stars{color:var(--gold);font-size:14px;letter-spacing:1px;margin-bottom:10px;}
+.review-text{font-size:14.5px;font-weight:300;color:var(--text);line-height:1.7;margin-bottom:14px;font-style:italic;}
+.review-author{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:8px;}
+.review-author::before{content:'';display:inline-block;width:20px;height:2px;background:var(--gold);border-radius:2px;}
+.google-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;margin-left:auto;}
+
+/* ── HOW IT WORKS (offwhite) ── */
+.how{background:var(--offwhite);border-top:1px solid var(--border-lt);padding:60px 24px;}
+.how-inner{max-width:700px;margin:0 auto;}
+.steps{display:flex;flex-direction:column;gap:0;margin-top:32px;position:relative;}
+.steps::before{content:'';position:absolute;left:19px;top:28px;bottom:28px;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(218,179,103,.1));}
+.step{display:flex;align-items:flex-start;gap:20px;padding:0 0 28px;position:relative;}
+.step:last-child{padding-bottom:0;}
+.step-num{width:40px;height:40px;flex-shrink:0;background:var(--white);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold2);position:relative;z-index:1;}
+.step-body strong{display:block;font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:4px;margin-top:8px;}
+.step-body p{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.6;}
+
+/* ── FINAL CTA (gold) ── */
+.final-cta{background:var(--gold);padding:60px 24px;text-align:center;position:relative;overflow:hidden;}
+.final-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:rgba(0,0,0,.06);pointer-events:none;}
+.final-cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto;}
+.final-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,9vw,62px);line-height:.93;letter-spacing:1px;color:var(--black);margin-bottom:14px;}
+.final-cta p{font-size:15px;font-weight:400;color:rgba(0,0,0,.6);line-height:1.6;margin-bottom:28px;}
+.final-cta-btn{display:inline-block;padding:18px 40px;background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15.5px;font-weight:700;text-decoration:none;border-radius:var(--r);transition:background .2s,transform .15s;}
+.final-cta-btn:hover{background:#1a1a1a;transform:translateY(-1px);}
+
+/* ── FOOTER ── */
+footer{background:var(--black);border-top:1px solid var(--border-dk);padding:36px 24px;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);margin-bottom:8px;}
+.footer-logo span{color:var(--gold);}
+.footer-phone{display:inline-block;font-size:17px;font-weight:600;color:var(--gold);text-decoration:none;margin-bottom:8px;transition:color .2s;}
+.footer-phone:hover{color:var(--gold3);}
+.footer-local{font-size:11.5px;color:rgba(255,255,255,.3);letter-spacing:1.5px;text-transform:uppercase;}
+.footer-disc{font-size:10.5px;color:rgba(255,255,255,.18);line-height:1.6;margin-top:20px;max-width:420px;margin-left:auto;margin-right:auto;}
+
+/* ── STICKY BAR ── */
+.sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--black);border-top:1px solid var(--border-dk);padding:12px 16px;z-index:100;}
+.sticky-bar a{display:block;width:100%;padding:16px;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-align:center;text-decoration:none;border-radius:var(--r);box-shadow:0 4px 14px rgba(218,179,103,.3);}
+.sticky-bar.show{display:block;}
+
+/* ── THANK YOU ── */
+#tyPage{display:none;min-height:100vh;background:var(--black);padding:80px 24px 60px;text-align:center;flex-direction:column;align-items:center;justify-content:center;}
+#tyPage.active{display:flex;}
+.ty-check{width:72px;height:72px;background:rgba(218,179,103,.1);border:2px solid rgba(218,179,103,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 28px;animation:pop .5s cubic-bezier(.22,1,.36,1) both;}
+@keyframes pop{from{transform:scale(.4);opacity:0;}to{transform:scale(1);opacity:1;}}
+.ty-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,8vw,52px);line-height:.95;letter-spacing:1px;color:var(--white);margin-bottom:18px;max-width:420px;margin-left:auto;margin-right:auto;}
+.ty-body{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;max-width:380px;margin:0 auto 16px;}
+.ty-note{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:36px;padding:10px 20px;border:1px solid rgba(218,179,103,.25);border-radius:100px;display:inline-block;background:rgba(218,179,103,.07);}
+.ty-call{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;text-decoration:none;border-radius:var(--r);box-shadow:0 4px 20px rgba(218,179,103,.3);transition:background .2s,transform .15s;margin-bottom:14px;}
+.ty-call:hover{background:var(--gold3);transform:translateY(-1px);}
+.ty-small{font-size:12px;color:rgba(255,255,255,.25);}
+
+/* ═══════════════════════════════════
+   DESKTOP (min-width: 900px)
+═══════════════════════════════════ */
+@media(min-width:900px){
+  .nav-cta{display:inline-flex;}
+
+  /* Hero: two-column */
+  .hero{padding:80px 60px;}
+  .hero-inner{max-width:1200px;display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:center;}
+  .hero h1{font-size:clamp(72px,7vw,100px);}
+
+  /* About: image left, copy right */
+  .about{padding:80px 60px;}
+  .about-inner{max-width:1200px;display:grid;grid-template-columns:420px 1fr;gap:72px;align-items:start;}
+  .about-photo{max-width:100%;width:100%;}
+  .about-photo-wrap{margin-bottom:0;}
+
+  /* Case study: wide grid */
+  .case-study{padding:80px 60px;}
+  .case-study-inner{max-width:1200px;}
+  .case-study-imgs{grid-template-columns:repeat(4,1fr);}
+  .case-study-imgs .img-wide{grid-column:span 2;aspect-ratio:4/3;}
+  .before-after{grid-template-columns:1fr 1fr;}
+  .results-grid{grid-template-columns:repeat(4,1fr);}
+
+  /* Benefits: 2-col grid */
+  .benefits{padding:80px 60px;}
+  .benefits-inner{max-width:1200px;}
+  .benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+  /* Problem: two-column */
+  .problem{padding:80px 60px;}
+  .problem-inner{max-width:1200px;display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center;}
+  .pain-list{margin-bottom:0;}
+  .problem-cta-wrap{display:flex;flex-direction:column;justify-content:center;}
+
+  /* Reviews: three-col */
+  .reviews{padding:80px 60px;}
+  .reviews-inner{max-width:1200px;}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+
+  /* How it works: two-col */
+  .how{padding:80px 60px;}
+  .how-inner{max-width:1200px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .steps{margin-top:0;}
+
+  .final-cta{padding:80px 60px;}
+  footer{padding:48px 60px;}
+  .sticky-bar{display:none !important;}
+
+  .proof-strip{padding:24px 60px;}
+}
+
+@media(max-width:899px){
+  .sticky-bar.show{display:block;}
+  body{padding-bottom:72px;}
+  .problem-cta-wrap{display:contents;}
+}
+</style>
+</head>
+<body>
+
+<!-- THANK YOU PAGE -->
+<div id="tyPage">
+  <div class="ty-check">✓</div>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold);margin-bottom:20px;">HD Processing</div>
+  <h1 class="ty-title">You're In — We'll Review Your Info</h1>
+  <p class="ty-body">We're going through submissions from today's event to find the best fit for this offer. If you qualify, our local team will reach out within one business day to walk through your current setup and show you exactly how much you can save.</p>
+  <div class="ty-note">⚡ This offer is limited to a small number of businesses from this event</div>
+  <a href="tel:+13373668550" class="ty-call">📞 Call Us Now — 337.366.8550</a>
+  <div class="ty-small">Or we'll reach out to you within 1 business day.</div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="mainPage">
+
+<div class="top-bar">🎟 Event-Only Offer <span>— Limited spots. Today only.</span></div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69bd792a0627bfb649f80cb8.png" alt="HD Processing">
+  </a>
+  <div class="nav-right">
+    <a href="tel:+13373668550" class="nav-phone">📞 337.366.8550</a>
+    <a href="#formCard" class="nav-cta" onclick="scrollToForm(event)">Claim Offer →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="event-badge"><span class="badge-dot"></span>Live Event Exclusive</div>
+      <h1>Get Your POS<br><span class="gold">for 50% Less.</span><br>Today Only.</h1>
+      <p class="hero-sub">
+        Tired of high fees, slow deposits, and support that never picks up?
+        <strong>HD Processing helps coffee shops and retail businesses get better equipment, better rates, and actual local support</strong> — without locking you into a contract.
+      </p>
+    </div>
+    <div class="form-card" id="formCard">
+      <div class="form-headline">See If You Qualify</div>
+      <div class="form-desc">Takes <strong>30 seconds.</strong> No commitment. No sales pressure.</div>
+      <form id="leadForm" onsubmit="handleSubmit(event)" novalidate>
+        <div class="field"><label for="firstName">First Name</label><input type="text" id="firstName" placeholder="Your first name" autocomplete="given-name" required></div>
+        <div class="field"><label for="bizName">Business Name</label><input type="text" id="bizName" placeholder="Your business name" autocomplete="organization" required></div>
+        <div class="field"><label for="phone">Mobile Number</label><input type="tel" id="phone" placeholder="(337) 000-0000" autocomplete="tel" inputmode="tel" required></div>
+        <div class="field"><label for="email">Email Address</label><input type="email" id="email" placeholder="you@yourbusiness.com" autocomplete="email" inputmode="email" required></div>
+        <div class="field">
+          <label for="volume">Monthly Processing Volume</label>
+          <select id="volume" required onchange="this.classList.add('chosen')">
+            <option value="" disabled selected>Select your monthly volume</option>
+            <option value="u10">Under $10,000/mo</option>
+            <option value="10-25">$10,000 – $25,000/mo</option>
+            <option value="25-50">$25,000 – $50,000/mo</option>
+            <option value="50p">$50,000+/mo</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">See If My Business Qualifies →</button>
+      </form>
+      <div class="trust-row">
+        <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M6 1L1.5 3V7c0 2.76 1.95 5.35 4.5 6 2.55-.65 4.5-3.24 4.5-6V3L6 1z" stroke="#DAB367" stroke-width="1.2" fill="none"/></svg>
+        Takes less than 30 seconds &nbsp;·&nbsp; No spam, ever
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF STRIP ── -->
+<div class="proof-strip">
+  <div class="proof-strip-inner">
+    <div class="proof-item"><div class="proof-num">500+</div><div class="proof-label">Louisiana Businesses Served</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-item"><div class="proof-num">24/7</div><div class="proof-label">Local Support Available</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-item"><div class="proof-num">1 Day</div><div class="proof-label">Average Setup Time</div></div>
+    <div class="proof-divider"></div>
+    <div class="proof-item"><div class="proof-num">$0</div><div class="proof-label">Hidden Fees. Ever.</div></div>
+  </div>
+</div>
+
+<!-- ── ABOUT / OUR STORY (dark) ── -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-photo-wrap">
+      <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69bd792a0a14d5d3c6fe3978.jpg" alt="Dustin Dupre, owner of HD Processing" class="about-photo">
+      <div class="about-photo-caption">
+        <strong>Dustin Dupre — Owner, HD Processing</strong>
+        <span>Jackson Coffee Fest · Lafayette, LA</span>
+      </div>
+    </div>
+    <div>
+      <span class="section-tag light">Our Story</span>
+      <h2 class="section-heading light">Support Local Means<br>Something Different to Us</h2>
+      <div class="about-body">
+        <p>When we first started HD Processing, we thought we'd go knock on every business door in town. Show up, pitch the product, shake hands. Simple enough, right?</p>
+        <p>Reality check: <strong>most business owners can't stand it when someone walks in trying to sell them something</strong> — especially during a rush. We learned that fast.</p>
+        <p>So we changed our approach entirely. <em>We stopped chasing and started connecting.</em> We go to events. We meet the people who already know the right business owners — roasters, suppliers, industry reps. We build real relationships. And when the time is right, they introduce us.</p>
+        <p><strong>That's how we ended up in this room with you today.</strong> Somebody vouched for us. And that means everything — because when we show up for your business, we show up the same way.</p>
+        <p>No call centers. No account hand-offs. When you call us, we answer. When something breaks, we fix it. <em>That's what local really means.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDY: MOCHA MUGS (white) ── -->
+<section class="case-study">
+  <div class="case-study-inner">
+    <div class="client-eyebrow">
+      <span class="client-label">Client Story</span>
+      <span class="client-name-pill">☕ Mocha Mugs — 5 Locations</span>
+    </div>
+    <h2 class="section-heading">From 5 Manual Updates<br>to One Click. Same Day.</h2>
+    <p class="section-sub">This is what it looks like when the right technology meets a business that's ready to grow. Mocha Mugs didn't need more headaches — they needed a system that worked as hard as they did.</p>
+
+    <div class="case-study-imgs">
+      <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69bd7ae5b5fb52db4e34f2b9.jpg" alt="Coffee shop served by HD Processing" class="img-wide">
+      <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69bd792a9208294f1ac5e1dd.jpg" alt="POS ordering system in action">
+      <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69bd792a29e06c54f07a48fd.jpg" alt="Cashier POS system">
+    </div>
+
+    <div class="before-after">
+      <div class="ba-col before">
+        <span class="ba-label">Before HD Processing</span>
+        <div class="ba-list">
+          <div class="ba-item"><span class="x">✗</span><span>Every menu change had to be made <strong>5 separate times</strong> — once per location, manually</span></div>
+          <div class="ba-item"><span class="x">✗</span><span>No way to accept tap-to-pay or contactless cards at any location</span></div>
+          <div class="ba-item"><span class="x">✗</span><span>No visibility into how long orders were taking to fulfill</span></div>
+          <div class="ba-item"><span class="x">✗</span><span>Employee time tracked separately from the POS — more admin, more headaches</span></div>
+        </div>
+      </div>
+      <div class="ba-col after">
+        <span class="ba-label">After HD Processing</span>
+        <div class="ba-list">
+          <div class="ba-item"><span class="ck">✓</span><span>Update the menu <strong>once</strong> — it instantly pushes to all 5 locations</span></div>
+          <div class="ba-item"><span class="ck">✓</span><span>Tap-to-pay live at every location on day one</span></div>
+          <div class="ba-item"><span class="ck">✓</span><span>Kitchen display system tracks every order in real time</span></div>
+          <div class="ba-item"><span class="ck">✓</span><span>Employee time tracking, virtual gift cards, and online ordering on the way</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <p>We set up all five Mocha Mugs locations <strong>in a single day.</strong> Not because we rushed — because we came prepared, communicated clearly, and had a system built for exactly this kind of business.</p>
+      <p>The owner summed it up best: <em>"On the old system I had to update the menu 5 times. Now I do it once and it's done everywhere."</em> That's 30 minutes of manual work turned into 60 seconds. Every. Single. Time.</p>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card"><strong>Tap-to-Pay</strong><span>Contactless payments live at all 5 locations on day one</span></div>
+      <div class="result-card"><strong>Time Tracking</strong><span>Employee clock-in/out built directly into the POS — no separate system</span></div>
+      <div class="result-card"><strong>Virtual Gift Cards</strong><span>Digital gift cards active and ready to sell same day</span></div>
+      <div class="result-card"><strong>Kitchen Display</strong><span>Real-time order tracking so nothing falls through the cracks at rush hour</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS (offwhite) ── -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <span class="section-tag">What's Included</span>
+    <h2 class="section-heading">Everything in the Event Offer</h2>
+    <p class="section-sub">This isn't a stripped-down demo deal. Event attendees get the full package — equipment, setup, and ongoing local support all included.</p>
+    <div class="benefit-grid">
+      <div class="benefit-item"><div class="bi-icon">💳</div><div class="bi-text"><strong>50% Off POS Hardware</strong><span>Event-exclusive pricing not available online or anywhere else.</span></div></div>
+      <div class="benefit-item"><div class="bi-icon">🔧</div><div class="bi-text"><strong>Free Setup & Installation</strong><span>We come to your business, install everything, and train your staff. You don't touch a cable.</span></div></div>
+      <div class="benefit-item"><div class="bi-icon">📄</div><div class="bi-text"><strong>No Long-Term Contract</strong><span>Month-to-month. If we don't earn your business, you're free to walk — no penalties, no fine print.</span></div></div>
+      <div class="benefit-item"><div class="bi-icon">⚡</div><div class="bi-text"><strong>Same-Day Funding</strong><span>Process a sale today, see it in your bank today. Stop waiting 2–3 days for your own money.</span></div></div>
+      <div class="benefit-item"><div class="bi-icon">📍</div><div class="bi-text"><strong>Real Local Support</strong><span>Louisiana-based team. Call us and a real person picks up — not a chatbot, not a call center.</span></div></div>
+      <div class="benefit-item"><div class="bi-icon">🔍</div><div class="bi-text"><strong>Free Statement Analysis</strong><span>We'll pull up your last statement and show you exactly what you're overpaying — line by line.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM (dark) ── -->
+<section class="problem">
+  <div class="problem-inner">
+    <div>
+      <span class="section-tag light">Sound Familiar?</span>
+      <h2 class="section-heading light">Most Businesses Are Getting<br>Ripped Off on Processing</h2>
+      <p class="section-sub light">The processing industry runs on confusion and fine print. Most merchants don't even know how much they're overpaying — until they see it on paper.</p>
+      <div class="pain-list">
+        <div class="pain-item"><div class="pain-x">✗</div><p><strong>Fees that keep climbing</strong>Every few months your statement is higher. The company calls it a "rate adjustment." You call it getting squeezed.</p></div>
+        <div class="pain-item"><div class="pain-x">✗</div><p><strong>Nobody picks up the phone</strong>Terminal goes down on a Saturday rush. You're on hold for 45 minutes with someone who can't fix anything.</p></div>
+        <div class="pain-item"><div class="pain-x">✗</div><p><strong>Waiting 2–3 days for your money</strong>You ran $4,000 in sales yesterday. Your bank account still says zero. Same-day funding shouldn't be a luxury.</p></div>
+        <div class="pain-item"><div class="pain-x">✗</div><p><strong>Outdated systems slowing you down</strong>Manual updates, no reporting, clunky hardware. Your processor has no incentive to improve your setup.</p></div>
+      </div>
+    </div>
+    <div class="problem-cta-wrap">
+      <a href="#formCard" class="problem-cta" onclick="scrollToForm(event)">Claim This Event Offer — 50% Off POS →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── GOOGLE REVIEWS (white) ── -->
+<section class="reviews">
+  <div class="reviews-inner">
+    <span class="section-tag">Google Reviews</span>
+    <h2 class="section-heading">What Our Merchants Say</h2>
+    <p class="section-sub">Real business owners. Real results. No scripts, no incentives — just merchants who switched and haven't looked back.</p>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I have had a wonderful experience with Dustin and his team. He's even taken time to come and train my staff on several occasions. He's always available to answer any questions I have. I highly recommend this company."</p>
+        <div class="review-author">Debbie Rowell <span class="google-badge"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Affordable, personable, fast and friendly! I have used many payment solutions on the market — without a doubt there is no better option if you are looking for a more personal experience. These guys take exceptional care of you."</p>
+        <div class="review-author">Kody Miller <span class="google-badge"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Very trustworthy company. I truly feel that they have my best interest at heart. I recommend them to everyone that I know. Switching was the best decision I made for my business."</p>
+        <div class="review-author">Jenn Stonicher <span class="google-badge"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS (offwhite) ── -->
+<section class="how">
+  <div class="how-inner">
+    <div>
+      <span class="section-tag">The Process</span>
+      <h2 class="section-heading">Simple From<br>Start to Finish</h2>
+      <p class="section-sub">From the moment you submit this form to the day your new system goes live — we handle everything. You run your business. We handle the tech.</p>
+      <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69bd792a9208294f1ac5e1dd.jpg" alt="POS ordering system" style="width:100%;border-radius:10px;object-fit:cover;aspect-ratio:16/9;display:block;margin-top:24px;">
+    </div>
+    <div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Submit This Form</strong><p>30 seconds. Name, business, and monthly volume. No credit card. No commitment.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>We Review & Call You</strong><p>Our local team reaches out within one business day. We do a free statement analysis and show you exactly what you're paying vs. what you could be paying.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>We Come to You</strong><p>If it's a fit, we schedule an install. We show up, set everything up, and train your staff. Most businesses are fully live in a single day.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Lower Fees. Better Tools. Real Support.</strong><p>Same-day funding. Modern hardware. A local team on speed dial. You keep more of what you earn — and actually enjoy running your system.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA (gold) ── -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2>Don't Leave Money<br>on the Table</h2>
+    <p>This event offer expires when you walk out the door. No website version. No online code. No rain check. If you process cards and want to pay less for it — now is the time.</p>
+    <a href="#formCard" class="final-cta-btn" onclick="scrollToForm(event)">Claim the Event Offer →</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">HD <span>Processing</span></div>
+  <a href="tel:+13373668550" class="footer-phone">337.366.8550</a>
+  <div class="footer-local">📍 Local Support · Lafayette, Louisiana</div>
+  <p class="footer-disc">HD Processing is a registered merchant services provider. All offers subject to approval and availability. Event pricing valid for qualifying businesses only. Month-to-month terms apply after any promotional period. No long-term contracts required.</p>
+</footer>
+
+</div><!-- /#mainPage -->
+
+<div class="sticky-bar" id="stickyBar">
+  <a href="#formCard" onclick="scrollToForm(event)">Claim Event Offer — 50% Off POS →</a>
+</div>
+
+<script>
+function scrollToForm(e){
+  if(e)e.preventDefault();
+  var fc=document.getElementById('formCard');
+  if(!fc)return;
+  fc.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){var fn=document.getElementById('firstName');if(fn)fn.focus();},500);
+}
+var stickyBar=document.getElementById('stickyBar');
+var formCard=document.getElementById('formCard');
+window.addEventListener('scroll',function(){
+  if(!formCard||!stickyBar)return;
+  if(formCard.getBoundingClientRect().bottom<0)stickyBar.classList.add('show');
+  else stickyBar.classList.remove('show');
+},{passive:true});
+document.getElementById('phone').addEventListener('input',function(e){
+  var raw=e.target.value.replace(/\D/g,'').substring(0,10);
+  var out=raw;
+  if(raw.length>=6)out='('+raw.slice(0,3)+') '+raw.slice(3,6)+'-'+raw.slice(6);
+  else if(raw.length>=3)out='('+raw.slice(0,3)+') '+raw.slice(3);
+  e.target.value=out;
+});
+function handleSubmit(e){
+  e.preventDefault();
+  var btn=document.getElementById('submitBtn');
+  var ok=['firstName','bizName','phone','email','volume'].every(function(id){
+    return document.getElementById(id).value.trim()!=='';
+  });
+  if(!ok){
+    btn.textContent='← Please fill in all fields';
+    btn.style.background='#c0392b';
+    setTimeout(function(){btn.textContent='See If My Business Qualifies →';btn.style.background='';},2200);
+    return;
+  }
+  btn.textContent='Submitting...';
+  btn.disabled=true;
+  btn.style.opacity='.75';
+  // Replace setTimeout with your GHL webhook fetch POST
+  setTimeout(function(){
+    document.getElementById('mainPage').style.display='none';
+    document.getElementById('stickyBar').style.display='none';
+    document.getElementById('tyPage').classList.add('active');
+    window.scrollTo(0,0);
+  },900);
+}
+</script>
+</body>
+</html>
