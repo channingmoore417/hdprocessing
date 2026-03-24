@@ -1,466 +1,429 @@
 import Link from 'next/link'
-import IndustrySidebar from '@/components/IndustrySidebar'
-import FaqAccordion from '@/components/FaqAccordion'
+import IndustryFaq from '@/components/IndustryFaq'
 
 export const revalidate = 60
 
-/* ─── SEO Metadata ─── */
 export const metadata = {
   title: 'Payment Processing for Delis & Meat Markets in Lafayette, LA | HD Processing',
   description:
-    'Payment processing for delis and meat markets in Lafayette, LA. Weight-based pricing, fast counter checkout, holiday pre-order payment links, and same-day funding. No contracts.',
+    'Credit card processing and POS systems for Lafayette delis and meat markets. Weight-based pricing, fast checkout, same-day funding. Local Acadiana team. No contracts.',
   alternates: { canonical: 'https://hdprocessing.com/industries/restaurants/delis-meat-markets' },
+  openGraph: {
+    title: 'Payment Processing for Delis & Meat Markets in Lafayette, LA | HD Processing',
+    description:
+      'Credit card processing and POS systems for Lafayette delis and meat markets. Weight-based pricing, fast checkout, same-day funding. Local Acadiana team. No contracts.',
+    url: 'https://hdprocessing.com/industries/restaurants/delis-meat-markets',
+    siteName: 'HD Processing',
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
-/* ─── JSON-LD Schema ─── */
+const GOOGLE_REVIEWS_URL =
+  'https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1'
+
+const faqItems = [
+  {
+    question: 'Can HD Processing set up weight-based pricing for a Lafayette meat market?',
+    answer:
+      'Yes \u2014 HD Processing configures POS systems for Lafayette meat markets with weight-based pricing integrated with your scale. Boudin, tasso, andouille, and other cuts priced by the pound calculate automatically at the register. Your staff doesn\u2019t manually enter prices \u2014 they weigh the cut and the POS does the rest. We configure your full product menu during on-site installation.',
+  },
+  {
+    question: 'Can HD Processing set up payment links for holiday pre-orders at a Lafayette deli?',
+    answer:
+      'Yes \u2014 payment links are available for Lafayette delis and meat markets that take holiday pre-orders. When a customer places a Thanksgiving, Christmas, or Mardi Gras order, you send them a payment link by text or email. They pay a deposit immediately, and you\u2019re protected from no-shows when pickup day arrives. Funds settle to your account the same business day.',
+  },
+  {
+    question: 'Does HD Processing offer mobile card readers for Lafayette meat markets that sell at events?',
+    answer:
+      'Yes \u2014 HD Processing provides compact wireless mobile readers for Lafayette meat markets that sell at farmers markets, festivals, and community events. The readers accept all major cards, tap-to-pay, Apple Pay, and Google Pay. They work on Bluetooth and process transactions wherever you are. Sales consolidate into your daily batch and settle same-day.',
+  },
+  {
+    question: 'What POS system works best for a Lafayette deli counter?',
+    answer:
+      'HD Processing recommends and installs counter POS systems configured for the specific workflow of a Lafayette deli \u2014 fast item entry, weight-based pricing integration, quick payment processing, and clean end-of-day reporting. We configure your menu before we arrive and train your counter staff the same day. Most Lafayette delis are live and processing within hours of our visit.',
+  },
+  {
+    question: 'Does HD Processing require a long-term contract for Lafayette delis and meat markets?',
+    answer:
+      'No \u2014 all HD Processing accounts are month-to-month with no early termination fees. Lafayette deli and meat market owners are never locked in. If the service isn\u2019t right for your business, you can leave without penalty. Over 97% of our Acadiana merchants stay because the service earns their business every single month.',
+  },
+]
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': ['LocalBusiness', 'FinancialService'],
+      '@id': 'https://hdprocessing.com/#business',
+      name: 'HD Processing',
+      telephone: '+13373668550',
+      email: 'info@hdprocessing.com',
+      url: 'https://hdprocessing.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '1027 Johnston St',
+        addressLocality: 'Lafayette',
+        addressRegion: 'LA',
+        postalCode: '70501',
+        addressCountry: 'US',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: 30.2241, longitude: -92.0198 },
+      areaServed: ['Lafayette, LA', 'Acadiana', 'Broussard, LA', 'Youngsville, LA', 'Scott, LA', 'Breaux Bridge, LA', 'New Iberia, LA', 'Opelousas, LA'],
+    },
+    {
       '@type': 'Service',
-      '@id': 'https://hdprocessing.com/industries/restaurants/delis-meat-markets#service',
-      name: 'Deli & Meat Market Payment Processing',
+      name: 'Payment Processing for Delis & Meat Markets in Lafayette, LA',
       description:
-        'Payment processing for delis and meat markets in Lafayette, LA. Weight-based pricing integration, fast counter checkout, holiday pre-order payment links, and interchange-plus pricing.',
-      provider: {
-        '@type': 'LocalBusiness',
-        '@id': 'https://hdprocessing.com/#business',
-        name: 'HD Processing',
-        telephone: '+13373668550',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '1027 Johnston St',
-          addressLocality: 'Lafayette',
-          addressRegion: 'LA',
-          postalCode: '70501',
-          addressCountry: 'US',
-        },
-      },
-      areaServed: {
-        '@type': 'City',
-        name: 'Lafayette',
-        containedInPlace: { '@type': 'State', name: 'Louisiana' },
-      },
-      url: 'https://hdprocessing.com/industries/restaurants/delis-meat-markets',
+        'HD Processing provides credit card processing, POS systems, and payment solutions for delis and meat markets in Lafayette, LA and Acadiana. Weight-based pricing, fast checkout, same-day funding, no long-term contracts.',
+      provider: { '@id': 'https://hdprocessing.com/#business' },
+      areaServed: 'Lafayette, LA',
+      audience: { '@type': 'Audience', audienceType: 'Deli and meat market owners in Lafayette, LA and Acadiana' },
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://hdprocessing.com/industries/restaurants/delis-meat-markets#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hdprocessing.com/' },
         { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://hdprocessing.com/industries' },
-        { '@type': 'ListItem', position: 3, name: 'Restaurants & Bars', item: 'https://hdprocessing.com/industries/restaurants' },
+        { '@type': 'ListItem', position: 3, name: 'Restaurants', item: 'https://hdprocessing.com/industries/restaurants' },
         { '@type': 'ListItem', position: 4, name: 'Delis & Meat Markets', item: 'https://hdprocessing.com/industries/restaurants/delis-meat-markets' },
       ],
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://hdprocessing.com/industries/restaurants/delis-meat-markets#faq',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Can HD Processing handle weight-based pricing for meat markets?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. Our POS systems integrate with commercial scales so you can ring up items by the pound. The terminal calculates the price automatically based on weight and per-pound rate \u2014 no manual math, no pricing errors. This works for boudin, tasso, cracklins, and any product sold by weight.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How do payment links work for holiday pre-orders?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We generate shareable payment links you can text or email to customers. They click the link, enter their card info, and pay \u2014 no app download required. This is perfect for Thanksgiving turducken orders, Christmas boudin balls, crawfish boil deposits, or any seasonal pre-order that needs payment upfront.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What payment terminals work best for a busy deli counter?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'For high-volume deli counters, we recommend a compact terminal with tap-to-pay that processes contactless payments in under 2 seconds. It handles Apple Pay, Google Pay, and all major cards. The small footprint fits next to your register without crowding the counter. We set it up on-site and train your staff.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How much can a Lafayette deli save on processing fees?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Most Lafayette delis and meat markets save $200\u2013$500/month by switching from flat-rate processors to our interchange-plus pricing. The exact savings depend on your monthly volume and average ticket. We\u2019ll analyze your current statement for free and show you the difference.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Are there contracts for deli payment processing?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'No. Every HD Processing agreement is month-to-month with zero early termination fees. You stay because we save you money and keep your counter moving \u2014 not because you\u2019re locked into a contract.',
-          },
-        },
-      ],
+      mainEntity: faqItems.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
     },
   ],
 }
 
-/* ─── Data ─── */
-
-const sidebarItems = [
-  { label: 'Coffee & Tea Shops', slug: 'coffee-tea-shops' },
-  { label: 'Pizzerias & Sandwich Shops', slug: 'pizzerias-sandwich-shops' },
-  { label: 'Bakeries', slug: 'bakeries' },
-  { label: 'Breweries', slug: 'breweries' },
-  { label: 'Delis & Meat Markets', slug: 'delis-meat-markets' },
-]
-
-const painPoints = [
-  {
-    title: 'Weight-Based Pricing That Doesn\u2019t Integrate',
-    desc: 'You sell by the pound, but your POS can\u2019t talk to your scale. That means manual price calculations, pricing errors, and slower checkout.',
-  },
-  {
-    title: 'Slow Checkout During Lunch Rush',
-    desc: 'The lunch crowd needs to get in and out fast. A slow terminal or clunky checkout process costs you repeat customers every single day.',
-  },
-  {
-    title: 'No Way to Handle Pre-Orders for Holidays',
-    desc: 'Turducken at Thanksgiving, boudin balls at Christmas, crawfish for Easter \u2014 you take phone orders but have no easy way to collect payment upfront.',
-  },
-  {
-    title: 'Cash-Only for Local Deliveries',
-    desc: 'Delivering to offices and catering jobs but can\u2019t take cards on the road? That\u2019s lost sales and awkward payment collection.',
-  },
-]
-
-const features = [
-  {
-    icon: '\u2696\uFE0F',
-    title: 'Weight-Based Pricing',
-    desc: 'POS integration with commercial scales. Ring up boudin, tasso, and cracklins by the pound \u2014 automatically calculated, zero manual math.',
-  },
-  {
-    icon: '\u26A1',
-    title: 'Fast Counter Checkout',
-    desc: 'Tap-to-pay terminals that process in under 2 seconds. Keep your lunch rush moving without bottlenecks.',
-  },
-  {
-    icon: '\uD83D\uDD17',
-    title: 'Holiday Pre-Order Payment Links',
-    desc: 'Text or email payment links for holiday orders. Customers pay instantly \u2014 no app, no phone card reading, no Venmo.',
-  },
-  {
-    icon: '\uD83D\uDCF1',
-    title: 'Mobile Readers for Markets',
-    desc: 'Bluetooth card readers for deliveries, farmers markets, and off-site catering. Accept every payment type on the go.',
-  },
-  {
-    icon: '\uD83D\uDCB0',
-    title: 'Same-Day Funding',
-    desc: 'Get your money the same day you earn it. Weekend sales hit your account before Monday morning.',
-  },
-  {
-    icon: '\uD83D\uDEE0\uFE0F',
-    title: 'On-Site Setup Always',
-    desc: 'We come to your deli, install your equipment, integrate your scale, and train your team. No shipping boxes, no DIY.',
-  },
-]
-
-const faqItems = [
-  {
-    question: 'Can HD Processing handle weight-based pricing for meat markets?',
-    answer:
-      'Yes. Our POS systems integrate with commercial scales so you can ring up items by the pound. The terminal calculates the price automatically based on weight and per-pound rate \u2014 no manual math, no pricing errors. This works for boudin, tasso, cracklins, and any product sold by weight.',
-  },
-  {
-    question: 'How do payment links work for holiday pre-orders?',
-    answer:
-      'We generate shareable payment links you can text or email to customers. They click the link, enter their card info, and pay \u2014 no app download required. This is perfect for Thanksgiving turducken orders, Christmas boudin balls, crawfish boil deposits, or any seasonal pre-order that needs payment upfront.',
-  },
-  {
-    question: 'What payment terminals work best for a busy deli counter?',
-    answer:
-      'For high-volume deli counters, we recommend a compact terminal with tap-to-pay that processes contactless payments in under 2 seconds. It handles Apple Pay, Google Pay, and all major cards. The small footprint fits next to your register without crowding the counter. We set it up on-site and train your staff.',
-  },
-  {
-    question: 'How much can a Lafayette deli save on processing fees?',
-    answer:
-      'Most Lafayette delis and meat markets save $200\u2013$500/month by switching from flat-rate processors to our interchange-plus pricing. The exact savings depend on your monthly volume and average ticket. We\u2019ll analyze your current statement for free and show you the difference.',
-  },
-  {
-    question: 'Are there contracts for deli payment processing?',
-    answer:
-      'No. Every HD Processing agreement is month-to-month with zero early termination fees. You stay because we save you money and keep your counter moving \u2014 not because you\u2019re locked into a contract.',
-  },
-]
-
-const otherSubPages = [
-  { label: 'Coffee & Tea Shops', slug: 'coffee-tea-shops' },
-  { label: 'Pizzerias & Sandwich Shops', slug: 'pizzerias-sandwich-shops' },
-  { label: 'Bakeries', slug: 'bakeries' },
-  { label: 'Breweries', slug: 'breweries' },
-]
-
-const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1'
-
-/* ─── Page Component ─── */
-
-export default async function DelisMeatMarketsPage() {
+export default function DelisMeatMarketsPage() {
   return (
     <>
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ═══ HERO ═══ */}
-      <section className="hero" aria-label="Deli Payment Processing Hero">
-        <div className="hero-grid" aria-hidden="true"></div>
-        <div className="hero-orb" aria-hidden="true"></div>
-
+      {/* ══ HERO ══ */}
+      <section className="hero" style={{ padding: '72px 24px 88px', overflow: 'visible' }}>
         <div className="hero-inner">
-          <h1>
-            Payment Processing for <span>Delis &amp; Meat Markets</span>
-          </h1>
-          <p className="hero-sub">
-            Weight-based pricing, fast counter checkout, holiday pre-order payment links, and same-day
-            funding &mdash; built for Lafayette delis and meat markets that move product fast.
-          </p>
-          <div className="hero-actions">
-            <a href="/quote" className="btn-gold">
-              Get a Free Quote &rarr;
-            </a>
-            <a href="tel:3373668550" className="btn-outline">
-              337-366-8550
+          <div className="hero-content">
+            <h1>
+              Payment Processing for Delis &amp; Meat Markets in{' '}
+              <span className="gold">Lafayette, LA</span>
+            </h1>
+            <p className="hero-sub">
+              Lafayette delis and meat markets run on speed, accuracy, and regulars who come back every week. Your payment system should support all three &mdash; fast checkout, weight-based pricing, and a terminal that doesn&apos;t go down during the lunch rush. HD Processing gives Acadiana delis and markets{' '}
+              <strong>accurate POS, fast approval, and same-day funding</strong> with a local team on call. No long-term contracts.
+            </p>
+            <Link href="/quote" className="hero-cta">Start Saving Money Today &rarr;</Link>
+          </div>
+
+          {/* POS Mockup */}
+          <div className="mockup-wrap">
+            <div className="mockup-card">
+              <div className="mockup-label">Counter Sale</div>
+              <div className="mockup-rows">
+                <div className="mockup-row"><span className="mockup-key">Boudin &mdash; 2.4 lbs</span><span className="mockup-val">$14.40</span></div>
+                <div className="mockup-row"><span className="mockup-key">Tasso &mdash; 1.1 lbs</span><span className="mockup-val">$9.90</span></div>
+                <div className="mockup-row"><span className="mockup-key">Cracklins</span><span className="mockup-val">$6.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">Tax (9.45%)</span><span className="mockup-val">$2.87</span></div>
+              </div>
+              <div className="mockup-row" style={{ marginTop: 12, fontWeight: 700 }}>
+                <span className="mockup-key" style={{ color: 'var(--gold)' }}>Total</span>
+                <span className="mockup-val" style={{ color: 'var(--gold)' }}>$33.17</span>
+              </div>
+              <button className="mockup-btn" style={{ marginTop: 14 }}>
+                <span style={{ color: '#22c55e' }}>&#10003;</span> Mastercard Tap APPROVED
+              </button>
+            </div>
+
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-google-badge"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                alt="Google Reviews HD Processing Lafayette LA"
+              />
+              <div className="hgb-divider"></div>
+              <div>
+                <div className="hgb-stars">&starf;&starf;&starf;&starf;&starf;</div>
+                <div className="hgb-sub">Google Reviews</div>
+              </div>
+              <div>
+                <div className="hgb-text">5.0</div>
+                <div className="hgb-sub">Lafayette, LA</div>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* ═══ BREADCRUMB ═══ */}
-      <div className="breadcrumb-bar">
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <a href="/industries">Industries</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <a href="/industries/restaurants">Restaurants &amp; Bars</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <span className="breadcrumb-active">Delis &amp; Meat Markets</span>
-        </nav>
+      {/* ══ BREADCRUMB ══ */}
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <div className="breadcrumb-inner">
+          <Link href="/">Home</Link>
+          <span>&rsaquo;</span>
+          <Link href="/industries">Industries</Link>
+          <span>&rsaquo;</span>
+          <Link href="/industries/restaurants">Restaurants</Link>
+          <span>&rsaquo;</span>
+          <span className="current">Delis &amp; Meat Markets</span>
+        </div>
+      </nav>
+
+      {/* ══ SUB-NAV ══ */}
+      <div className="sub-nav">
+        <div className="sub-nav-inner">
+          <span className="sub-nav-label">Restaurants</span>
+          <Link href="/industries/restaurants" className="sub-nav-link">All Restaurants</Link>
+          <Link href="/industries/restaurants/coffee-tea-shops" className="sub-nav-link">Coffee &amp; Tea Shops</Link>
+          <Link href="/industries/restaurants/pizzerias-sandwich-shops" className="sub-nav-link">Pizzerias &amp; Sandwich Shops</Link>
+          <Link href="/industries/restaurants/bakeries" className="sub-nav-link">Bakeries</Link>
+          <Link href="/industries/restaurants/breweries" className="sub-nav-link">Breweries</Link>
+          <Link href="/industries/restaurants/delis-meat-markets" className="sub-nav-link active">Delis &amp; Meat Markets</Link>
+        </div>
       </div>
 
-      {/* ═══ TWO-COLUMN LAYOUT ═══ */}
-      <section className="section light" aria-label="Deli payment processing details">
+      {/* ══ PAIN POINTS (light) ══ */}
+      <section className="pain-section">
         <div className="section-inner">
-          <div className="industry-layout">
-            <IndustrySidebar
-              category="restaurants"
-              categoryLabel="Restaurants & Bars"
-              currentSlug="delis-meat-markets"
-              items={sidebarItems}
-            />
+          <div className="section-label">The Problem</div>
+          <h2 className="on-light">Payment Challenges at Lafayette Delis &amp; <span className="gold">Meat Markets</span></h2>
+          <div className="pain-grid">
+            <div className="pain-card">
+              <div className="pain-num">01</div>
+              <h3>Weight-Based Pricing That Doesn&apos;t Integrate</h3>
+              <p>A Lafayette meat market selling boudin, tasso, and andouille by the pound needs a POS that integrates with your scale &mdash; not one where your staff is typing in prices manually and hoping they got the math right.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">02</div>
+              <h3>Slow Checkout During the Lunch Rush</h3>
+              <p>A deli counter with a line out the door can&apos;t afford a terminal that takes 10 seconds per approval. Fast tap-to-pay and chip processing keeps your counter moving and your regulars happy.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">03</div>
+              <h3>No Way to Handle Pre-Orders for Holidays</h3>
+              <p>Thanksgiving, Christmas, and Mardi Gras season mean large custom orders. A Lafayette meat market that takes holiday pre-orders by phone and collects at pickup is dealing with no-shows and last-minute cancellations. Payment links at order time fix both.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">04</div>
+              <h3>Cash-Only for Local Deliveries</h3>
+              <p>Lafayette meat markets that deliver locally or sell at events and markets are still cash-only in too many cases. Customers who want to pay by card move on &mdash; or don&apos;t come back.</p>
+            </div>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-black">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
 
-            <div className="industry-content">
-              {/* ── Mockup ── */}
-              <div
-                style={{
-                  background: 'var(--black)',
-                  border: '1px solid var(--border-dk)',
-                  borderRadius: 18,
-                  padding: '28px 24px',
-                  maxWidth: 370,
-                  marginBottom: 40,
-                }}
+      {/* ══ SOLUTION (dark) ══ */}
+      <section className="solution-section">
+        <div className="section-inner">
+          <div className="ind-solution-grid">
+            <div className="solution-content">
+              <div className="section-label">We Understand &mdash; And We Have a Plan</div>
+              <h2 style={{ color: 'var(--white)' }}>
+                We Understand What Lafayette Delis <span className="gold">Actually Need.</span>
+              </h2>
+              <p className="on-dark">
+                HD Processing configures POS systems for Lafayette delis and meat markets that work the way your counter works &mdash; weight-based pricing integrated with your scale, fast checkout for regular customers, and a system your staff can use without a training manual. We set up the menu with your cuts, pricing by weight, and any packaged items before we arrive.
+              </p>
+              <p className="on-dark">
+                Payment links for holiday pre-orders mean no more no-shows on Thanksgiving morning. Mobile readers for markets and events mean your sales follow you off-site. Same-day funding means Thursday&apos;s lunch rush revenue is in your account Thursday night. And when something breaks, your local Lafayette rep answers &mdash; not a ticketing system.
+              </p>
+            </div>
+            <div className="solution-photo-wrap">
+              <div className="solution-photo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ddfbad00e260009b16d7.jpg"
+                  alt="HD Processing team member with Lafayette deli owner"
+                  loading="lazy"
+                />
+              </div>
+              <div className="solution-caption">
+                <div className="solution-caption-text">Locally owned &amp; operated in Lafayette, LA since 2019</div>
+              </div>
+            </div>
+          </div>
+          <div className="section-cta">
+            <Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ FEATURES (light) ══ */}
+      <section className="features-section">
+        <div className="section-inner">
+          <div className="section-label">What You Get</div>
+          <h2 className="on-light">Built for <span className="gold">Lafayette Deli &amp; Meat Market Counter Service</span></h2>
+          <div className="ind-features-grid">
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">{'\u2696\uFE0F'}</div>
+              <h3>Weight-Based Pricing</h3>
+              <p>POS configured to calculate price by weight &mdash; boudin by the pound, tasso, andouille, and specialty cuts all priced accurately every time.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">{'\u26A1'}</div>
+              <h3>Fast Counter Checkout</h3>
+              <p>Sub-2-second approvals, tap-to-pay, and chip processing keep your Lafayette deli line moving during the lunch rush and weekend crowds.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">{'\uD83D\uDD17'}</div>
+              <h3>Holiday Pre-Order Payment Links</h3>
+              <p>Send a payment link when a customer places a holiday order. They pay the deposit upfront &mdash; no no-shows on Thanksgiving, no last-minute cancellations.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">{'\uD83D\uDCF1'}</div>
+              <h3>Mobile Readers for Markets</h3>
+              <p>Accept cards at farmers markets, festivals, and local events with a compact wireless reader that fits in your apron pocket.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">{'\u26A1'}</div>
+              <h3>Same-Day Funding</h3>
+              <p>Lunch rush and Saturday counter sales settle to your Lafayette bank account the same business day. Access your earnings that evening.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">{'\uD83D\uDEE0\uFE0F'}</div>
+              <h3>On-Site Setup Always</h3>
+              <p>We come to your Lafayette deli, configure your POS with your menu and scale integration, and train your counter staff before we leave.</p>
+            </div>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ FAQ (dark) ══ */}
+      <section className="ind-faq-section">
+        <div className="section-inner">
+          <div className="section-label">Common Questions</div>
+          <h2 style={{ color: 'var(--white)' }}>Deli &amp; Meat Market Payment <span className="gold">FAQ</span></h2>
+          <IndustryFaq items={faqItems} />
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ OTHER RESTAURANT TYPES (light) ══ */}
+      <section className="other-industries">
+        <div className="section-inner">
+          <div className="section-label">Also Serving</div>
+          <h2 className="on-light">Other Restaurant Types We <span className="gold">Serve in Lafayette</span></h2>
+          <div className="other-grid">
+            <Link href="/industries/restaurants/coffee-tea-shops" className="other-card">
+              <span className="other-card-icon">{'\u2615'}</span>
+              <h3>Coffee &amp; Tea Shops</h3>
+              <p>Fast-paced counter service, loyalty integrations, and mobile payment support for Lafayette coffee shops and tea houses.</p>
+              <span className="other-card-arrow">See coffee shop solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/pizzerias-sandwich-shops" className="other-card">
+              <span className="other-card-icon">{'\uD83C\uDF55'}</span>
+              <h3>Pizzerias &amp; Sandwich Shops</h3>
+              <p>Phone-in orders, delivery integration, and fast checkout for Lafayette pizza and sandwich counters.</p>
+              <span className="other-card-arrow">See pizzeria solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/bakeries" className="other-card">
+              <span className="other-card-icon">{'\uD83E\uDD50'}</span>
+              <h3>Bakeries</h3>
+              <p>Simple counter checkout, daily batch settlement, and mobile readers for farmers markets and pop-ups across Acadiana.</p>
+              <span className="other-card-arrow">See bakery solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/breweries" className="other-card">
+              <span className="other-card-icon">{'\uD83C\uDF7A'}</span>
+              <h3>Breweries</h3>
+              <p>Tab management, bar-specific POS workflows, and same-day funding for Lafayette craft breweries and taprooms.</p>
+              <span className="other-card-arrow">See brewery solutions &rarr;</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ BIZ INFO ══ */}
+      <section className="biz-section">
+        <div className="section-inner">
+          <div className="section-label">Find Us</div>
+          <h2 className="on-light">Locally Owned in <span className="gold">Lafayette, LA</span></h2>
+          <div className="biz-grid">
+            <div className="biz-info">
+              <div className="biz-info-items">
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">{'\uD83D\uDCCD'}</div>
+                  <div>
+                    <div className="biz-info-label">Address</div>
+                    <span className="biz-info-value">1027 Johnston St, Lafayette, LA 70501</span>
+                    <div className="biz-info-note">By appointment &mdash; we also come to you</div>
+                  </div>
+                </div>
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">{'\uD83D\uDCDE'}</div>
+                  <div>
+                    <div className="biz-info-label">Phone</div>
+                    <a href="tel:+13373668550" className="biz-info-value">337.366.8550</a>
+                    <div className="biz-info-note">Mon&ndash;Fri 8am&ndash;6pm &middot; Sat 9am&ndash;1pm</div>
+                  </div>
+                </div>
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">{'\u2709\uFE0F'}</div>
+                  <div>
+                    <div className="biz-info-label">Email</div>
+                    <a href="mailto:info@hdprocessing.com" className="biz-info-value">info@hdprocessing.com</a>
+                    <div className="biz-info-note">We respond within one business day</div>
+                  </div>
+                </div>
+              </div>
+              <div className="biz-hours">
+                <div className="biz-hours-label">Business Hours</div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Monday &ndash; Friday</span><span className="biz-hours-time">8:00 AM &ndash; 6:00 PM</span></div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Saturday</span><span className="biz-hours-time">9:00 AM &ndash; 1:00 PM</span></div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Sunday</span><span className="biz-hours-time closed">Closed</span></div>
+              </div>
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="biz-google-badge"
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,.45)', fontWeight: 500 }}>Counter Sale</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,.35)', fontWeight: 400 }}>Walk-In</div>
-                </div>
-
-                {[
-                  { item: 'Boudin 2.4 lbs', price: '$14.40' },
-                  { item: 'Tasso 1.1 lbs', price: '$9.90' },
-                  { item: 'Cracklins', price: '$6.00' },
-                ].map((row, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', borderBottom: '1px solid rgba(255,255,255,.06)', fontSize: 14, color: 'var(--white)', fontWeight: 400 }}>
-                    <span>{row.item}</span>
-                    <span style={{ color: 'rgba(255,255,255,.55)' }}>{row.price}</span>
-                  </div>
-                ))}
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', fontSize: 13, color: 'rgba(255,255,255,.35)', fontWeight: 400, marginTop: 4 }}>
-                  <span>Tax 9.45%</span>
-                  <span>$2.87</span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0 14px', fontSize: 15, color: 'var(--gold)', fontWeight: 600, borderTop: '1px solid rgba(255,255,255,.08)', marginTop: 6 }}>
-                  <span>Total</span>
-                  <span>$33.17</span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', fontSize: 13 }}>
-                  <span style={{ color: 'rgba(255,255,255,.45)', fontWeight: 500 }}>Mastercard Tap</span>
-                  <span style={{ fontWeight: 600, color: '#22c55e' }}>APPROVED &#10003;</span>
-                </div>
-              </div>
-
-              {/* ── Pain Points ── */}
-              <h2>
-                What Deli Owners <span>Deal With</span>
-              </h2>
-              <div className="problem-grid">
-                {painPoints.map((item, i) => (
-                  <div key={i} className="problem-card">
-                    <div className="problem-card-num">0{i + 1}</div>
-                    <strong>{item.title}</strong>
-                    <p>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* ── Solution ── */}
-              <h2>
-                How HD Processing Helps <span>Delis &amp; Meat Markets</span>
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'center', marginBottom: 40 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                  alt="Google Reviews HD Processing Lafayette LA"
+                  className="gbadge-logo"
+                />
                 <div>
-                  <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(0,0,0,.65)', marginBottom: 16 }}>
-                    We set up Lafayette delis and meat markets with POS systems that integrate directly with your commercial scale. Ring up boudin by the pound and the terminal calculates the price automatically &mdash; no mental math, no pricing errors, no slowdowns at the counter. Our tap-to-pay terminals process contactless payments in under 2 seconds, keeping your lunch rush moving.
-                  </p>
-                  <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(0,0,0,.65)' }}>
-                    For holiday pre-orders &mdash; turducken, boudin balls, crawfish &mdash; we generate payment links you can text or email to customers so they pay upfront without calling in a card number. Need to take cards on deliveries? Our mobile readers connect over Bluetooth so you can accept payments anywhere. And with same-day funding, your revenue hits your account the day you earn it.
-                  </p>
+                  <div className="gbadge-stars">&starf;&starf;&starf;&starf;&starf;</div>
+                  <div className="gbadge-text">See our Google Reviews</div>
                 </div>
-                <div style={{ borderRadius: 14, overflow: 'hidden' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ddfbad00e260009b16d7.jpg"
-                    alt="HD Processing deli payment setup"
-                    style={{ width: '100%', display: 'block', borderRadius: 14 }}
-                  />
-                </div>
-              </div>
-
-              {/* ── Features Grid ── */}
-              <div className="diff-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginTop: 32 }}>
-                {features.map((item, i) => (
-                  <div key={i} className="diff-card">
-                    <span className="diff-card-icon" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                    <div className="diff-card-title">{item.title}</div>
-                    <div className="diff-card-desc">{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* ── FAQ ── */}
-              <FaqAccordion
-                items={faqItems}
-                variant="light"
-                label="FAQ"
-                heading="Frequently Asked Questions"
-              />
-
-              {/* ── Other Sub-Pages ── */}
-              <h2>
-                Other Restaurant <span>Solutions</span>
-              </h2>
-              <div className="industry-cards-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginBottom: 40 }}>
-                {otherSubPages.map((sp) => (
-                  <Link
-                    key={sp.slug}
-                    href={`/industries/restaurants/${sp.slug}`}
-                    className="industry-card"
-                  >
-                    <span className="industry-card-name">{sp.label}</span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* ── Biz Info ── */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start', marginBottom: 40 }}>
-                <div>
-                  <iframe
-                    title="HD Processing location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.123456789!2d-92.0198427!3d30.2240897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                    width="100%"
-                    height="220"
-                    style={{ border: 0, borderRadius: 14 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>HD Processing</h3>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 6 }}>
-                    1027 Johnston St, Lafayette, LA 70501
-                  </p>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 6 }}>
-                    <strong>Phone:</strong>{' '}
-                    <a href="tel:3373668550" style={{ color: 'var(--black)', fontWeight: 600 }}>337-366-8550</a>
-                  </p>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 12 }}>
-                    <strong>Hours:</strong> Mon&ndash;Fri 9 AM&ndash;5 PM
-                  </p>
-                  <a
-                    href={GOOGLE_REVIEWS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gmb-badge"
-                    aria-label="See HD Processing reviews on Google"
-                    style={{ display: 'inline-flex' }}
-                  >
-                    <div className="gmb-g" aria-hidden="true">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-                        alt="Google"
-                        width={46}
-                        height={15}
-                        style={{ display: 'block' }}
-                      />
-                    </div>
-                    <div className="gmb-info">
-                      <span className="gmb-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                      <div className="gmb-meta">5.0 <span>&middot; 47+ Google Reviews</span></div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+              </a>
+            </div>
+            <div className="biz-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.0!2d-92.0198!3d30.2241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="HD Processing — Lafayette, LA"
+              ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ FINAL CTA (gold) ═══ */}
-      <section className="final-cta" aria-label="Get a free quote">
+      {/* ══ GOLD CTA ══ */}
+      <section className="final-cta">
         <div className="final-cta-inner">
-          <h2>
-            Your Deli Deserves
-            <br />
-            Better Rates.
-          </h2>
+          <h2>Your Deli Deserves<br />Better Rates.</h2>
           <p>
-            Send us your current processing statement and we&apos;ll show you exactly
-            how much you can save. Free analysis, no obligation.
+            Send us your current statement and we&apos;ll show you exactly how much you&apos;d save. Free analysis, no obligation, no contracts.
           </p>
-          <a href="/quote" className="btn-black">
-            Get My Free Rate Analysis &rarr;
-          </a>
-          <br />
-          <span
-            style={{
-              display: 'inline-block',
-              marginTop: 14,
-              fontSize: 13.5,
-              color: 'rgba(0,0,0,.45)',
-            }}
-          >
-            No contracts. No pressure. Local Lafayette team on call.
-          </span>
+          <Link href="/quote" className="final-cta-btn">See What I&apos;d Pay &rarr;</Link>
+          <div className="final-cta-sub">No contracts. No commitments. Local Lafayette team.</div>
         </div>
       </section>
     </>

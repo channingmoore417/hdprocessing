@@ -1,499 +1,426 @@
 import Link from 'next/link'
-import IndustrySidebar from '@/components/IndustrySidebar'
-import FaqAccordion from '@/components/FaqAccordion'
+import IndustryFaq from '@/components/IndustryFaq'
 
 export const revalidate = 60
 
-/* ─── SEO Metadata ─── */
 export const metadata = {
   title: 'Payment Processing for Breweries & Taprooms in Lafayette, LA | HD Processing',
   description:
-    'Payment processing for breweries and taprooms in Lafayette, LA. Open tab management, unified merchandise and bar sales, tap-to-pay, and same-day funding. No contracts.',
+    'Credit card processing and POS systems for Lafayette breweries and taprooms. Tab management, bar-specific workflows, same-day funding. Local Acadiana team. No contracts.',
   alternates: { canonical: 'https://hdprocessing.com/industries/restaurants/breweries' },
+  openGraph: {
+    title: 'Payment Processing for Breweries & Taprooms in Lafayette, LA | HD Processing',
+    description:
+      'Credit card processing and POS systems for Lafayette breweries and taprooms. Tab management, bar-specific workflows, same-day funding. Local Acadiana team. No contracts.',
+    url: 'https://hdprocessing.com/industries/restaurants/breweries',
+    siteName: 'HD Processing',
+    locale: 'en_US',
+    type: 'website',
+  },
 }
-
-/* ─── JSON-LD Schema ─── */
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Service',
-      '@id': 'https://hdprocessing.com/industries/restaurants/breweries#service',
-      name: 'Brewery & Taproom Payment Processing',
-      description:
-        'Payment processing for breweries and taprooms in Lafayette, LA. Open tab management, unified merchandise and bar sales, mobile wallets, and interchange-plus pricing.',
-      provider: {
-        '@type': 'LocalBusiness',
-        '@id': 'https://hdprocessing.com/#business',
-        name: 'HD Processing',
-        telephone: '+13373668550',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '1027 Johnston St',
-          addressLocality: 'Lafayette',
-          addressRegion: 'LA',
-          postalCode: '70501',
-          addressCountry: 'US',
-        },
-      },
-      areaServed: {
-        '@type': 'City',
-        name: 'Lafayette',
-        containedInPlace: { '@type': 'State', name: 'Louisiana' },
-      },
-      url: 'https://hdprocessing.com/industries/restaurants/breweries',
-    },
-    {
-      '@type': 'BreadcrumbList',
-      '@id': 'https://hdprocessing.com/industries/restaurants/breweries#breadcrumb',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hdprocessing.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://hdprocessing.com/industries' },
-        { '@type': 'ListItem', position: 3, name: 'Restaurants & Bars', item: 'https://hdprocessing.com/industries/restaurants' },
-        { '@type': 'ListItem', position: 4, name: 'Breweries & Taprooms', item: 'https://hdprocessing.com/industries/restaurants/breweries' },
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': 'https://hdprocessing.com/industries/restaurants/breweries#faq',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How does tab management work with HD Processing?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Our system lets you open tabs with a card pre-authorization, add drinks and food throughout the visit, and close out with a single tap. The pre-auth holds a set amount on the guest\u2019s card without charging it \u2014 so you\u2019re protected if they walk out. Staff can see all open tabs on one screen and close them individually or in batch.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can I sell merchandise and beer on the same system?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. Our POS handles both bar sales and retail merchandise on a single system. T-shirts, glassware, crowlers, and pints all ring up on the same terminal with separate categories for reporting. No need for a second register or a separate Square reader at the merch table.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Does HD Processing support tap-to-pay and mobile wallets for taprooms?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. Every terminal we install supports contactless tap-to-pay, Apple Pay, Google Pay, and all major card brands. Transactions process in under 2 seconds \u2014 fast enough to keep your bar line moving on a busy Friday night.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How fast can HD Processing set up a Lafayette brewery?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We can have your taproom fully set up in 24\u201348 hours. Our local team handles on-site installation, terminal configuration, tab management setup, and staff training. No shipping boxes, no DIY guides.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Are there contracts for brewery payment processing?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'No. Every HD Processing agreement is month-to-month with zero early termination fees. You stay because we save you money and keep your taproom running smoothly \u2014 not because you\u2019re locked into a contract.',
-          },
-        },
-      ],
-    },
-  ],
-}
-
-/* ─── Data ─── */
-
-const sidebarItems = [
-  { label: 'Coffee & Tea Shops', slug: 'coffee-tea-shops' },
-  { label: 'Pizzerias & Sandwich Shops', slug: 'pizzerias-sandwich-shops' },
-  { label: 'Bakeries', slug: 'bakeries' },
-  { label: 'Breweries', slug: 'breweries' },
-  { label: 'Delis & Meat Markets', slug: 'delis-meat-markets' },
-]
-
-const painPoints = [
-  {
-    title: 'Tab Management Is a Mess',
-    desc: 'Keeping track of 30+ open tabs on a Friday night with handwritten tickets or a clunky POS means lost orders, wrong charges, and walkouts.',
-  },
-  {
-    title: 'No Way to Sell Merchandise and Beer on Same System',
-    desc: 'T-shirts, glassware, and crowlers need a separate register or a janky workaround. Two systems means double the headaches.',
-  },
-  {
-    title: 'Card Pre-Authorization for Tabs',
-    desc: 'Without pre-auth, you\u2019re trusting every guest to come back and close out. One walkout on a busy night wipes out a server\u2019s tips.',
-  },
-  {
-    title: 'Waiting Days for Weekend Taproom Revenue',
-    desc: 'Your biggest nights are Friday and Saturday. Most processors don\u2019t deposit weekend sales until Tuesday or Wednesday. That\u2019s your keg money sitting in limbo.',
-  },
-]
-
-const features = [
-  {
-    icon: '\uD83C\uDF7A',
-    title: 'Open Tab Management',
-    desc: 'Pre-auth cards, track open tabs on one screen, and batch-close at the end of the night. No more walkouts or lost orders.',
-  },
-  {
-    icon: '\uD83D\uDED2',
-    title: 'Unified Merchandise + Bar Sales',
-    desc: 'Ring up pints, flights, crowlers, and merch on the same terminal. Separate categories for clean reporting.',
-  },
-  {
-    icon: '\uD83D\uDCF1',
-    title: 'Tap-to-Pay + Mobile Wallets',
-    desc: 'Contactless payments in under 2 seconds. Apple Pay, Google Pay, and all major cards accepted.',
-  },
-  {
-    icon: '\u26A1',
-    title: 'Same-Day Funding',
-    desc: 'Get your weekend revenue before Monday morning. No more waiting 2\u20133 business days.',
-  },
-  {
-    icon: '\uD83E\uDDFE',
-    title: 'Sales by Product',
-    desc: 'See which beers sell, which merch moves, and which nights are your best \u2014 broken down by category, time, and payment type.',
-  },
-  {
-    icon: '\uD83D\uDEE0\uFE0F',
-    title: 'On-Site Setup for Your Layout',
-    desc: 'We come to your taproom, install terminals where they make sense for your bar flow, and train your staff before we leave.',
-  },
-]
-
-const faqItems = [
-  {
-    question: 'How does tab management work with HD Processing?',
-    answer:
-      'Our system lets you open tabs with a card pre-authorization, add drinks and food throughout the visit, and close out with a single tap. The pre-auth holds a set amount on the guest\u2019s card without charging it \u2014 so you\u2019re protected if they walk out. Staff can see all open tabs on one screen and close them individually or in batch.',
-  },
-  {
-    question: 'Can I sell merchandise and beer on the same system?',
-    answer:
-      'Yes. Our POS handles both bar sales and retail merchandise on a single system. T-shirts, glassware, crowlers, and pints all ring up on the same terminal with separate categories for reporting. No need for a second register or a separate Square reader at the merch table.',
-  },
-  {
-    question: 'Does HD Processing support tap-to-pay and mobile wallets for taprooms?',
-    answer:
-      'Yes. Every terminal we install supports contactless tap-to-pay, Apple Pay, Google Pay, and all major card brands. Transactions process in under 2 seconds \u2014 fast enough to keep your bar line moving on a busy Friday night.',
-  },
-  {
-    question: 'How fast can HD Processing set up a Lafayette brewery?',
-    answer:
-      'We can have your taproom fully set up in 24\u201348 hours. Our local team handles on-site installation, terminal configuration, tab management setup, and staff training. No shipping boxes, no DIY guides.',
-  },
-  {
-    question: 'Are there contracts for brewery payment processing?',
-    answer:
-      'No. Every HD Processing agreement is month-to-month with zero early termination fees. You stay because we save you money and keep your taproom running smoothly \u2014 not because you\u2019re locked into a contract.',
-  },
-]
-
-const otherSubPages = [
-  { label: 'Coffee & Tea Shops', slug: 'coffee-tea-shops' },
-  { label: 'Pizzerias & Sandwich Shops', slug: 'pizzerias-sandwich-shops' },
-  { label: 'Bakeries', slug: 'bakeries' },
-  { label: 'Delis & Meat Markets', slug: 'delis-meat-markets' },
-]
 
 const GOOGLE_REVIEWS_URL =
   'https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1'
 
-/* ─── Page Component ─── */
+const faqItems = [
+  {
+    question: 'Can HD Processing set up open tab management for a Lafayette brewery?',
+    answer:
+      'Yes \u2014 open tab management with card pre-authorization is a standard feature on HD Processing bar POS systems for Lafayette breweries and taprooms. When a customer opens a tab, the card is pre-authorized for a set amount. Additional items are added to the tab through the service. When the tab closes, the final amount is charged and the pre-authorization hold is released automatically.',
+  },
+  {
+    question: 'Can a Lafayette brewery sell merchandise and beer on the same POS system?',
+    answer:
+      'Yes \u2014 HD Processing configures unified POS systems for Lafayette breweries that ring up pints, flights, crowlers, cans, and merchandise on the same system. All transactions consolidate into a single end-of-night batch and one daily settlement. No separate readers for different product types, no separate reconciliation at close.',
+  },
+  {
+    question: 'Does HD Processing offer same-day funding for Lafayette brewery and taproom sales?',
+    answer:
+      'Yes \u2014 HD Processing offers same-day funding for Lafayette brewery accounts. Your weekend taproom revenue settles to your bank account the same business day. For a brewery processing several thousand dollars over a Friday-Saturday, having those funds available Monday morning makes supply ordering and payroll significantly easier.',
+  },
+  {
+    question: 'What bar POS systems does HD Processing install for Lafayette taprooms?',
+    answer:
+      'HD Processing installs bar-specific POS systems for Lafayette taprooms configured for the pace and workflow of a busy craft beer bar \u2014 multi-tab management, card pre-authorization, product categories for draft, cans, crowlers, and merchandise, and end-of-night batch settlement. We configure the system for your specific bar layout before we arrive.',
+  },
+  {
+    question: 'Does HD Processing require a long-term contract for Lafayette breweries?',
+    answer:
+      'No \u2014 all HD Processing accounts are month-to-month with no early termination fees. Lafayette brewery owners are never locked in. If the service isn\u2019t the right fit for your taproom, you can leave without penalty. Over 97% of our Acadiana merchants stay because the service earns it every month.',
+  },
+]
 
-export default async function BreweriesPage() {
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'FinancialService'],
+      '@id': 'https://hdprocessing.com/#business',
+      name: 'HD Processing',
+      telephone: '+13373668550',
+      email: 'info@hdprocessing.com',
+      url: 'https://hdprocessing.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '1027 Johnston St',
+        addressLocality: 'Lafayette',
+        addressRegion: 'LA',
+        postalCode: '70501',
+        addressCountry: 'US',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: 30.2241, longitude: -92.0198 },
+      areaServed: ['Lafayette, LA', 'Acadiana', 'Broussard, LA', 'Youngsville, LA', 'Scott, LA', 'Breaux Bridge, LA', 'New Iberia, LA', 'Opelousas, LA'],
+    },
+    {
+      '@type': 'Service',
+      name: 'Brewery & Taproom Payment Processing in Lafayette, LA',
+      description:
+        'HD Processing provides credit card processing, bar POS systems, and payment solutions for breweries and taprooms in Lafayette, LA and Acadiana. Tab management, same-day funding, interchange-plus pricing, no long-term contracts.',
+      provider: { '@id': 'https://hdprocessing.com/#business' },
+      areaServed: 'Lafayette, LA',
+      audience: { '@type': 'Audience', audienceType: 'Brewery and taproom owners in Lafayette, LA and Acadiana' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hdprocessing.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://hdprocessing.com/industries' },
+        { '@type': 'ListItem', position: 3, name: 'Restaurants', item: 'https://hdprocessing.com/industries/restaurants' },
+        { '@type': 'ListItem', position: 4, name: 'Breweries', item: 'https://hdprocessing.com/industries/restaurants/breweries' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+  ],
+}
+
+export default function BreweriesPage() {
   return (
     <>
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ═══ HERO ═══ */}
-      <section className="hero" aria-label="Brewery Payment Processing Hero">
-        <div className="hero-grid" aria-hidden="true"></div>
-        <div className="hero-orb" aria-hidden="true"></div>
-
+      {/* ══ HERO ══ */}
+      <section className="hero" style={{ padding: '72px 24px 88px', overflow: 'visible' }}>
         <div className="hero-inner">
-          <h1>
-            Payment Processing for <span>Breweries &amp; Taprooms</span>
-          </h1>
-          <p className="hero-sub">
-            Open tab management, unified merchandise and bar sales, tap-to-pay terminals, and same-day
-            funding &mdash; built for Lafayette taprooms that run fast on busy nights.
-          </p>
-          <div className="hero-actions">
-            <a href="/quote" className="btn-gold">
-              Get a Free Quote &rarr;
-            </a>
-            <a href="tel:3373668550" className="btn-outline">
-              337-366-8550
+          <div className="hero-content">
+            <h1>
+              Payment Processing for Breweries &amp; Taprooms in{' '}
+              <span className="gold">Lafayette, LA</span>
+            </h1>
+            <p className="hero-sub">
+              Lafayette craft breweries move fast on weekends &mdash; open tabs, crowler fills, merchandise sales, and food truck tie-ins all happening at once. Your payment system needs to handle all of it without slowing down the bar. HD Processing gives Acadiana breweries{' '}
+              <strong>tab management, bar-specific POS workflows, and same-day funding</strong> with a local team on call. No long-term contracts.
+            </p>
+            <Link href="/quote" className="hero-cta">Start Saving Money Today &rarr;</Link>
+          </div>
+
+          {/* POS Mockup */}
+          <div className="mockup-wrap">
+            <div className="mockup-card">
+              <div className="mockup-label">Open Tab &mdash; Table 4</div>
+              <div className="mockup-rows">
+                <div className="mockup-row"><span className="mockup-key">Pint &mdash; Pale Ale</span><span className="mockup-val">$7.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">Pint &mdash; Stout</span><span className="mockup-val">$7.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">Crowler &mdash; IPA</span><span className="mockup-val">$12.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">Merch Pint Glass</span><span className="mockup-val">$15.00</span></div>
+              </div>
+              <div className="mockup-row" style={{ borderTop: '1px solid rgba(255,255,255,.08)', marginTop: 8, paddingTop: 10 }}>
+                <span className="mockup-key" style={{ fontWeight: 600 }}>Running Total</span>
+                <span className="mockup-val" style={{ color: 'var(--gold)', fontWeight: 700 }}>$41.00</span>
+              </div>
+            </div>
+
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-google-badge"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                alt="Google Reviews HD Processing Lafayette LA"
+              />
+              <div className="hgb-divider"></div>
+              <div>
+                <div className="hgb-stars">&starf;&starf;&starf;&starf;&starf;</div>
+                <div className="hgb-sub">Google Reviews</div>
+              </div>
+              <div>
+                <div className="hgb-text">5.0</div>
+                <div className="hgb-sub">Lafayette, LA</div>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* ═══ BREADCRUMB ═══ */}
-      <div className="breadcrumb-bar">
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <a href="/industries">Industries</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <a href="/industries/restaurants">Restaurants &amp; Bars</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <span className="breadcrumb-active">Breweries &amp; Taprooms</span>
-        </nav>
+      {/* ══ BREADCRUMB ══ */}
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <div className="breadcrumb-inner">
+          <Link href="/">Home</Link>
+          <span>&rsaquo;</span>
+          <Link href="/industries">Industries</Link>
+          <span>&rsaquo;</span>
+          <Link href="/industries/restaurants">Restaurants</Link>
+          <span>&rsaquo;</span>
+          <span className="current">Breweries</span>
+        </div>
+      </nav>
+
+      {/* ══ SUB-NAV ══ */}
+      <div className="sub-nav">
+        <div className="sub-nav-inner">
+          <span className="sub-nav-label">Restaurants</span>
+          <Link href="/industries/restaurants" className="sub-nav-link">All Restaurants</Link>
+          <Link href="/industries/restaurants/coffee-tea-shops" className="sub-nav-link">Coffee &amp; Tea Shops</Link>
+          <Link href="/industries/restaurants/pizzerias-sandwich-shops" className="sub-nav-link">Pizzerias &amp; Sandwich Shops</Link>
+          <Link href="/industries/restaurants/bakeries" className="sub-nav-link">Bakeries</Link>
+          <Link href="/industries/restaurants/breweries" className="sub-nav-link active">Breweries</Link>
+          <Link href="/industries/restaurants/delis-meat-markets" className="sub-nav-link">Delis &amp; Meat Markets</Link>
+        </div>
       </div>
 
-      {/* ═══ TWO-COLUMN LAYOUT ═══ */}
-      <section className="section light" aria-label="Brewery payment processing details">
+      {/* ══ PAIN POINTS (light) ══ */}
+      <section className="pain-section">
         <div className="section-inner">
-          <div className="industry-layout">
-            <IndustrySidebar
-              category="restaurants"
-              categoryLabel="Restaurants & Bars"
-              currentSlug="breweries"
-              items={sidebarItems}
-            />
+          <div className="section-label">The Problem</div>
+          <h2 className="on-light">Bar POS Problems That Cost Lafayette <span className="gold">Breweries</span></h2>
+          <div className="pain-grid">
+            <div className="pain-card">
+              <div className="pain-num">01</div>
+              <h3>Tab Management Is a Mess</h3>
+              <p>A Lafayette taproom running 30 open tabs on a Saturday afternoon needs a bar POS that tracks every tab cleanly &mdash; not sticky notes, not memory, and definitely not a system that crashes when it gets busy.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">02</div>
+              <h3>No Way to Sell Merchandise and Beer on the Same System</h3>
+              <p>Crowlers, cans to-go, branded glassware, and branded merchandise need to ring up alongside pints and flights &mdash; without a separate square reader and a separate reconciliation at close.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">03</div>
+              <h3>Card Pre-Authorization for Tabs</h3>
+              <p>Running a tab without a card pre-authorization is a liability. A good bar POS pre-auths the card when the tab opens and releases the hold when it closes &mdash; automatically, every time.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">04</div>
+              <h3>Waiting Days for Weekend Taproom Revenue</h3>
+              <p>A busy Lafayette taproom processing $6,000 over a weekend shouldn&apos;t wait until Wednesday to access it. Hop orders, supply runs, and staff payroll don&apos;t wait for your processor&apos;s settlement window.</p>
+            </div>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-black">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
 
-            <div className="industry-content">
-              {/* ── Mockup ── */}
-              <div
-                style={{
-                  background: 'var(--black)',
-                  border: '1px solid var(--border-dk)',
-                  borderRadius: 18,
-                  padding: '28px 24px',
-                  maxWidth: 370,
-                  marginBottom: 40,
-                }}
+      {/* ══ SOLUTION (dark) ══ */}
+      <section className="solution-section">
+        <div className="section-inner">
+          <div className="ind-solution-grid">
+            <div className="solution-content">
+              <div className="section-label">We Understand &mdash; And We Have a Plan</div>
+              <h2 style={{ color: 'var(--white)' }}>
+                Bar POS Built for Lafayette <span className="gold">Breweries.</span>
+              </h2>
+              <p className="on-dark">
+                HD Processing configures bar-specific POS systems for Lafayette breweries and taprooms &mdash; open tab management with card pre-authorization, merchandise and crowler sales on the same system, and end-of-night batch that closes cleanly. We configure it for your specific taproom layout, whether you have a single bar line or multiple stations.
+              </p>
+              <p className="on-dark">
+                Same-day funding means your weekend revenue is available Monday morning. Interchange-plus pricing means you pay wholesale rates on every pint, crowler, and merch sale. And your local Lafayette rep picks up the phone when your system goes down on a Friday before opening &mdash; not a ticket that closes itself in 48 hours. Over 500 Acadiana businesses trust HD Processing, and our 97% retention rate is because we show up.
+              </p>
+            </div>
+            <div className="solution-photo-wrap">
+              <div className="solution-photo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ff253b3a5862ce17ed66.jpg"
+                  alt="HD Processing team member — merchant services for Lafayette businesses"
+                  loading="lazy"
+                />
+              </div>
+              <div className="solution-caption">
+                <div className="solution-caption-text">Locally owned &amp; operated in Lafayette, LA since 2019</div>
+              </div>
+            </div>
+          </div>
+          <div className="section-cta">
+            <Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ FEATURES (light) ══ */}
+      <section className="features-section">
+        <div className="section-inner">
+          <div className="section-label">What You Get</div>
+          <h2 className="on-light">Built for <span className="gold">Lafayette Taproom Operations</span></h2>
+          <div className="ind-features-grid">
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">🍺</div>
+              <h3>Open Tab Management</h3>
+              <p>Card pre-authorization when the tab opens, automatic hold release at close. Manage 30+ tabs simultaneously without confusion.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">🛍️</div>
+              <h3>Unified Merchandise + Bar Sales</h3>
+              <p>Crowlers, cans, glassware, and apparel ring up on the same system as your pints and flights. One batch, one report at close.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">📱</div>
+              <h3>Tap-to-Pay + Mobile Wallets</h3>
+              <p>Customers pay with Apple Pay, Google Pay, or a tap of their card. Faster than chip, no fumbling, contactless at the bar.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">⚡</div>
+              <h3>Same-Day Funding</h3>
+              <p>Weekend taproom revenue hits your Lafayette bank account Monday. Place supply orders and cover payroll without floating cash.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">📊</div>
+              <h3>Sales by Product</h3>
+              <p>See which beers moved, what merchandise sold, and your busiest service windows &mdash; all from your phone after close.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">🛠️</div>
+              <h3>On-Site Setup for Your Layout</h3>
+              <p>We come to your Lafayette brewery, configure the POS for your bar stations, and train your bartenders before you open.</p>
+            </div>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ FAQ (dark) ══ */}
+      <section className="ind-faq-section">
+        <div className="section-inner">
+          <div className="section-label">Common Questions</div>
+          <h2 style={{ color: 'var(--white)' }}>Brewery &amp; Taproom Payment <span className="gold">FAQ</span></h2>
+          <IndustryFaq items={faqItems} />
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ OTHER RESTAURANT TYPES (light) ══ */}
+      <section className="other-industries">
+        <div className="section-inner">
+          <div className="section-label">Also Serving</div>
+          <h2 className="on-light">Other Restaurant Types We <span className="gold">Serve in Lafayette</span></h2>
+          <div className="other-grid">
+            <Link href="/industries/restaurants/coffee-tea-shops" className="other-card">
+              <span className="other-card-icon">☕</span>
+              <h3>Coffee &amp; Tea Shops</h3>
+              <p>Fast-paced counter service, loyalty integrations, and mobile payment support for Lafayette coffee shops and tea houses.</p>
+              <span className="other-card-arrow">See coffee shop solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/pizzerias-sandwich-shops" className="other-card">
+              <span className="other-card-icon">🍕</span>
+              <h3>Pizzerias &amp; Sandwich Shops</h3>
+              <p>Phone-in orders, delivery integration, and fast checkout for Lafayette pizza and sandwich counters.</p>
+              <span className="other-card-arrow">See pizzeria solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/bakeries" className="other-card">
+              <span className="other-card-icon">🥐</span>
+              <h3>Bakeries</h3>
+              <p>Simple counter checkout, daily batch settlement, and mobile readers for farmers markets and pop-ups across Acadiana.</p>
+              <span className="other-card-arrow">See bakery solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/delis-meat-markets" className="other-card">
+              <span className="other-card-icon">🥩</span>
+              <h3>Delis &amp; Meat Markets</h3>
+              <p>Weight-based pricing, quick checkout, and inventory tracking for Lafayette delis and specialty meat markets.</p>
+              <span className="other-card-arrow">See deli solutions &rarr;</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ BIZ INFO ══ */}
+      <section className="biz-section">
+        <div className="section-inner">
+          <div className="section-label">Find Us</div>
+          <h2 className="on-light">Locally Owned in <span className="gold">Lafayette, LA</span></h2>
+          <div className="biz-grid">
+            <div className="biz-info">
+              <div className="biz-info-items">
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">📍</div>
+                  <div>
+                    <div className="biz-info-label">Address</div>
+                    <span className="biz-info-value">1027 Johnston St, Lafayette, LA 70501</span>
+                    <div className="biz-info-note">By appointment &mdash; we also come to you</div>
+                  </div>
+                </div>
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">📞</div>
+                  <div>
+                    <div className="biz-info-label">Phone</div>
+                    <a href="tel:+13373668550" className="biz-info-value">337.366.8550</a>
+                    <div className="biz-info-note">Mon&ndash;Fri 8am&ndash;6pm &middot; Sat 9am&ndash;1pm</div>
+                  </div>
+                </div>
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">✉️</div>
+                  <div>
+                    <div className="biz-info-label">Email</div>
+                    <a href="mailto:info@hdprocessing.com" className="biz-info-value">info@hdprocessing.com</a>
+                    <div className="biz-info-note">We respond within one business day</div>
+                  </div>
+                </div>
+              </div>
+              <div className="biz-hours">
+                <div className="biz-hours-label">Business Hours</div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Monday &ndash; Friday</span><span className="biz-hours-time">8:00 AM &ndash; 6:00 PM</span></div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Saturday</span><span className="biz-hours-time">9:00 AM &ndash; 1:00 PM</span></div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Sunday</span><span className="biz-hours-time closed">Closed</span></div>
+              </div>
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="biz-google-badge"
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,.45)', fontWeight: 500 }}>Tab #14</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,.35)', fontWeight: 400 }}>Bar</div>
-                </div>
-
-                {[
-                  { item: 'IPA Pint', price: '$7.00' },
-                  { item: 'Stout Pint', price: '$8.00' },
-                  { item: 'Flight (4)', price: '$14.00' },
-                  { item: 'Crowler To-Go', price: '$12.00' },
-                ].map((row, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', borderBottom: '1px solid rgba(255,255,255,.06)', fontSize: 14, color: 'var(--white)', fontWeight: 400 }}>
-                    <span>{row.item}</span>
-                    <span style={{ color: 'rgba(255,255,255,.55)' }}>{row.price}</span>
-                  </div>
-                ))}
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', fontSize: 13, color: 'rgba(255,255,255,.35)', fontWeight: 400, marginTop: 4 }}>
-                  <span>Tax 9.45%</span>
-                  <span>$3.88</span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0 14px', fontSize: 15, color: 'var(--gold)', fontWeight: 600, borderTop: '1px solid rgba(255,255,255,.08)', marginTop: 6 }}>
-                  <span>Total</span>
-                  <span>$44.88</span>
-                </div>
-
-                {/* Tip row */}
-                <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-                  {['15%', '18%', '20%'].map((t, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        flex: 1,
-                        textAlign: 'center',
-                        padding: '8px 0',
-                        borderRadius: 8,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        background: i === 1 ? 'var(--gold)' : 'rgba(255,255,255,.06)',
-                        color: i === 1 ? 'var(--black)' : 'rgba(255,255,255,.45)',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {t}
-                    </div>
-                  ))}
-                </div>
-
-                <div
-                  style={{
-                    background: 'var(--gold)',
-                    color: 'var(--black)',
-                    textAlign: 'center',
-                    padding: '13px 0',
-                    borderRadius: 10,
-                    fontWeight: 700,
-                    fontSize: 15,
-                    cursor: 'pointer',
-                  }}
-                >
-                  Close Tab $52.96
-                </div>
-              </div>
-
-              {/* ── Pain Points ── */}
-              <h2>
-                What Brewery Owners <span>Deal With</span>
-              </h2>
-              <div className="problem-grid">
-                {painPoints.map((item, i) => (
-                  <div key={i} className="problem-card">
-                    <div className="problem-card-num">0{i + 1}</div>
-                    <strong>{item.title}</strong>
-                    <p>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* ── Solution ── */}
-              <h2>
-                How HD Processing Helps <span>Breweries</span>
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'center', marginBottom: 40 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                  alt="Google Reviews HD Processing Lafayette LA"
+                  className="gbadge-logo"
+                />
                 <div>
-                  <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(0,0,0,.65)', marginBottom: 16 }}>
-                    We set up Lafayette taprooms with tab management systems that let you pre-authorize cards, track every open tab on one screen, and batch-close at the end of the night. No more handwritten tickets, no more walkouts eating into your staff&apos;s tips. Our POS handles pints, flights, crowlers, and merchandise on a single terminal &mdash; so you don&apos;t need a separate register for t-shirts and glassware.
-                  </p>
-                  <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(0,0,0,.65)' }}>
-                    Every terminal supports tap-to-pay, Apple Pay, and Google Pay with sub-2-second processing. With interchange-plus pricing, you see the actual card network rate plus a small fixed markup &mdash; no inflated flat-rate fees. And same-day funding means your Friday and Saturday revenue is in your account before Monday morning.
-                  </p>
+                  <div className="gbadge-stars">&starf;&starf;&starf;&starf;&starf;</div>
+                  <div className="gbadge-text">See our Google Reviews</div>
                 </div>
-                <div style={{ borderRadius: 14, overflow: 'hidden' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ff253b3a5862ce17ed66.jpg"
-                    alt="HD Processing brewery payment setup"
-                    style={{ width: '100%', display: 'block', borderRadius: 14 }}
-                  />
-                </div>
-              </div>
-
-              {/* ── Features Grid ── */}
-              <div className="diff-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginTop: 32 }}>
-                {features.map((item, i) => (
-                  <div key={i} className="diff-card">
-                    <span className="diff-card-icon" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                    <div className="diff-card-title">{item.title}</div>
-                    <div className="diff-card-desc">{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* ── FAQ ── */}
-              <FaqAccordion
-                items={faqItems}
-                variant="light"
-                label="FAQ"
-                heading="Frequently Asked Questions"
-              />
-
-              {/* ── Other Sub-Pages ── */}
-              <h2>
-                Other Restaurant <span>Solutions</span>
-              </h2>
-              <div className="industry-cards-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginBottom: 40 }}>
-                {otherSubPages.map((sp) => (
-                  <Link
-                    key={sp.slug}
-                    href={`/industries/restaurants/${sp.slug}`}
-                    className="industry-card"
-                  >
-                    <span className="industry-card-name">{sp.label}</span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* ── Biz Info ── */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start', marginBottom: 40 }}>
-                <div>
-                  <iframe
-                    title="HD Processing location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.123456789!2d-92.0198427!3d30.2240897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                    width="100%"
-                    height="220"
-                    style={{ border: 0, borderRadius: 14 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>HD Processing</h3>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 6 }}>
-                    1027 Johnston St, Lafayette, LA 70501
-                  </p>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 6 }}>
-                    <strong>Phone:</strong>{' '}
-                    <a href="tel:3373668550" style={{ color: 'var(--black)', fontWeight: 600 }}>337-366-8550</a>
-                  </p>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 12 }}>
-                    <strong>Hours:</strong> Mon&ndash;Fri 9 AM&ndash;5 PM
-                  </p>
-                  <a
-                    href={GOOGLE_REVIEWS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gmb-badge"
-                    aria-label="See HD Processing reviews on Google"
-                    style={{ display: 'inline-flex' }}
-                  >
-                    <div className="gmb-g" aria-hidden="true">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-                        alt="Google"
-                        width={46}
-                        height={15}
-                        style={{ display: 'block' }}
-                      />
-                    </div>
-                    <div className="gmb-info">
-                      <span className="gmb-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                      <div className="gmb-meta">5.0 <span>&middot; 47+ Google Reviews</span></div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+              </a>
+            </div>
+            <div className="biz-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.0!2d-92.0198!3d30.2241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="HD Processing — Lafayette, LA"
+              ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ FINAL CTA (gold) ═══ */}
-      <section className="final-cta" aria-label="Get a free quote">
+      {/* ══ GOLD CTA ══ */}
+      <section className="final-cta">
         <div className="final-cta-inner">
-          <h2>
-            Your Taproom Deserves
-            <br />
-            Better Rates.
-          </h2>
+          <h2>Your Brewery Deserves<br />Better Rates.</h2>
           <p>
-            Send us your current processing statement and we&apos;ll show you exactly
-            how much you can save. Free analysis, no obligation.
+            Send us your current statement and we&apos;ll show you exactly how much you&apos;d save. Free analysis, no obligation, no contracts.
           </p>
-          <a href="/quote" className="btn-black">
-            Start With a Free Analysis &rarr;
-          </a>
-          <br />
-          <span
-            style={{
-              display: 'inline-block',
-              marginTop: 14,
-              fontSize: 13.5,
-              color: 'rgba(0,0,0,.45)',
-            }}
-          >
-            No contracts. No pressure. Local Lafayette team on call.
-          </span>
+          <Link href="/quote" className="final-cta-btn">See What I&apos;d Pay &rarr;</Link>
+          <div className="final-cta-sub">No contracts. No commitments. Local Lafayette team.</div>
         </div>
       </section>
     </>

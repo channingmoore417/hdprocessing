@@ -1,466 +1,462 @@
 import Link from 'next/link'
-import IndustrySidebar from '@/components/IndustrySidebar'
-import FaqAccordion from '@/components/FaqAccordion'
+import IndustryFaq from '@/components/IndustryFaq'
 
 export const revalidate = 60
 
-/* ─── SEO Metadata ─── */
 export const metadata = {
   title: 'Payment Processing for Pizzerias & Sandwich Shops in Lafayette, LA | HD Processing',
   description:
-    'Payment processing for pizzerias and sandwich shops in Lafayette, LA. Phone order payment links, delivery card readers, order management, and same-day funding. No contracts.',
+    'Credit card processing and POS systems for Lafayette pizzerias and sandwich shops. Phone orders, delivery integration, fast counter checkout. Same-day funding. No contracts.',
   alternates: { canonical: 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops' },
+  openGraph: {
+    title: 'Payment Processing for Pizzerias & Sandwich Shops in Lafayette, LA | HD Processing',
+    description:
+      'Credit card processing and POS systems for Lafayette pizzerias and sandwich shops. Phone orders, delivery integration, fast counter checkout. Same-day funding. No contracts.',
+    url: 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops',
+    siteName: 'HD Processing',
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
-/* ─── JSON-LD Schema ─── */
+const GOOGLE_REVIEWS_URL =
+  'https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1'
+
+const faqItems = [
+  {
+    question: 'Can HD Processing set up payment links for phone orders at a Lafayette pizzeria?',
+    answer:
+      'Yes \u2014 payment links are a core feature for Lafayette pizzerias and sandwich shops that take phone orders. When a customer calls in, you generate a payment link and text it to them. They pay before pickup, which eliminates no-shows and removes the security risk of taking card numbers over the phone. The payment settles to your account the same business day.',
+  },
+  {
+    question: 'Does HD Processing offer mobile card readers for pizza delivery drivers in Lafayette?',
+    answer:
+      'Yes \u2014 HD Processing provides compact wireless mobile readers that your delivery drivers carry with them. Customers can pay by card, tap-to-pay, Apple Pay, or Google Pay at the door. Drivers don\u2019t handle cash and tips can be added at the point of delivery. All transactions consolidate into your daily batch.',
+  },
+  {
+    question: 'How does HD Processing handle multi-channel orders for Lafayette sandwich shops?',
+    answer:
+      'HD Processing consolidates your counter POS, phone order payment links, and mobile delivery payments into a single account and daily batch. Your end-of-night settlement is one report \u2014 not separate reconciliations from three different systems. Our Lafayette team configures the integration during on-site installation.',
+  },
+  {
+    question: 'What POS system does HD Processing install for pizzerias in Lafayette, LA?',
+    answer:
+      'HD Processing installs counter POS systems configured for pizza and sandwich shop workflows \u2014 order entry, queue management, kitchen printing, and fast checkout. We configure your menu, pricing, and modifiers before installation. Most Lafayette pizzerias and sandwich shops are fully live the same day we visit.',
+  },
+  {
+    question: 'Does HD Processing offer same-day funding for Lafayette pizzerias?',
+    answer:
+      'Yes \u2014 HD Processing offers same-day funding for Lafayette pizzeria accounts. Your Friday and Saturday night revenue settles to your bank account the same business day. For pizzerias processing several thousand dollars over a weekend, having those funds available Monday morning makes supply reordering and cash flow management significantly easier.',
+  },
+]
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': ['LocalBusiness', 'FinancialService'],
+      '@id': 'https://hdprocessing.com/#business',
+      name: 'HD Processing',
+      telephone: '+13373668550',
+      email: 'info@hdprocessing.com',
+      url: 'https://hdprocessing.com',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '1027 Johnston St',
+        addressLocality: 'Lafayette',
+        addressRegion: 'LA',
+        postalCode: '70501',
+        addressCountry: 'US',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: 30.2241, longitude: -92.0198 },
+      areaServed: ['Lafayette, LA', 'Acadiana', 'Broussard, LA', 'Youngsville, LA', 'Scott, LA', 'Breaux Bridge, LA', 'New Iberia, LA', 'Opelousas, LA'],
+    },
+    {
       '@type': 'Service',
-      '@id': 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops#service',
-      name: 'Pizzeria & Sandwich Shop Payment Processing',
+      name: 'Payment Processing for Pizzerias & Sandwich Shops in Lafayette, LA',
       description:
-        'Payment processing for pizzerias and sandwich shops in Lafayette, LA. Phone order payment links, mobile readers for delivery drivers, order management integration, and interchange-plus pricing.',
-      provider: {
-        '@type': 'LocalBusiness',
-        '@id': 'https://hdprocessing.com/#business',
-        name: 'HD Processing',
-        telephone: '+13373668550',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '1027 Johnston St',
-          addressLocality: 'Lafayette',
-          addressRegion: 'LA',
-          postalCode: '70501',
-          addressCountry: 'US',
-        },
-      },
-      areaServed: {
-        '@type': 'City',
-        name: 'Lafayette',
-        containedInPlace: { '@type': 'State', name: 'Louisiana' },
-      },
-      url: 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops',
+        'HD Processing provides credit card processing, POS systems, phone order payment links, mobile delivery readers, and same-day funding for pizzerias and sandwich shops in Lafayette, LA and Acadiana. Interchange-plus pricing, no long-term contracts.',
+      provider: { '@id': 'https://hdprocessing.com/#business' },
+      areaServed: 'Lafayette, LA',
+      audience: { '@type': 'Audience', audienceType: 'Pizzeria and sandwich shop owners in Lafayette, LA and Acadiana' },
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops#breadcrumb',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hdprocessing.com/' },
         { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://hdprocessing.com/industries' },
-        { '@type': 'ListItem', position: 3, name: 'Restaurants & Bars', item: 'https://hdprocessing.com/industries/restaurants' },
+        { '@type': 'ListItem', position: 3, name: 'Restaurants', item: 'https://hdprocessing.com/industries/restaurants' },
         { '@type': 'ListItem', position: 4, name: 'Pizzerias & Sandwich Shops', item: 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops' },
       ],
     },
     {
       '@type': 'FAQPage',
-      '@id': 'https://hdprocessing.com/industries/restaurants/pizzerias-sandwich-shops#faq',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How do phone order payment links work?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'When a customer calls in an order, you create a payment link in seconds from your POS or phone. Text or email the link to the customer \u2014 they tap it, enter their card, and pay. No reading card numbers over the phone, no cash-at-the-door hassles. The payment is confirmed before the order goes to the kitchen.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can delivery drivers accept card payments with HD Processing?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. We provide mobile card readers that connect to any smartphone via Bluetooth. Drivers can accept tap-to-pay, chip, and swipe payments at the door. Transactions sync back to your main system automatically. No more cash-only deliveries or lost revenue.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Does HD Processing integrate with online ordering systems?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. We integrate with popular online ordering platforms so that in-person, phone, and online orders all flow through one system. Your staff sees everything on one screen \u2014 no switching between tablets or double-entering orders. Payments from all channels settle into the same account with unified reporting.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How much can a Lafayette pizzeria save on processing fees?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Most Lafayette pizzerias and sandwich shops save $250\u2013$600/month by switching from flat-rate processors like Square to our interchange-plus pricing. Phone orders and delivery payments often carry higher interchange rates \u2014 our transparent pricing ensures you\u2019re never overpaying. We\u2019ll analyze your statement for free.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Are there contracts for pizzeria payment processing?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'No. Every HD Processing agreement is month-to-month with zero early termination fees. You stay because we save you money and make your ordering process smoother \u2014 not because you\u2019re locked into a contract.',
-          },
-        },
-      ],
+      mainEntity: faqItems.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
     },
   ],
 }
 
-/* ─── Data ─── */
-
-const sidebarItems = [
-  { label: 'Coffee & Tea Shops', slug: 'coffee-tea-shops' },
-  { label: 'Pizzerias & Sandwich Shops', slug: 'pizzerias-sandwich-shops' },
-  { label: 'Bakeries', slug: 'bakeries' },
-  { label: 'Breweries', slug: 'breweries' },
-  { label: 'Delis & Meat Markets', slug: 'delis-meat-markets' },
-]
-
-const painPoints = [
-  {
-    title: 'Phone Orders With No Payment Link',
-    desc: 'Customers call in orders but you can\u2019t collect payment until pickup or delivery. That means no-shows, chargebacks, and drivers carrying cash.',
-  },
-  {
-    title: 'No Integration Between Online and In-Person',
-    desc: 'Online orders come in on a tablet, phone orders on a ticket, walk-ins at the register. Three systems, three headaches, one overwhelmed kitchen.',
-  },
-  {
-    title: 'Delivery Drivers Can\u2019t Take Cards',
-    desc: 'Your drivers show up with no way to accept cards at the door. Customers scramble for cash or cancel altogether.',
-  },
-  {
-    title: 'Waiting Days for Busy Weekend Revenue',
-    desc: 'Friday and Saturday are your biggest nights. Most processors hold those funds until Tuesday or Wednesday. That\u2019s inventory and payroll money you need now.',
-  },
-]
-
-const features = [
-  {
-    icon: '\uD83D\uDD17',
-    title: 'Phone Order Payment Links',
-    desc: 'Text or email a payment link the moment a customer calls. They pay before the order hits the kitchen \u2014 no card-over-phone, no no-shows.',
-  },
-  {
-    icon: '\uD83D\uDDA5\uFE0F',
-    title: 'Order Management',
-    desc: 'Phone, online, and walk-in orders on one screen. No more switching between tablets or double-entering tickets.',
-  },
-  {
-    icon: '\uD83D\uDCF1',
-    title: 'Mobile Readers for Delivery',
-    desc: 'Bluetooth card readers for drivers. Accept tap, chip, and swipe at the door. Transactions sync to your main system automatically.',
-  },
-  {
-    icon: '\u26A1',
-    title: 'Same-Day Funding',
-    desc: 'Get your weekend revenue before Monday morning. No more waiting 2\u20133 business days for deposits.',
-  },
-  {
-    icon: '\uD83D\uDCB0',
-    title: 'Interchange-Plus Pricing',
-    desc: 'Transparent rates that pass through the actual card network cost. Phone and delivery orders often carry higher interchange \u2014 we make sure you\u2019re never overpaying.',
-  },
-  {
-    icon: '\uD83D\uDEE0\uFE0F',
-    title: 'On-Site Setup Always',
-    desc: 'We come to your shop, install your equipment, integrate your ordering channels, and train your team. No shipping boxes, no DIY.',
-  },
-]
-
-const faqItems = [
-  {
-    question: 'How do phone order payment links work?',
-    answer:
-      'When a customer calls in an order, you create a payment link in seconds from your POS or phone. Text or email the link to the customer \u2014 they tap it, enter their card, and pay. No reading card numbers over the phone, no cash-at-the-door hassles. The payment is confirmed before the order goes to the kitchen.',
-  },
-  {
-    question: 'Can delivery drivers accept card payments with HD Processing?',
-    answer:
-      'Yes. We provide mobile card readers that connect to any smartphone via Bluetooth. Drivers can accept tap-to-pay, chip, and swipe payments at the door. Transactions sync back to your main system automatically. No more cash-only deliveries or lost revenue.',
-  },
-  {
-    question: 'Does HD Processing integrate with online ordering systems?',
-    answer:
-      'Yes. We integrate with popular online ordering platforms so that in-person, phone, and online orders all flow through one system. Your staff sees everything on one screen \u2014 no switching between tablets or double-entering orders. Payments from all channels settle into the same account with unified reporting.',
-  },
-  {
-    question: 'How much can a Lafayette pizzeria save on processing fees?',
-    answer:
-      'Most Lafayette pizzerias and sandwich shops save $250\u2013$600/month by switching from flat-rate processors like Square to our interchange-plus pricing. Phone orders and delivery payments often carry higher interchange rates \u2014 our transparent pricing ensures you\u2019re never overpaying. We\u2019ll analyze your statement for free.',
-  },
-  {
-    question: 'Are there contracts for pizzeria payment processing?',
-    answer:
-      'No. Every HD Processing agreement is month-to-month with zero early termination fees. You stay because we save you money and make your ordering process smoother \u2014 not because you\u2019re locked into a contract.',
-  },
-]
-
-const otherSubPages = [
-  { label: 'Coffee & Tea Shops', slug: 'coffee-tea-shops' },
-  { label: 'Bakeries', slug: 'bakeries' },
-  { label: 'Breweries', slug: 'breweries' },
-  { label: 'Delis & Meat Markets', slug: 'delis-meat-markets' },
-]
-
-const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1'
-
-/* ─── Page Component ─── */
-
-export default async function PizzeriasSandwichShopsPage() {
+export default function PizzeriasSandwichShopsPage() {
   return (
     <>
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ═══ HERO ═══ */}
-      <section className="hero" aria-label="Pizzeria Payment Processing Hero">
-        <div className="hero-grid" aria-hidden="true"></div>
-        <div className="hero-orb" aria-hidden="true"></div>
-
+      {/* ══ HERO ══ */}
+      <section className="hero" style={{ padding: '72px 24px 88px', overflow: 'visible' }}>
         <div className="hero-inner">
-          <h1>
-            Payment Processing for <span>Pizzerias &amp; Sandwich Shops</span>
-          </h1>
-          <p className="hero-sub">
-            Phone order payment links, delivery card readers, and unified order management &mdash;
-            built for Lafayette pizzerias and sandwich shops that take orders from every channel.
-          </p>
-          <div className="hero-actions">
-            <a href="/quote" className="btn-gold">
-              Get a Free Quote &rarr;
-            </a>
-            <a href="tel:3373668550" className="btn-outline">
-              337-366-8550
+          <div className="hero-content">
+            <h1>
+              Payment Processing for Pizzerias &amp; Sandwich Shops in{' '}
+              <span className="gold">Lafayette</span>
+            </h1>
+            <p className="hero-sub">
+              Lafayette pizzerias and sandwich shops take orders by phone, online, and at the counter &mdash; sometimes all at once. Your payment system needs to handle every channel cleanly without slowing down the kitchen. HD Processing gives Acadiana pizza and sandwich businesses{' '}
+              <strong>multi-channel order management, fast counter checkout, and same-day funding</strong> with a local team on call. No long-term contracts.
+            </p>
+            <Link href="/quote" className="hero-cta">Start Saving Money Today &rarr;</Link>
+          </div>
+
+          {/* POS Mockup */}
+          <div className="mockup-wrap">
+            <div className="mockup-card">
+              <div className="mockup-label">Order #47 &mdash; Pickup</div>
+              <div className="mockup-rows">
+                <div className="mockup-row"><span className="mockup-key">Large Boudin Pizza</span><span className="mockup-val">$22.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">Italian Sub</span><span className="mockup-val">$12.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">2 Drinks</span><span className="mockup-val">$5.00</span></div>
+                <div className="mockup-row"><span className="mockup-key">Tax (9.45%)</span><span className="mockup-val">$3.70</span></div>
+              </div>
+              <div className="mockup-row" style={{ marginTop: 10, borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: 10 }}>
+                <span className="mockup-key" style={{ color: 'var(--gold)', fontWeight: 600 }}>Total</span>
+                <span className="mockup-val" style={{ color: 'var(--gold)', fontWeight: 600 }}>$42.70</span>
+              </div>
+              <button className="mockup-btn" style={{ background: '#22c55e', marginTop: 14 }}>Card on File &mdash; CHARGED &checkmark;</button>
+            </div>
+
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-google-badge"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                alt="Google Reviews HD Processing Lafayette LA"
+              />
+              <div className="hgb-divider"></div>
+              <div>
+                <div className="hgb-stars">&starf;&starf;&starf;&starf;&starf;</div>
+                <div className="hgb-sub">Google Reviews</div>
+              </div>
+              <div>
+                <div className="hgb-text">5.0</div>
+                <div className="hgb-sub">Lafayette, LA</div>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* ═══ BREADCRUMB ═══ */}
-      <div className="breadcrumb-bar">
-        <nav className="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <a href="/industries">Industries</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <a href="/industries/restaurants">Restaurants &amp; Bars</a>
-          <span className="breadcrumb-sep" aria-hidden="true">&rsaquo;</span>
-          <span className="breadcrumb-active">Pizzerias &amp; Sandwich Shops</span>
-        </nav>
+      {/* ══ BREADCRUMB ══ */}
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <div className="breadcrumb-inner">
+          <Link href="/">Home</Link>
+          <span>&rsaquo;</span>
+          <Link href="/industries">Industries</Link>
+          <span>&rsaquo;</span>
+          <Link href="/industries/restaurants">Restaurants</Link>
+          <span>&rsaquo;</span>
+          <span className="current">Pizzerias &amp; Sandwich Shops</span>
+        </div>
+      </nav>
+
+      {/* ══ SUB-NAV ══ */}
+      <div className="sub-nav">
+        <div className="sub-nav-inner">
+          <span className="sub-nav-label">Restaurants</span>
+          <Link href="/industries/restaurants" className="sub-nav-link">All Restaurants</Link>
+          <Link href="/industries/restaurants/coffee-tea-shops" className="sub-nav-link">Coffee &amp; Tea Shops</Link>
+          <Link href="/industries/restaurants/pizzerias-sandwich-shops" className="sub-nav-link active">Pizzerias &amp; Sandwich Shops</Link>
+          <Link href="/industries/restaurants/bakeries" className="sub-nav-link">Bakeries</Link>
+          <Link href="/industries/restaurants/breweries" className="sub-nav-link">Breweries</Link>
+          <Link href="/industries/restaurants/delis-meat-markets" className="sub-nav-link">Delis &amp; Meat Markets</Link>
+        </div>
       </div>
 
-      {/* ═══ TWO-COLUMN LAYOUT ═══ */}
-      <section className="section light" aria-label="Pizzeria payment processing details">
+      {/* ══ PAIN POINTS (light) ══ */}
+      <section className="pain-section">
         <div className="section-inner">
-          <div className="industry-layout">
-            <IndustrySidebar
-              category="restaurants"
-              categoryLabel="Restaurants & Bars"
-              currentSlug="pizzerias-sandwich-shops"
-              items={sidebarItems}
-            />
+          <div className="section-label">The Problem</div>
+          <h2 className="on-light">Payment Problems That Slow Down <span className="gold">Your Line</span></h2>
+          <div className="pain-grid">
+            <div className="pain-card">
+              <div className="pain-num">01</div>
+              <h3>Phone Orders With No Payment Link</h3>
+              <p>A Lafayette pizzeria taking phone orders is either asking for a card number over the phone &mdash; a security risk &mdash; or collecting at pickup and dealing with no-shows. A payment link sent by text at the time of order solves both problems instantly.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">02</div>
+              <h3>No Integration Between Online and In-Person</h3>
+              <p>When your online orders, phone orders, and counter transactions all live in separate systems, your end-of-night reconciliation is a nightmare. Lafayette sandwich shops need everything in one place.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">03</div>
+              <h3>Delivery Drivers Can&apos;t Take Cards</h3>
+              <p>A Lafayette pizza delivery driver who can only accept cash in 2025 is leaving tips on the table and losing customers who don&apos;t carry it. A mobile reader that fits in a pocket accepts any card in under two seconds.</p>
+            </div>
+            <div className="pain-card">
+              <div className="pain-num">04</div>
+              <h3>Waiting Days for Busy Weekend Revenue</h3>
+              <p>Friday and Saturday nights are your biggest volume. A Lafayette pizzeria processing $3,000 on a Saturday shouldn&apos;t wait until Tuesday to see it. Same-day funding means you can reorder supplies first thing Monday morning.</p>
+            </div>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-black">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
 
-            <div className="industry-content">
-              {/* ── Mockup ── */}
-              <div
-                style={{
-                  background: 'var(--black)',
-                  border: '1px solid var(--border-dk)',
-                  borderRadius: 18,
-                  padding: '28px 24px',
-                  maxWidth: 370,
-                  marginBottom: 40,
-                }}
+      {/* ══ SOLUTION (dark) ══ */}
+      <section className="solution-section">
+        <div className="section-inner">
+          <div className="ind-solution-grid">
+            <div className="solution-content">
+              <div className="section-label">We Understand &mdash; And We Have a Plan</div>
+              <h2 style={{ color: 'var(--white)' }}>
+                500+ Acadiana Businesses Run <span className="gold">Smoother With HD.</span>
+              </h2>
+              <p className="on-dark">
+                HD Processing builds payment systems for the real workflow of a Lafayette pizzeria or sandwich shop &mdash; not a generic retail setup retrofitted to food service. We configure phone order payment links, counter POS with order management, and mobile readers for delivery drivers, all tied to the same account with one end-of-night batch.
+              </p>
+              <p className="on-dark">
+                Same-day funding means your weekend revenue is in your account Monday morning. Interchange-plus pricing means you pay wholesale rates, not flat percentages designed to benefit your processor. And when something breaks on a Friday night at 6pm, your local Lafayette team picks up &mdash; not a national support queue. Over 500 Acadiana businesses trust us, and our 97% retention rate speaks for itself.
+              </p>
+            </div>
+            <div className="solution-photo-wrap">
+              <div className="solution-photo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ff133e56b98263a4589b.jpg"
+                  alt="HD Processing team member with Lafayette pizzeria owner"
+                  loading="lazy"
+                />
+              </div>
+              <div className="solution-caption">
+                <div className="solution-caption-text">Locally owned &amp; operated in Lafayette, LA since 2019</div>
+              </div>
+            </div>
+          </div>
+          <div className="section-cta">
+            <Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ FEATURES (light) ══ */}
+      <section className="features-section">
+        <div className="section-inner">
+          <div className="section-label">What You Get</div>
+          <h2 className="on-light">Built for <span className="gold">Lafayette Pizza &amp; Sandwich Counter Service</span></h2>
+          <div className="ind-features-grid">
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">🔗</div>
+              <h3>Phone Order Payment Links</h3>
+              <p>Text a payment link when a customer calls in their order. They pay before pickup &mdash; no no-shows, no card numbers over the phone.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">📦</div>
+              <h3>Order Management</h3>
+              <p>Counter POS with order queuing, status tracking, and kitchen printing so your staff stays organized during a Friday dinner rush.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">🚗</div>
+              <h3>Mobile Readers for Delivery</h3>
+              <p>Compact wireless readers that fit in a pocket &mdash; your drivers accept any card, tap-to-pay, or mobile wallet at the door.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">⚡</div>
+              <h3>Same-Day Funding</h3>
+              <p>Weekend pizza revenue hits your Lafayette bank account the same business day. Reorder supplies Monday morning without waiting on funds.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">💰</div>
+              <h3>Interchange-Plus Pricing</h3>
+              <p>You pay the actual wholesale rate plus a small fixed markup. No flat percentages inflated to benefit your processor on every $40 pizza order.</p>
+            </div>
+            <div className="ind-feature-card">
+              <div className="ind-feature-icon">🛠️</div>
+              <h3>On-Site Setup Always</h3>
+              <p>We come to your Lafayette location, configure your counter POS, delivery readers, and payment links, and train your team before we leave.</p>
+            </div>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ OTHER RESTAURANT TYPES (dark) ══ */}
+      <section className="subpages-section">
+        <div className="section-inner">
+          <div className="section-label">Browse By Business Type</div>
+          <h2 style={{ color: 'var(--white)' }}>Other Restaurant Types We <span className="gold">Serve in Lafayette</span></h2>
+          <div className="subpages-grid">
+            <Link href="/industries/restaurants/coffee-tea-shops" className="subpage-card">
+              <span className="subpage-card-icon">☕</span>
+              <h3>Coffee &amp; Tea Shops</h3>
+              <p>Fast-paced counter service, loyalty integrations, and mobile payment support for Lafayette coffee shops and tea houses.</p>
+              <span className="subpage-card-arrow">Learn more &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/bakeries" className="subpage-card">
+              <span className="subpage-card-icon">🥐</span>
+              <h3>Bakeries</h3>
+              <p>Simple counter checkout, daily batch settlement, and mobile readers for farmers markets and pop-ups across Acadiana.</p>
+              <span className="subpage-card-arrow">Learn more &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/breweries" className="subpage-card">
+              <span className="subpage-card-icon">🍺</span>
+              <h3>Breweries</h3>
+              <p>Tab management, bar-specific POS workflows, and same-day funding for Lafayette craft breweries and taprooms.</p>
+              <span className="subpage-card-arrow">Learn more &rarr;</span>
+            </Link>
+            <Link href="/industries/restaurants/delis-meat-markets" className="subpage-card">
+              <span className="subpage-card-icon">🥩</span>
+              <h3>Delis &amp; Meat Markets</h3>
+              <p>Weight-based pricing, quick checkout, and inventory tracking for Lafayette delis and specialty meat markets.</p>
+              <span className="subpage-card-arrow">Learn more &rarr;</span>
+            </Link>
+            <Link href="/quote" className="subpage-card dashed">
+              <span className="subpage-card-icon">💬</span>
+              <h3>Don&apos;t See Your Business?</h3>
+              <p>Tell us what you run and we&apos;ll find the right solution for you.</p>
+              <span className="subpage-card-arrow">Talk to us &rarr;</span>
+            </Link>
+          </div>
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ FAQ (dark) ══ */}
+      <section className="ind-faq-section">
+        <div className="section-inner">
+          <div className="section-label">Common Questions</div>
+          <h2 style={{ color: 'var(--white)' }}>Pizzeria &amp; Sandwich Shop Payment <span className="gold">FAQ</span></h2>
+          <IndustryFaq items={faqItems} />
+          <div className="section-cta"><Link href="/quote" className="btn-gold">Start Saving Money Today &rarr;</Link></div>
+        </div>
+      </section>
+
+      {/* ══ OTHER INDUSTRIES (light) ══ */}
+      <section className="other-industries">
+        <div className="section-inner">
+          <div className="section-label">Also Serving</div>
+          <h2 className="on-light">Other Industries We <span className="gold">Serve in Lafayette</span></h2>
+          <div className="other-grid">
+            <Link href="/industries/retail" className="other-card">
+              <span className="other-card-icon">🛍️</span>
+              <h3>Retail</h3>
+              <p>Clothing stores, grocery, convenience stores, gift shops, book stores, and general retail across Lafayette and Acadiana.</p>
+              <span className="other-card-arrow">See retail solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/services" className="other-card">
+              <span className="other-card-icon">💆</span>
+              <h3>Services</h3>
+              <p>Hair salons, spas, mechanic shops, gyms, healthcare providers, doctors, lawyers, and professionals in Lafayette.</p>
+              <span className="other-card-arrow">See service solutions &rarr;</span>
+            </Link>
+            <Link href="/industries/online" className="other-card">
+              <span className="other-card-icon">🛒</span>
+              <h3>Online</h3>
+              <p>E-commerce stores, online retailers, service providers, and subscription businesses selling to customers across Acadiana and beyond.</p>
+              <span className="other-card-arrow">See online solutions &rarr;</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ BIZ INFO ══ */}
+      <section className="biz-section">
+        <div className="section-inner">
+          <div className="section-label">Find Us</div>
+          <h2 className="on-light">Locally Owned in <span className="gold">Lafayette, LA</span></h2>
+          <div className="biz-grid">
+            <div className="biz-info">
+              <div className="biz-info-items">
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">📍</div>
+                  <div>
+                    <div className="biz-info-label">Address</div>
+                    <span className="biz-info-value">1027 Johnston St, Lafayette, LA 70501</span>
+                    <div className="biz-info-note">By appointment &mdash; we also come to you</div>
+                  </div>
+                </div>
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">📞</div>
+                  <div>
+                    <div className="biz-info-label">Phone</div>
+                    <a href="tel:+13373668550" className="biz-info-value">337.366.8550</a>
+                    <div className="biz-info-note">Mon&ndash;Fri 8am&ndash;6pm &middot; Sat 9am&ndash;1pm</div>
+                  </div>
+                </div>
+                <div className="biz-info-item">
+                  <div className="biz-info-icon">✉️</div>
+                  <div>
+                    <div className="biz-info-label">Email</div>
+                    <a href="mailto:info@hdprocessing.com" className="biz-info-value">info@hdprocessing.com</a>
+                    <div className="biz-info-note">We respond within one business day</div>
+                  </div>
+                </div>
+              </div>
+              <div className="biz-hours">
+                <div className="biz-hours-label">Business Hours</div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Monday &ndash; Friday</span><span className="biz-hours-time">8:00 AM &ndash; 6:00 PM</span></div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Saturday</span><span className="biz-hours-time">9:00 AM &ndash; 1:00 PM</span></div>
+                <div className="biz-hours-row"><span className="biz-hours-day">Sunday</span><span className="biz-hours-time closed">Closed</span></div>
+              </div>
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="biz-google-badge"
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,.45)', fontWeight: 500 }}>Phone Order</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,.35)', fontWeight: 400 }}>Delivery</div>
-                </div>
-
-                {[
-                  { item: '18" Pepperoni Pizza', price: '$22.00' },
-                  { item: 'Muffuletta', price: '$14.00' },
-                  { item: 'Wings (12)', price: '$16.00' },
-                  { item: '2L Drink', price: '$4.00' },
-                ].map((row, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', borderBottom: '1px solid rgba(255,255,255,.06)', fontSize: 14, color: 'var(--white)', fontWeight: 400 }}>
-                    <span>{row.item}</span>
-                    <span style={{ color: 'rgba(255,255,255,.55)' }}>{row.price}</span>
-                  </div>
-                ))}
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 0', fontSize: 13, color: 'rgba(255,255,255,.35)', fontWeight: 400, marginTop: 4 }}>
-                  <span>Tax 9.45%</span>
-                  <span>$5.30</span>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0 14px', fontSize: 15, color: 'var(--gold)', fontWeight: 600, borderTop: '1px solid rgba(255,255,255,.08)', marginTop: 6 }}>
-                  <span>Total</span>
-                  <span>$61.30</span>
-                </div>
-
-                <div style={{ textAlign: 'center', padding: '10px 0', fontSize: 13, fontWeight: 600, color: '#22c55e' }}>
-                  Payment Link Sent &#10003;
-                </div>
-              </div>
-
-              {/* ── Pain Points ── */}
-              <h2>
-                What Pizzeria Owners <span>Deal With</span>
-              </h2>
-              <div className="problem-grid">
-                {painPoints.map((item, i) => (
-                  <div key={i} className="problem-card">
-                    <div className="problem-card-num">0{i + 1}</div>
-                    <strong>{item.title}</strong>
-                    <p>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* ── Solution ── */}
-              <h2>
-                How HD Processing Helps <span>Pizzerias</span>
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'center', marginBottom: 40 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                  alt="Google Reviews HD Processing Lafayette LA"
+                  className="gbadge-logo"
+                />
                 <div>
-                  <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(0,0,0,.65)', marginBottom: 16 }}>
-                    We set up Lafayette pizzerias and sandwich shops with payment links that let you collect payment the moment a customer calls in an order. Text or email the link &mdash; they tap, pay, and the order is confirmed before it hits the kitchen. No more reading card numbers over the phone, no more no-shows on $60 delivery orders. For drivers, our mobile readers connect via Bluetooth so they can accept tap, chip, and swipe at the door.
-                  </p>
-                  <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(0,0,0,.65)' }}>
-                    All your ordering channels &mdash; phone, online, and walk-in &mdash; flow through one system so your kitchen sees every ticket on a single screen. No more switching between tablets or double-entering orders. With interchange-plus pricing and same-day funding, you keep more of every sale and get your weekend money faster.
-                  </p>
+                  <div className="gbadge-stars">&starf;&starf;&starf;&starf;&starf;</div>
+                  <div className="gbadge-text">See our Google Reviews</div>
                 </div>
-                <div style={{ borderRadius: 14, overflow: 'hidden' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ff133e56b98263a4589b.jpg"
-                    alt="HD Processing pizzeria payment setup"
-                    style={{ width: '100%', display: 'block', borderRadius: 14 }}
-                  />
-                </div>
-              </div>
-
-              {/* ── Features Grid ── */}
-              <div className="diff-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginTop: 32 }}>
-                {features.map((item, i) => (
-                  <div key={i} className="diff-card">
-                    <span className="diff-card-icon" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                    <div className="diff-card-title">{item.title}</div>
-                    <div className="diff-card-desc">{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* ── FAQ ── */}
-              <FaqAccordion
-                items={faqItems}
-                variant="light"
-                label="FAQ"
-                heading="Frequently Asked Questions"
-              />
-
-              {/* ── Other Sub-Pages ── */}
-              <h2>
-                Other Restaurant <span>Solutions</span>
-              </h2>
-              <div className="industry-cards-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginBottom: 40 }}>
-                {otherSubPages.map((sp) => (
-                  <Link
-                    key={sp.slug}
-                    href={`/industries/restaurants/${sp.slug}`}
-                    className="industry-card"
-                  >
-                    <span className="industry-card-name">{sp.label}</span>
-                  </Link>
-                ))}
-              </div>
-
-              {/* ── Biz Info ── */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start', marginBottom: 40 }}>
-                <div>
-                  <iframe
-                    title="HD Processing location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.123456789!2d-92.0198427!3d30.2240897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                    width="100%"
-                    height="220"
-                    style={{ border: 0, borderRadius: 14 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12 }}>HD Processing</h3>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 6 }}>
-                    1027 Johnston St, Lafayette, LA 70501
-                  </p>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 6 }}>
-                    <strong>Phone:</strong>{' '}
-                    <a href="tel:3373668550" style={{ color: 'var(--black)', fontWeight: 600 }}>337-366-8550</a>
-                  </p>
-                  <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(0,0,0,.55)', marginBottom: 12 }}>
-                    <strong>Hours:</strong> Mon&ndash;Fri 9 AM&ndash;5 PM
-                  </p>
-                  <a
-                    href={GOOGLE_REVIEWS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gmb-badge"
-                    aria-label="See HD Processing reviews on Google"
-                    style={{ display: 'inline-flex' }}
-                  >
-                    <div className="gmb-g" aria-hidden="true">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-                        alt="Google"
-                        width={46}
-                        height={15}
-                        style={{ display: 'block' }}
-                      />
-                    </div>
-                    <div className="gmb-info">
-                      <span className="gmb-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                      <div className="gmb-meta">5.0 <span>&middot; 47+ Google Reviews</span></div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+              </a>
+            </div>
+            <div className="biz-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.0!2d-92.0198!3d30.2241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="HD Processing — Lafayette, LA"
+              ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ FINAL CTA (gold) ═══ */}
-      <section className="final-cta" aria-label="Get a free quote">
+      {/* ══ GOLD CTA ══ */}
+      <section className="final-cta">
         <div className="final-cta-inner">
-          <h2>
-            Stop Losing Orders to
-            <br />
-            Bad Payment Systems.
-          </h2>
+          <h2>Your Pizzeria Deserves<br />Better Rates.</h2>
           <p>
-            Send us your current processing statement and we&apos;ll show you exactly
-            how much you can save. Free analysis, no obligation.
+            Send us your current statement and we&apos;ll show you exactly how much you&apos;d save. Free analysis, no obligation, no contracts.
           </p>
-          <a href="/quote" className="btn-black">
-            See What I&apos;d Pay &rarr;
-          </a>
-          <br />
-          <span
-            style={{
-              display: 'inline-block',
-              marginTop: 14,
-              fontSize: 13.5,
-              color: 'rgba(0,0,0,.45)',
-            }}
-          >
-            No contracts. No pressure. Local Lafayette team on call.
-          </span>
+          <Link href="/quote" className="final-cta-btn">See What I&apos;d Pay &rarr;</Link>
+          <div className="final-cta-sub">No contracts. No commitments. Local Lafayette team.</div>
         </div>
       </section>
     </>
