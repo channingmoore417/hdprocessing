@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#030404">
+<title>Get a Free Quote — HD Processing | Lafayette, LA</title>
+<meta name="description" content="Get a free merchant services quote from HD Processing in Lafayette, LA. No contracts, no pressure. Takes 60 seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://hdprocessing.com/quote/#page",
+      "name": "Get a Free Quote — HD Processing",
+      "description": "Request a free merchant services quote from HD Processing. Serving Lafayette, LA and the Acadiana region.",
+      "url": "https://hdprocessing.com/quote",
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://hdprocessing.com"},
+          {"@type":"ListItem","position":2,"name":"Get a Quote","item":"https://hdprocessing.com/quote"}
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+:root{
+  --black:#030404;--black2:#0a0a0a;--gold:#DAB367;--gold2:#C9A254;--gold3:#f0cc8a;
+  --white:#ffffff;--offwhite:#f7f5f1;--text:#1a1a1a;--muted:#6b6b6b;
+  --border-lt:#e4e0d8;--border-dk:rgba(218,179,103,0.18);--r:10px;
+  --error:#c0392b;--success:#2ecc71;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── HERO ── */
+.hero{background:var(--black);padding:56px 24px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,.1) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,.05) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1;text-align:center;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,12vw,76px);line-height:.92;letter-spacing:1px;color:var(--white);margin-bottom:16px;}
+.hero h1 span{color:var(--gold);}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.58);line-height:1.72;max-width:460px;margin:0 auto;}
+.hero-sub strong{color:var(--white);font-weight:600;}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--black2);border-bottom:1px solid var(--border-dk);padding:12px 24px;}
+.breadcrumb-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.35);}
+.breadcrumb-inner a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.breadcrumb-inner a:hover{color:var(--gold);}
+.breadcrumb-inner .current{color:var(--gold);}
+
+/* ── FORM SECTION ── */
+.form-section{background:var(--offwhite);padding:64px 24px 80px;}
+.form-section-inner{max-width:640px;margin:0 auto;}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap{margin-bottom:36px;}
+.progress-steps{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:16px;}
+.progress-step{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;flex:1;}
+.progress-step:not(:last-child)::after{content:'';position:absolute;top:17px;left:50%;width:100%;height:2px;background:var(--border-lt);z-index:0;transition:background .4s;}
+.progress-step.done:not(:last-child)::after,.progress-step.active:not(:last-child)::after{background:var(--gold);}
+.step-circle{width:34px;height:34px;border-radius:50%;border:2px solid var(--border-lt);background:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--muted);position:relative;z-index:1;transition:all .3s;}
+.progress-step.active .step-circle{border-color:var(--gold);background:var(--gold);color:var(--black);}
+.progress-step.done .step-circle{border-color:var(--gold);background:var(--gold);color:var(--black);}
+.progress-step.done .step-circle::after{content:'✓';font-size:14px;}
+.progress-step.done .step-num{display:none;}
+.step-label{font-size:11px;font-weight:500;color:var(--muted);white-space:nowrap;}
+.progress-step.active .step-label{color:var(--text);font-weight:600;}
+.progress-step.done .step-label{color:var(--gold2);}
+
+.progress-bar-track{height:3px;background:var(--border-lt);border-radius:3px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s cubic-bezier(.22,1,.36,1);}
+
+/* ── FORM CARD ── */
+.form-card{background:var(--white);border:1px solid var(--border-lt);border-radius:18px;padding:40px 36px;box-shadow:0 4px 32px rgba(0,0,0,.06);}
+
+.step-pane{display:none;animation:fadeIn .3s ease both;}
+.step-pane.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.step-header{margin-bottom:28px;}
+.step-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.5px;color:var(--text);line-height:1;margin-bottom:8px;}
+.step-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.65;}
+
+/* ── FIELDS ── */
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-bottom:7px;}
+.field input,.field select{
+  width:100%;padding:14px 16px;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:400;
+  color:var(--text);background:var(--offwhite);
+  border:1.5px solid var(--border-lt);border-radius:var(--r);
+  outline:none;transition:border-color .2s,background .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.field input::placeholder{color:rgba(0,0,0,.28);font-size:14.5px;}
+.field input:focus,.field select:focus{border-color:var(--gold);background:var(--white);}
+.field input.error,.field select.error{border-color:var(--error);}
+.field-error{font-size:11.5px;color:var(--error);margin-top:5px;display:none;}
+.field input.error + .field-error,.field select.error + .field-error{display:block;}
+.field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 4.5L11 1' stroke='%23DAB367' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+  background-color:var(--offwhite);padding-right:44px;cursor:pointer;
+}
+.field select option{background:var(--white);color:var(--text);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+/* Volume tile selector */
+.volume-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0;}
+.volume-tile{
+  border:1.5px solid var(--border-lt);border-radius:12px;padding:16px 14px;
+  cursor:pointer;transition:border-color .2s,background .2s;
+  text-align:left;background:var(--offwhite);
+}
+.volume-tile:hover{border-color:var(--gold);background:var(--white);}
+.volume-tile.selected{border-color:var(--gold);background:rgba(218,179,103,.06);}
+.volume-tile input{display:none;}
+.vt-amount{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text);letter-spacing:.5px;line-height:1;margin-bottom:3px;}
+.vt-label{font-size:12px;color:var(--muted);font-weight:400;}
+.volume-tile.selected .vt-amount{color:var(--gold2);}
+
+/* ── A2P CONSENT ── */
+.a2p-block{background:var(--offwhite);border:1px solid var(--border-lt);border-radius:10px;padding:16px 16px 14px;margin-top:6px;}
+.a2p-check-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.a2p-check-row input[type="checkbox"]{
+  width:17px;height:17px;flex-shrink:0;margin-top:2px;
+  accent-color:var(--gold);cursor:pointer;
+}
+.a2p-check-row label{font-size:13px;font-weight:400;color:var(--text);line-height:1.55;cursor:pointer;}
+.a2p-check-row label strong{font-weight:600;}
+.a2p-legal{font-size:11px;color:var(--muted);line-height:1.6;padding-top:10px;border-top:1px solid var(--border-lt);}
+.a2p-legal a{color:var(--muted);text-decoration:underline;}
+
+/* ── NAV BUTTONS ── */
+.form-nav{display:flex;align-items:center;justify-content:space-between;margin-top:28px;gap:12px;}
+.btn-back{
+  background:none;border:1.5px solid var(--border-lt);color:var(--muted);
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  padding:13px 22px;border-radius:var(--r);cursor:pointer;transition:all .2s;
+}
+.btn-back:hover{border-color:var(--text);color:var(--text);}
+.btn-next{
+  flex:1;background:var(--black);color:var(--white);
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;
+  padding:15px 24px;border:none;border-radius:var(--r);cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.btn-next:hover{background:#1a1a1a;transform:translateY(-1px);}
+.btn-submit{
+  flex:1;background:var(--gold);color:var(--black);
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;
+  padding:15px 24px;border:none;border-radius:var(--r);cursor:pointer;
+  transition:background .2s,transform .15s;
+  box-shadow:0 4px 20px rgba(218,179,103,.3);
+}
+.btn-submit:hover{background:var(--gold3);transform:translateY(-1px);}
+.btn-submit:disabled{opacity:.6;pointer-events:none;}
+
+/* ── THANK YOU ── */
+.ty-wrap{display:none;text-align:center;padding:24px 0;}
+.ty-wrap.show{display:block;}
+.ty-icon{width:64px;height:64px;background:rgba(218,179,103,.12);border:1px solid var(--border-dk);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;}
+.ty-wrap h2{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--text);margin-bottom:10px;letter-spacing:.5px;}
+.ty-wrap p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.72;max-width:420px;margin:0 auto 28px;}
+.ty-wrap .ty-cta{display:inline-block;background:var(--black);color:var(--white);font-size:14px;font-weight:700;text-decoration:none;padding:14px 28px;border-radius:var(--r);}
+
+/* ── TRUST STRIP ── */
+.trust-strip{max-width:640px;margin:28px auto 0;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);font-weight:400;}
+.trust-item span{font-size:15px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:560px){
+  .form-card{padding:28px 20px;}
+  .field-row{grid-template-columns:1fr;}
+  .volume-grid{grid-template-columns:1fr 1fr;}
+  .step-label{font-size:10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ░░ GLOBAL HEADER INJECTED HERE ░░ -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <!-- [SANITY: hero.headline] -->
+    <h1>Get Your <span>Free</span> Quote</h1>
+    <!-- [SANITY: hero.subtext] -->
+    <p class="hero-sub">Takes <strong>60 seconds.</strong> No contracts, no pressure — just an honest look at what you're paying and what you could save.</p>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a>
+    <span>›</span>
+    <span class="current">Get a Quote</span>
+  </div>
+</nav>
+
+<!-- FORM SECTION -->
+<section class="form-section">
+  <div class="form-section-inner">
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap">
+      <div class="progress-steps">
+        <div class="progress-step active" id="ps1">
+          <div class="step-circle"><span class="step-num">1</span></div>
+          <div class="step-label">Your Business</div>
+        </div>
+        <div class="progress-step" id="ps2">
+          <div class="step-circle"><span class="step-num">2</span></div>
+          <div class="step-label">Processing Volume</div>
+        </div>
+        <div class="progress-step" id="ps3">
+          <div class="step-circle"><span class="step-num">3</span></div>
+          <div class="step-label">Contact Info</div>
+        </div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill" style="width:16%;"></div>
+      </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="form-card" id="formCard">
+
+      <!-- ── STEP 1: Business Info ── -->
+      <div class="step-pane active" id="step1">
+        <div class="step-header">
+          <div class="step-eyebrow">Step 1 of 3</div>
+          <!-- [SANITY: steps[0].title] -->
+          <div class="step-title">Tell Us About Your Business</div>
+          <!-- [SANITY: steps[0].description] -->
+          <div class="step-desc">We use this to match you with the right processing setup for your industry.</div>
+        </div>
+
+        <div class="field">
+          <label for="bizName">Business Name</label>
+          <input type="text" id="bizName" name="bizName" placeholder="Broussard's Café" autocomplete="organization" required>
+          <div class="field-error">Please enter your business name</div>
+        </div>
+
+        <!-- [SANITY: form.industryOptions] -->
+        <div class="field">
+          <label for="industry">Industry</label>
+          <select id="industry" name="industry" required>
+            <option value="" disabled selected>Select your industry…</option>
+            <option value="restaurant">Restaurant / Food Service</option>
+            <option value="coffee-shop">Coffee Shop / Café</option>
+            <option value="retail">Retail</option>
+            <option value="salon-spa">Salon / Spa / Beauty</option>
+            <option value="contractor">Contractor / Trades</option>
+            <option value="auto">Auto Service</option>
+            <option value="medical">Medical / Healthcare</option>
+            <option value="ecommerce">Ecommerce / Online</option>
+            <option value="service">Service Business</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="field-error">Please select your industry</div>
+        </div>
+
+        <div class="field">
+          <label for="bizType">Business Type</label>
+          <select id="bizType" name="bizType" required>
+            <option value="" disabled selected>Select business type…</option>
+            <option value="sole-prop">Sole Proprietor</option>
+            <option value="llc">LLC</option>
+            <option value="corporation">Corporation</option>
+            <option value="partnership">Partnership</option>
+            <option value="nonprofit">Non-Profit</option>
+          </select>
+          <div class="field-error">Please select your business type</div>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-next" onclick="nextStep(1)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Processing Volume ── -->
+      <div class="step-pane" id="step2">
+        <div class="step-header">
+          <div class="step-eyebrow">Step 2 of 3</div>
+          <!-- [SANITY: steps[1].title] -->
+          <div class="step-title">Monthly Card Volume</div>
+          <!-- [SANITY: steps[1].description] -->
+          <div class="step-desc">Approximate is fine. This helps us find you the most competitive rate tier.</div>
+        </div>
+
+        <!-- [SANITY: form.volumeOptions] -->
+        <div class="volume-grid" id="volumeGrid">
+          <label class="volume-tile" onclick="selectVolume(this,'under-5k')">
+            <input type="radio" name="volume" value="under-5k">
+            <div class="vt-amount">Under $5K</div>
+            <div class="vt-label">per month</div>
+          </label>
+          <label class="volume-tile" onclick="selectVolume(this,'5k-15k')">
+            <input type="radio" name="volume" value="5k-15k">
+            <div class="vt-amount">$5K – $15K</div>
+            <div class="vt-label">per month</div>
+          </label>
+          <label class="volume-tile" onclick="selectVolume(this,'15k-50k')">
+            <input type="radio" name="volume" value="15k-50k">
+            <div class="vt-amount">$15K – $50K</div>
+            <div class="vt-label">per month</div>
+          </label>
+          <label class="volume-tile" onclick="selectVolume(this,'50k-plus')">
+            <input type="radio" name="volume" value="50k-plus">
+            <div class="vt-amount">$50K+</div>
+            <div class="vt-label">per month</div>
+          </label>
+        </div>
+        <div class="field-error" id="volumeError" style="display:none;margin-top:8px;">Please select your monthly volume</div>
+
+        <div class="form-nav" style="margin-top:24px;">
+          <button class="btn-back" onclick="prevStep(2)">← Back</button>
+          <button class="btn-next" onclick="nextStep(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Contact Info + A2P ── -->
+      <div class="step-pane" id="step3">
+        <div class="step-header">
+          <div class="step-eyebrow">Step 3 of 3</div>
+          <!-- [SANITY: steps[2].title] -->
+          <div class="step-title">How Do We Reach You?</div>
+          <!-- [SANITY: steps[2].description] -->
+          <div class="step-desc">A local HD Processing rep will follow up within one business day — no pressure, no pitch scripts.</div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Marcus" autocomplete="given-name" required>
+            <div class="field-error">Required</div>
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Broussard" autocomplete="family-name" required>
+            <div class="field-error">Required</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(337) 000-0000" autocomplete="tel" required>
+          <div class="field-error">Please enter a valid phone number</div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="marcus@yourbusiness.com" autocomplete="email" required>
+          <div class="field-error">Please enter a valid email address</div>
+        </div>
+
+        <!-- ── A2P SMS CONSENT ── -->
+        <div class="a2p-block">
+          <div class="a2p-check-row">
+            <input type="checkbox" id="smsConsent" name="smsConsent">
+            <label for="smsConsent">
+              I agree to receive <strong>text messages</strong> from HD Processing at the phone number provided, including quotes, appointment reminders, and follow-up communications. Message frequency varies. Message &amp; data rates may apply.
+            </label>
+          </div>
+          <!-- [SANITY: form.a2pDisclosure] -->
+          <div class="a2p-legal">
+            By submitting this form, you consent to be contacted by HD Processing via phone and/or email regarding your quote request. SMS consent is optional but helps us reach you faster. You may opt out of SMS at any time by replying <strong>STOP</strong>. For help, reply <strong>HELP</strong>. Consent is not a condition of purchase.
+            View our <a href="/privacy" target="_blank">Privacy Policy</a> and <a href="/terms" target="_blank">Terms of Service</a>.
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-back" onclick="prevStep(3)">← Back</button>
+          <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Get My Free Quote →</button>
+        </div>
+      </div>
+
+      <!-- ── THANK YOU ── -->
+      <div class="ty-wrap" id="tyWrap">
+        <div class="ty-icon">✅</div>
+        <!-- [SANITY: thankYou.headline] -->
+        <h2>You're All Set!</h2>
+        <!-- [SANITY: thankYou.body] -->
+        <p>A local HD Processing rep will reach out within <strong>one business day</strong> to go over your free quote. No contracts, no surprises.</p>
+        <a href="/" class="ty-cta">Back to Home</a>
+      </div>
+
+    </div><!-- /form-card -->
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="trust-item"><span>🔒</span> Your info is never sold</div>
+      <div class="trust-item"><span>📍</span> Local Lafayette team</div>
+      <div class="trust-item"><span>✅</span> No contracts required</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░ GLOBAL FOOTER INJECTED HERE ░░ -->
+
+<script>
+var currentStep = 1;
+var totalSteps = 3;
+var selectedVolume = null;
+
+// ── GHL Webhook URL ── [SANITY: form.webhookUrl]
+var GHL_WEBHOOK = 'YOUR_GHL_WEBHOOK_URL';
+
+// Progress widths per step
+var progressWidths = { 1: '16%', 2: '50%', 3: '83%' };
+
+function updateProgress(step) {
+  // Step indicators
+  for (var i = 1; i <= totalSteps; i++) {
+    var ps = document.getElementById('ps' + i);
+    ps.classList.remove('active', 'done');
+    if (i < step) ps.classList.add('done');
+    if (i === step) ps.classList.add('active');
+  }
+  // Bar fill
+  document.getElementById('progressFill').style.width = progressWidths[step];
+}
+
+function showStep(step) {
+  document.querySelectorAll('.step-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('step' + step).classList.add('active');
+  updateProgress(step);
+  currentStep = step;
+  window.scrollTo({ top: document.querySelector('.form-section').offsetTop - 80, behavior: 'smooth' });
+}
+
+function validateStep1() {
+  var ok = true;
+  ['bizName','industry','bizType'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); ok = false; }
+    else el.classList.remove('error');
+  });
+  return ok;
+}
+
+function validateStep2() {
+  if (!selectedVolume) {
+    document.getElementById('volumeError').style.display = 'block';
+    return false;
+  }
+  document.getElementById('volumeError').style.display = 'none';
+  return true;
+}
+
+function validateStep3() {
+  var ok = true;
+  var first = document.getElementById('firstName');
+  var last  = document.getElementById('lastName');
+  var phone = document.getElementById('phone');
+  var email = document.getElementById('email');
+  [first, last].forEach(function(el){
+    if (!el.value.trim()) { el.classList.add('error'); ok = false; }
+    else el.classList.remove('error');
+  });
+  if (!phone.value.replace(/\D/g,'').match(/^\d{10}$/)) { phone.classList.add('error'); ok = false; }
+  else phone.classList.remove('error');
+  if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { email.classList.add('error'); ok = false; }
+  else email.classList.remove('error');
+  return ok;
+}
+
+function nextStep(from) {
+  if (from === 1 && !validateStep1()) return;
+  if (from === 2 && !validateStep2()) return;
+  showStep(from + 1);
+}
+
+function prevStep(from) {
+  showStep(from - 1);
+}
+
+function selectVolume(tile, value) {
+  document.querySelectorAll('.volume-tile').forEach(function(t){ t.classList.remove('selected'); });
+  tile.classList.add('selected');
+  selectedVolume = value;
+  document.getElementById('volumeError').style.display = 'none';
+}
+
+// Phone masking
+document.getElementById('phone').addEventListener('input', function(e){
+  var raw = e.target.value.replace(/\D/g,'').substring(0,10);
+  var out = raw;
+  if (raw.length >= 6) out = '('+raw.slice(0,3)+') '+raw.slice(3,6)+'-'+raw.slice(6);
+  else if (raw.length >= 3) out = '('+raw.slice(0,3)+') '+raw.slice(3);
+  e.target.value = out;
+});
+
+// Live error clearing
+['bizName','industry','bizType','firstName','lastName','phone','email'].forEach(function(id){
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', function(){ el.classList.remove('error'); });
+});
+
+function handleSubmit() {
+  if (!validateStep3()) return;
+
+  var btn = document.getElementById('submitBtn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  var payload = {
+    bizName:     document.getElementById('bizName').value,
+    industry:    document.getElementById('industry').value,
+    bizType:     document.getElementById('bizType').value,
+    volume:      selectedVolume,
+    firstName:   document.getElementById('firstName').value,
+    lastName:    document.getElementById('lastName').value,
+    phone:       document.getElementById('phone').value,
+    email:       document.getElementById('email').value,
+    smsConsent:  document.getElementById('smsConsent').checked,
+    source:      'quote-page',
+    submittedAt: new Date().toISOString()
+  };
+
+  fetch(GHL_WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .catch(function(){}) // silent fail — always show thank you
+  .finally(function(){
+    document.querySelectorAll('.step-pane').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('tyWrap').classList.add('show');
+    updateProgress(4); // all steps done
+    document.getElementById('progressFill').style.width = '100%';
+    document.querySelectorAll('.progress-step').forEach(function(s){ s.classList.add('done'); s.classList.remove('active'); });
+    window.scrollTo({ top: document.querySelector('.form-section').offsetTop - 80, behavior: 'smooth' });
+  });
+}
+</script>
+</body>
+</html>
