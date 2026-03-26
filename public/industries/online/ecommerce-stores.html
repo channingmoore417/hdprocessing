@@ -944,5 +944,97 @@ document.querySelectorAll('.nav-dropdown a, .nav-mega a').forEach(function(link)
   });
 });
 </script>
+<!--
+  HD Processing - Hidden Fees Guide Popup
+  Shows ONCE per visitor (30-day cookie).
+  Triggers: 50% scroll | exit intent | 40 seconds (whichever comes first)
+-->
+<style>
+.hd-popup-overlay{position:fixed;inset:0;background:rgba(3,4,4,0.6);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);z-index:99998;opacity:0;animation:hdFadeIn 0.35s ease forwards;display:none;}
+.hd-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);z-index:99999;width:min(480px,92vw);background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.22),0 0 0 1px rgba(218,179,103,0.1);opacity:0;animation:hdPopUp 0.45s cubic-bezier(0.16,1,0.3,1) 0.12s forwards;display:none;font-family:'DM Sans',sans-serif;}
+.hd-popup *{box-sizing:border-box;margin:0;padding:0;}
+@keyframes hdFadeIn{to{opacity:1;}}
+@keyframes hdPopUp{to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+.hd-popup-close{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(0,0,0,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;z-index:3;}
+.hd-popup-close:hover{background:rgba(0,0,0,0.7);}
+.hd-popup-close svg{width:12px;height:12px;stroke:#fff;stroke-width:2.5;}
+.hd-popup-img{width:100%;height:220px;position:relative;overflow:hidden;background:#030404;}
+.hd-popup-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;}
+.hd-popup-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,#fff 5%,transparent 100%);}
+.hd-popup-badge{position:absolute;top:16px;left:16px;background:#030404;color:#DAB367;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2.5px;padding:6px 14px 5px;border-radius:5px;z-index:2;}
+.hd-popup-body{padding:20px 28px 28px;text-align:center;}
+.hd-popup-title{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:1.05;color:#1a1a1a;margin-bottom:12px;}
+.hd-popup-title span{color:#DAB367;}
+.hd-popup-desc{font-size:15px;color:#555;line-height:1.6;margin-bottom:24px;}
+.hd-popup-desc strong{color:#1a1a1a;font-weight:600;}
+.hd-popup-btn{display:inline-block;padding:15px 48px;background:#030404;color:#DAB367;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.1s;}
+.hd-popup-btn:hover{background:#1a1a1a;transform:translateY(-1px);}
+.hd-popup-note{margin-top:14px;font-size:11.5px;color:#aaa;}
+@media(max-width:500px){.hd-popup-img{height:170px;}.hd-popup-title{font-size:28px;}.hd-popup-body{padding:16px 20px 24px;}}
+</style>
+
+<div class="hd-popup-overlay" id="hdPopupOverlay"></div>
+<div class="hd-popup" id="hdPopup">
+  <button class="hd-popup-close" id="hdPopupClose" aria-label="Close popup">
+    <svg viewBox="0 0 14 14"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+  </button>
+  <div class="hd-popup-img">
+    <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ff133e56b98263a4589b.jpg" alt="HD Processing" loading="lazy">
+    <div class="hd-popup-badge">FREE GUIDE</div>
+  </div>
+  <div class="hd-popup-body">
+    <div class="hd-popup-title">Are You Overpaying On <span>Processing Fees?</span></div>
+    <p class="hd-popup-desc">Most businesses lose <strong>$1,200 - $3,600/year</strong> to hidden charges they never agreed to. Our free guide shows you the 7 fees to look for on your next statement.</p>
+    <a href="/hidden-fees-guide" class="hd-popup-btn">Download The Free Guide</a>
+    <div class="hd-popup-note">No cost. No commitment. Just answers.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if(document.cookie.indexOf('hd_popup_seen=1')!==-1) return;
+  var shown = false;
+  var overlay = document.getElementById('hdPopupOverlay');
+  var popup = document.getElementById('hdPopup');
+  var closeBtn = document.getElementById('hdPopupClose');
+  function showPopup(){
+    if(shown) return;
+    shown = true;
+    overlay.style.display = 'block';
+    popup.style.display = 'block';
+    overlay.style.animation = 'none';
+    popup.style.animation = 'none';
+    void overlay.offsetHeight;
+    overlay.style.animation = 'hdFadeIn 0.35s ease forwards';
+    popup.style.animation = 'hdPopUp 0.45s cubic-bezier(0.16,1,0.3,1) 0.12s forwards';
+    document.body.style.overflow = 'hidden';
+  }
+  function hidePopup(){
+    overlay.style.display = 'none';
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+    document.cookie = 'hd_popup_seen=1;path=/;max-age=' + (30*24*60*60) + ';SameSite=Lax';
+  }
+  closeBtn.addEventListener('click', hidePopup);
+  overlay.addEventListener('click', hidePopup);
+  function onScroll(){
+    var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    if(scrollPct >= 0.5){ showPopup(); window.removeEventListener('scroll', onScroll); }
+  }
+  window.addEventListener('scroll', onScroll);
+  function onExit(e){
+    if(e.clientY <= 0){ showPopup(); document.removeEventListener('mouseout', onExit); }
+  }
+  document.addEventListener('mouseout', onExit);
+  var timer = setTimeout(function(){ showPopup(); }, 40000);
+  var origShow = showPopup;
+  showPopup = function(){
+    clearTimeout(timer);
+    window.removeEventListener('scroll', onScroll);
+    document.removeEventListener('mouseout', onExit);
+    origShow();
+  };
+})();
+</script>
 </body>
 </html>
