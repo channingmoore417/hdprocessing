@@ -156,55 +156,7 @@ body{
 .section-tag.dark{color:var(--gold);}
 .section-tag.light{color:var(--gold2);}
 
-/* ═══════════════════════════════════════════════════
-   NAV — DARK, STICKY
-═══════════════════════════════════════════════════ */
-nav{
-  background:rgba(3,4,4,0.96);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--bdk);
-  padding:0 32px;
-  height:66px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:999;
-  transition:box-shadow .3s;
-}
-nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.5);}
-
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-img{height:30px;width:auto;display:block;}
-.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);}
-.nav-logo-text span{color:var(--gold);}
-
-.nav-links{display:none;align-items:center;gap:2px;list-style:none;}
-.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:13.5px;font-weight:500;padding:7px 13px;border-radius:6px;transition:color .2s,background .2s;}
-.nav-links a:hover{color:var(--white);background:rgba(255,255,255,.05);}
-.nav-links .dropdown{position:relative;}
-.nav-links .dropdown-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;background:#111;border:1px solid var(--bdk);border-radius:var(--r);min-width:220px;padding:6px;z-index:20;}
-.nav-links .dropdown:hover .dropdown-menu{display:block;}
-.nav-links .dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;font-size:13px;color:rgba(255,255,255,.6);background:none;}
-.nav-links .dropdown-menu a:hover{color:var(--gold);background:var(--goldbg);}
-
-.nav-right{display:flex;align-items:center;gap:10px;}
-.nav-phone{color:var(--gold);font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--bdk);padding:7px 14px;border-radius:var(--r);transition:background .2s;white-space:nowrap;}
-.nav-phone:hover{background:var(--goldbg);}
-.nav-cta{background:var(--gold);color:var(--black);font-size:13px;font-weight:700;text-decoration:none;padding:9px 20px;border-radius:var(--r);transition:background .2s;white-space:nowrap;}
-.nav-cta:hover{background:var(--gold3);}
-
-/* Hamburger */
-.nav-hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px;border:none;background:transparent;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-/* Mobile menu */
-.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:#060606;border-bottom:1px solid var(--bdk);z-index:998;padding:20px 24px 28px;}
-.mobile-menu.open{display:block;}
-.mobile-menu a{display:block;color:rgba(255,255,255,.65);text-decoration:none;font-size:15px;font-weight:500;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05);}
-.mobile-menu a:hover{color:var(--gold);}
-.mobile-menu .mm-cta{margin-top:18px;display:block;text-align:center;background:var(--gold);color:var(--black);font-size:15px;font-weight:700;padding:16px;border-radius:var(--r);border-bottom:none;}
+/* Old nav CSS removed — using injected global header CSS instead */
 
 /* ═══════════════════════════════════════════════════
    HERO — DARK
@@ -824,11 +776,6 @@ footer{
    DESKTOP (≥900px)
 ═══════════════════════════════════════════════════ */
 @media(min-width:900px){
-  /* Nav */
-  nav{padding:0 48px;}
-  .nav-links{display:flex;}
-  .nav-hamburger{display:none;}
-
   /* Hero */
   .hero{padding:100px 48px 0;}
   .hero-inner{grid-template-columns:1fr 440px;gap:80px;align-items:flex-end;}
@@ -1081,6 +1028,7 @@ footer{
     </li>
     <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
     <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+    <li class="nav-item"><a href="/hidden-fees-guide" class="nav-link" style="color:var(--gold);">Free Guide</a></li>
   </ul>
 
   <div class="nav-right">
@@ -1140,6 +1088,9 @@ footer{
     <div class="drawer-section">
       <a href="/about" class="drawer-link">About</a>
       <a href="/contact" class="drawer-link">Contact</a>
+    </div>
+    <div class="drawer-section">
+      <a href="/hidden-fees-guide" class="drawer-link" style="color:var(--gold);font-weight:600;">📖 Free Hidden Fees Guide</a>
     </div>
     <div class="drawer-ctas">
       <a href="tel:+13373668550" class="drawer-call">📞 337.366.8550</a>
@@ -1593,7 +1544,7 @@ footer{
         <li>Written by a local Lafayette processing company — not a bank</li>
       </ul>
 
-      <a href="/free-guide" class="btn-gold">Download the Free Guide →</a>
+      <a href="/hidden-fees-guide" class="btn-gold">Download the Free Guide →</a>
       <p class="leadgen-legal">No spam, ever. Your info stays with HD Processing — never shared or sold.</p>
     </div>
 
@@ -1718,6 +1669,7 @@ footer{
       <a href="/about" class="footer-link">About Us</a>
       <a href="/contact" class="footer-link">Contact</a>
       <a href="/quote" class="footer-link">Get a Quote</a>
+      <a href="/hidden-fees-guide" class="footer-link">Free Hidden Fees Guide</a>
       <a href="/support" class="footer-link">Support</a>
     </div>
 
