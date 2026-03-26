@@ -800,7 +800,7 @@ function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove(
 if(ham){ham.addEventListener('click',function(){drawer.classList.contains('open')?closeDrawer():openDrawer();});}
 if(overlay){overlay.addEventListener('click',closeDrawer);}
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
+  if(!e.target.closest('.has-dropdown') && !e.target.closest('.nav-dropdown')) document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
 });
 document.querySelectorAll('.has-dropdown > .nav-link').forEach(function(btn){
   btn.addEventListener('click',function(e){

@@ -1075,7 +1075,7 @@ overlay.addEventListener('click',closeDrawer);
 
 // Dropdowns
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
+  if(!e.target.closest('.has-dropdown') && !e.target.closest('.nav-dropdown')) document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
 });
 document.querySelectorAll('.has-dropdown > .nav-link').forEach(function(btn){
   btn.addEventListener('click',function(e){
