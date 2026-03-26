@@ -577,6 +577,13 @@ body{
 @media(max-width:960px){.footer-inner{grid-template-columns:1fr 1fr;gap:36px;padding:48px 24px 36px;}.footer-brand{grid-column:1/-1;}.footer-bottom{padding:16px 24px;}}
 @media(max-width:560px){.footer-inner{grid-template-columns:1fr;gap:28px;padding:40px 20px 28px;}.footer-brand{grid-column:auto;}.footer-bottom-inner{flex-direction:column;align-items:flex-start;gap:8px;}}
 
+
+/* ── MEGA MENU ── */
+.nav-mega{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;min-width:680px;padding:16px 8px;}
+.mega-col{padding:0 12px;}
+.mega-heading{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:10px;letter-spacing:.5px;}
+.mega-link{display:block;color:rgba(255,255,255,.6);font-size:12.5px;text-decoration:none;padding:5px 0;transition:color .15s;}
+.mega-link:hover{color:var(--white);}
 </style>
 </head>
 <body>
@@ -613,23 +620,42 @@ body{
     </li>
     <li class="nav-item has-dropdown">
       <button class="nav-link">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="nav-dropdown" style="min-width:320px;">
-        <a href="/industries/restaurants" class="dropdown-item">
-          <span class="di-icon">🍽️</span>
-          <span><strong>Restaurants</strong><em>Bakeries, breweries, coffee shops &amp; more</em></span>
-        </a>
-        <a href="/industries/retail" class="dropdown-item">
-          <span class="di-icon">🛍️</span>
-          <span><strong>Retail</strong><em>Clothing, grocery, convenience &amp; gift shops</em></span>
-        </a>
-        <a href="/industries/service-businesses/professionals" class="dropdown-item">
-          <span class="di-icon">🔧</span>
-          <span><strong>Service Businesses</strong><em>Salons, gyms, doctors, lawyers &amp; more</em></span>
-        </a>
-        <a href="/industries/online/ecommerce-stores" class="dropdown-item">
-          <span class="di-icon">🌐</span>
-          <span><strong>Online &amp; Ecommerce</strong><em>Online retailers, subscriptions &amp; SaaS</em></span>
-        </a>
+      <div class="nav-dropdown nav-mega">
+        <div class="mega-col">
+          <div class="mega-heading">🍽️ Restaurants</div>
+          <a href="/industries/restaurants" class="mega-link">All Restaurants</a>
+          <a href="/industries/restaurants/bakeries" class="mega-link">Bakeries</a>
+          <a href="/industries/restaurants/breweries" class="mega-link">Breweries</a>
+          <a href="/industries/restaurants/coffee-tea-shops" class="mega-link">Coffee &amp; Tea Shops</a>
+          <a href="/industries/restaurants/delis-meat-markets" class="mega-link">Delis &amp; Meat Markets</a>
+          <a href="/industries/restaurants/pizzerias-sandwich-shops" class="mega-link">Pizzerias &amp; Sandwich Shops</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-heading">🛍️ Retail</div>
+          <a href="/industries/retail" class="mega-link">All Retail</a>
+          <a href="/industries/retail/book-stores" class="mega-link">Book Stores</a>
+          <a href="/industries/retail/clothing-stores" class="mega-link">Clothing Stores</a>
+          <a href="/industries/retail/convenience-stores" class="mega-link">Convenience Stores</a>
+          <a href="/industries/retail/gift-shops" class="mega-link">Gift Shops</a>
+          <a href="/industries/retail/grocery-stores" class="mega-link">Grocery Stores</a>
+          <a href="/industries/retail/small-large-retail" class="mega-link">Small &amp; Large Retail</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-heading">🔧 Service Businesses</div>
+          <a href="/industries/service-businesses/professionals" class="mega-link">Professionals</a>
+          <a href="/industries/service-businesses/doctors-lawyers" class="mega-link">Doctors &amp; Lawyers</a>
+          <a href="/industries/service-businesses/gyms-fitness" class="mega-link">Gyms &amp; Fitness</a>
+          <a href="/industries/service-businesses/hair-salons-spas" class="mega-link">Hair Salons &amp; Spas</a>
+          <a href="/industries/service-businesses/healthcare" class="mega-link">Healthcare</a>
+          <a href="/industries/service-businesses/mechanic-shops" class="mega-link">Mechanic Shops</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-heading">🌐 Online</div>
+          <a href="/industries/online/ecommerce-stores" class="mega-link">Ecommerce Stores</a>
+          <a href="/industries/online/online-retailers" class="mega-link">Online Retailers</a>
+          <a href="/industries/online/service-providers" class="mega-link">Service Providers</a>
+          <a href="/industries/online/subscription-businesses" class="mega-link">Subscription Businesses</a>
+        </div>
       </div>
     </li>
     <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
