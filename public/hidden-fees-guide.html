@@ -911,8 +911,28 @@ function handleSubmit() {
     else { el.style.borderColor = ''; }
   });
   if (!valid) return;
-  document.getElementById('formFields').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('active');
+  const btn = document.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  fetch('https://services.leadconnectorhq.com/hooks/yNgtcVB50ZOTKtcYV8Lh/webhook-trigger/426ec9fc-e930-45eb-84e9-35cdc5d811c5', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      bizType: document.getElementById('bizType').value,
+      source: 'hidden-fees-guide',
+      submittedAt: new Date().toISOString()
+    })
+  }).then(function(){
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('active');
+  }).catch(function(){
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('active');
+  });
 }
 </script>
 
