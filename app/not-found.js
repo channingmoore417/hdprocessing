@@ -28,9 +28,9 @@ export default function NotFound() {
         {/* Quick Links */}
         <div className="error-links">
           <Link href="/quote" className="error-link">Get a Quote</Link>
-          <Link href="/processing" className="error-link">Processing</Link>
-          <Link href="/pos-systems" className="error-link">POS Systems</Link>
-          <Link href="/mobile-pay" className="error-link">Mobile Pay</Link>
+          <Link href="/services/credit-card-processing" className="error-link">Processing</Link>
+          <Link href="/services/pos-systems" className="error-link">POS Systems</Link>
+          <Link href="/services/mobile-payments" className="error-link">Mobile Pay</Link>
           <Link href="/about" className="error-link">About Us</Link>
           <Link href="/support" className="error-link">Support</Link>
         </div>
