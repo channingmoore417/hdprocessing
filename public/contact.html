@@ -638,17 +638,27 @@ function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove(
 if(ham){ham.addEventListener('click',function(){drawer.classList.contains('open')?closeDrawer():openDrawer();});}
 if(overlay){overlay.addEventListener('click',closeDrawer);}
 
-// Dropdowns
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.has-dropdown') && !e.target.closest('.nav-dropdown')) document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
-});
+// Dropdowns - toggle on button click, close on outside click or link click
 document.querySelectorAll('.has-dropdown > .nav-link').forEach(function(btn){
   btn.addEventListener('click',function(e){
     e.preventDefault();
+    e.stopPropagation();
     var item=btn.closest('.has-dropdown');
     var was=item.classList.contains('open');
     document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
     if(!was)item.classList.add('open');
+  });
+});
+// Close dropdown when clicking anywhere outside the dropdown button
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.has-dropdown > .nav-link')){
+    document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
+  }
+});
+// Close dropdown when clicking a link inside it
+document.querySelectorAll('.nav-dropdown a, .nav-mega a').forEach(function(link){
+  link.addEventListener('click',function(){
+    document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
   });
 });
 </script>
