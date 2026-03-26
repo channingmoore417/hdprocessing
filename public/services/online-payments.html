@@ -2,130 +2,368 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online Payments & Ecommerce – HD Processing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#030404">
+<!-- [SANITY: seo.metaTitle] Format: [Service] for Lafayette Businesses | HD Processing — 50-60 chars -->
+<title>Online Payments for Lafayette Businesses | HD Processing</title>
+<!-- [SANITY: seo.metaDescription] 140-160 chars. Include Lafayette + Acadiana. End with "No contracts." -->
+<meta name="description" content="Online payment processing for Lafayette, LA businesses. Accept payments on your website, send payment links, and get same-day funding. HD Processing serves Acadiana. No contracts.">
+<link rel="canonical" href="/services/online-payments">
+<meta property="og:title" content="Online Payments for Lafayette Businesses | HD Processing">
+<meta property="og:description" content="Transparent credit card processing for Lafayette, LA small businesses. Interchange-plus pricing, same-day funding, no long-term contracts. Local Acadiana team. No contracts.">
+<meta property="og:url" content="/services/credit-card-processing">
+<meta property="og:site_name" content="HD Processing">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/og-image.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness","FinancialService"],
+      "@id": "/#business",
+      "name": "HD Processing",
+      "telephone": "+13373668550",
+      "email": "info@hdprocessing.com",
+      "url": ""/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1027 Johnston St",
+        "addressLocality": "Lafayette",
+        "addressRegion": "LA",
+        "postalCode": "70501",
+        "addressCountry": "US"
+      },
+      "geo": {"@type":"GeoCoordinates","latitude":30.2241,"longitude":-92.0198},
+      "areaServed": ["Lafayette, LA","Acadiana","Broussard, LA","Youngsville, LA","Scott, LA","Breaux Bridge, LA","New Iberia, LA","Opelousas, LA"],
+      "openingHoursSpecification": [
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"09:00","closes":"13:00"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Online Payment Processing in Lafayette, LA",
+      "description": "HD Processing provides online payment processing for Lafayette, LA businesses — including website checkout, payment links, and ecommerce integration. Same-day funding, transparent rates, and a local Acadiana team on call. No long-term contracts.",
+      "provider": {"@id":"/#business"},
+      "areaServed": "Lafayette, LA",
+      "audience": {"@type":"Audience","audienceType":"Small business owners in Lafayette, LA and Acadiana"}
+    },
+    {
+      "@type": "WebPage",
+      "url": "/services/credit-card-processing",
+      "name": "Online Payments for Lafayette Businesses | HD Processing",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Home","item":""/"},
+          {"@type":"ListItem","position":2,"name":"Services","item":"/services"},
+          {"@type":"ListItem","position":3,"name":"Online Payments","item":"/services/online-payments"}
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What credit card processing rates will my Lafayette business actually pay with HD Processing?","acceptedAnswer":{"@type":"Answer","text":"HD Processing uses interchange-plus pricing, which means you pay the actual interchange rate set by Visa and Mastercard plus a small, fixed markup — typically 2.6% + $0.10 per transaction for card-present sales. Unlike tiered pricing used by most national processors, interchange-plus has no 'qualified' or 'non-qualified' categories designed to confuse you. Every charge on your statement is explainable and exactly what you were told it would be. We do a free statement analysis for every Lafayette business before they sign anything so there are no surprises."}},
+        {"@type":"Question","name":"Does HD Processing require a long-term contract for Lafayette merchants?","acceptedAnswer":{"@type":"Answer","text":"No — all HD Processing merchant accounts are month-to-month with no long-term contracts. You are never locked in, and there are no early termination fees. We believe if we are doing our job right, you will not want to leave. Over 97% of our Lafayette merchants stay with us year after year because of the service, not because they are contractually obligated."}},
+        {"@type":"Question","name":"How fast will I receive funds from credit card transactions at my Lafayette business?","acceptedAnswer":{"@type":"Answer","text":"HD Processing offers same-day funding for most Lafayette merchant accounts. Transactions settled before the daily cutoff hit your bank account the same business day — not 2 to 3 days later like most national processors. Same-day funding makes a real difference for cash flow, especially for restaurants, retail stores, and service businesses in Acadiana that process high daily volumes."}},
+        {"@type":"Question","name":"What credit card terminals and hardware does HD Processing provide in Lafayette?","acceptedAnswer":{"@type":"Answer","text":"HD Processing provides and installs modern card terminals, countertop POS systems, wireless handheld readers, and mobile card readers depending on your business type. We come to your Lafayette location, set everything up, and train your staff — usually in a single visit. All hardware is compatible with chip cards, tap-to-pay, Apple Pay, and Google Pay. If your current equipment works, we can often reprogram it at no charge."}},
+        {"@type":"Question","name":"Can HD Processing do a free analysis of my current credit card processing statement in Lafayette?","acceptedAnswer":{"@type":"Answer","text":"Yes — a free statement analysis is the first thing we do for every Lafayette business we talk to. Send us your most recent processing statement and we will show you line by line what you are currently paying, what you would pay with HD Processing, and exactly how much you would save each month. There is no obligation, no pressure, and it takes about 10 minutes. Most Acadiana businesses we analyze are overpaying by 20 to 40 percent."}}
+      ]
+    }
+  ]
+}
+</script>
+
 <style>
-  :root { --gold: #DAB367; --gold2: #C9A254; --black: #030404; --ink: #0a0a0a; --card: #0a0a0a; --border:rgba(255,255,255,0.07); --muted:rgba(255,255,255,0.45); --white:#FFFFFF; }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:110px;background:rgba(3,4,4,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--white);text-decoration:none;}
-  .nav-logo span{color:var(--gold);}
-  .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:6px;transition:color .2s,background .2s;}
-  .nav-links a:hover{color:#ffffff;background:rgba(255,255,255,0.07);}
-  .nav-links a.active{color:var(--gold);font-weight:600;}
-  .dropdown{position:relative;}
-  .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#141414;border:1px solid rgba(255,255,255,0.1);border-radius:10px;min-width:210px;padding:6px;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.5);}
-  .dropdown:hover .dropdown-menu{display:block;}
-  .dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;font-size:13px;color:rgba(255,255,255,0.65);}
-  .nav-phone{color:var(--gold)!important;border:1px solid rgba(218,179,103,0.35)!important;font-weight:600!important;}
-  .nav-phone:hover{background:rgba(218,179,103,0.1)!important;}
-  .nav-cta{background:var(--gold)!important;color:var(--black)!important;font-weight:600!important;padding:8px 18px!important;border-radius:6px!important;}
-  .nav-cta:hover{background:var(--gold2)!important;}
+:root{
+  --black:#030404;
+  --black2:#0a0a0a;
+  --gold:#DAB367;
+  --gold2:#C9A254;
+  --gold3:#f0cc8a;
+  --white:#ffffff;
+  --offwhite:#f7f5f1;
+  --text:#1a1a1a;
+  --muted:#6b6b6b;
+  --border-lt:#e4e0d8;
+  --border-dk:rgba(218,179,103,0.18);
+  --r:10px;
+}
 
-  .page-hero{padding:150px 48px 90px;background:var(--ink);position:relative;overflow:hidden;}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(218,179,103,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(218,179,103,0.05) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black 0%,transparent 100%);}
-  .hero-orb{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,0.15) 0%,transparent 70%);right:0;top:50%;transform:translateY(-50%);pointer-events:none;}
-  .page-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center;}
-  .section-tag{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
-  .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,7vw,96px);line-height:.92;letter-spacing:1px;margin-bottom:24px;}
-  .page-hero h1 span{color:var(--gold);display:block;}
-  .page-hero p{font-size:17px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.6);max-width:480px;margin-bottom:36px;}
-  .btns{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);font-size:14px;font-weight:700;padding:15px 32px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;}
-  .btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
-  .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);font-size:14px;font-weight:500;padding:15px 32px;border-radius:6px;text-decoration:none;border:1px solid rgba(255,255,255,0.18);transition:border-color .2s,color .2s;}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+/* ── BASE ── */
+body{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-  /* CHECKOUT MOCKUP */
-  .checkout-mockup{animation:floatCard 4s ease-in-out infinite;}
-  @keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-  .checkout-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-  .checkout-top{background:#060606;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;}
-  .checkout-top .lock{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
-  .checkout-top .lock span{color:#4CAF50;}
-  .checkout-top .brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);}
-  .checkout-body{padding:24px;}
-  .checkout-summary{background:#060606;border-radius:8px;padding:16px;margin-bottom:20px;}
-  .cs-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;color:rgba(255,255,255,0.6);}
-  .cs-row.total{color:var(--white);font-weight:600;border-top:1px solid var(--border);padding-top:10px;margin-top:5px;}
-  .checkout-field{margin-bottom:14px;}
-  .checkout-field label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-  .checkout-field .field-box{background:#060606;border:1px solid var(--border);border-radius:6px;padding:11px 14px;font-size:13px;color:rgba(255,255,255,0.5);}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .pay-btn{width:100%;background:var(--gold);color:var(--black);border:none;border-radius:8px;padding:15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px;}
-  .badges{display:flex;gap:8px;justify-content:center;margin-top:14px;}
-  .badge{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:10px;font-weight:600;color:var(--muted);letter-spacing:1px;}
+/* ── TYPE SCALE ── */
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,10vw,76px);line-height:.92;letter-spacing:1px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,6vw,54px);line-height:.95;letter-spacing:.5px;}
+h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3vw,28px);line-height:1.1;}
+p{font-size:18px;font-weight:300;line-height:1.78;max-width:680px;}
+p+p{margin-top:16px;}
+p strong{font-weight:600;}
 
-  .section-wrap{padding:90px 48px;}
-  .section-wrap.alt{background:var(--ink);}
-  .inner{max-width:1200px;margin:0 auto;}
-  .section-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,60px);line-height:.95;letter-spacing:1px;margin-bottom:16px;}
-  .section-body{font-size:16px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.55);max-width:540px;}
+/* ── SECTIONS ── */
+section{padding:72px 24px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
 
-  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px;}
-  .feature-card{background:var(--card);padding:40px 32px;transition:background .25s;border-top:3px solid transparent;}
-  .feature-card:hover{background:#131313;border-top-color:var(--gold);}
-  .feat-icon{font-size:30px;margin-bottom:20px;}
-  .feature-card h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:10px;}
-  .feature-card p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.65;}
+/* Dark section text */
+.on-dark{color:rgba(255,255,255,.65);}
+.on-dark strong{color:var(--white);font-weight:600;}
+.on-dark h2{color:var(--white);}
+.on-dark .gold{color:var(--gold);}
 
-  /* INTEGRATIONS */
-  .int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px;}
-  .int-card{background:var(--card);padding:36px 28px;transition:background .25s;text-align:center;}
-  .int-card:hover{background:#131313;}
-  .int-card .int-icon{font-size:36px;margin-bottom:14px;}
-  .int-card h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--gold);margin-bottom:8px;}
-  .int-card p{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.6;}
+/* Light section text */
+.on-light{color:#444;}
+.on-light strong{color:var(--text);font-weight:600;}
+.on-light h2{color:var(--text);}
+.on-light .gold{color:var(--gold);}
 
-  /* SECURITY */
-  .security-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-  .sec-cards{display:flex;flex-direction:column;gap:14px;}
-  .sec-card{display:flex;align-items:flex-start;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 24px;}
-  .sec-card .icon{font-size:24px;flex-shrink:0;}
-  .sec-card h4{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:4px;}
-  .sec-card p{font-size:12px;font-weight:300;color:var(--muted);}
+/* ── HERO (dark) ── */
+.hero{background:var(--black);padding:72px 24px 88px;position:relative;overflow:visible;}
+.hero::before{content:'';position:absolute;top:-120px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,.1) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(218,179,103,.05) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:72px;align-items:center;position:relative;z-index:1;}
+/* H1 RULE: No city name in H1 ever. Compelling, benefit-driven headline for humans. */
+.hero h1{color:var(--white);margin-bottom:22px;}
+.hero h1 .gold{color:var(--gold);}
+.hero-sub{font-size:18px;font-weight:300;color:rgba(255,255,255,.62);line-height:1.72;max-width:520px;margin-bottom:32px;}
+/* [SANITY: hero.subtext] First 100 words must include: primary keyword, Lafayette or Acadiana, core problem solved, HD Processing differentiator */
+.hero-sub strong{color:var(--white);font-weight:600;}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);font-size:15px;font-weight:700;text-decoration:none;padding:16px 28px;border-radius:var(--r);transition:background .2s,transform .15s;}
+.hero-cta:hover{background:var(--gold3);transform:translateY(-1px);}
 
-  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:56px;}
-  .step-card{background:var(--card);padding:44px 36px;}
-  .step-num{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;color:rgba(218,179,103,0.12);margin-bottom:14px;}
-  .step-card h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:10px;}
-  .step-card p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.65;}
+/* ── MOCKUP CARD ── */
+/* [SANITY: mockup.*] — all line items editable */
+.mockup-wrap{position:relative;}
+.mockup-card{background:var(--black2);border:1px solid var(--border-dk);border-radius:16px;padding:28px 24px;animation:riseUp .5s cubic-bezier(.22,1,.36,1) both, float 4s ease-in-out 1s infinite;}
+@keyframes riseUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.mockup-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.mockup-rows{display:flex;flex-direction:column;}
+.mockup-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border-dk);}
+.mockup-row:last-child{border-bottom:none;}
+.mockup-key{font-size:13px;color:rgba(255,255,255,.4);font-weight:400;}
+.mockup-val{font-size:14px;color:var(--white);font-weight:600;}
+.mockup-val.gold{color:var(--gold);}
+.mockup-val.green{color:#2ecc71;}
+.mockup-btn{width:100%;margin-top:16px;padding:14px;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:var(--r);cursor:default;text-align:center;}
+.mockup-tip-row{display:flex;gap:8px;margin-top:12px;}
+.mockup-tip{flex:1;padding:8px;background:rgba(255,255,255,.05);border:1px solid var(--border-dk);border-radius:6px;font-size:12px;color:rgba(255,255,255,.5);text-align:center;}
+.mockup-tip.active{background:rgba(218,179,103,.15);border-color:var(--gold);color:var(--gold);font-weight:600;}
+.mockup-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.mockup-badge{font-size:11px;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.05);border:1px solid var(--border-dk);padding:4px 10px;border-radius:100px;}
+.mockup-nfc{text-align:center;padding:16px 0;}
+.mockup-nfc-icon{font-size:44px;margin-bottom:10px;display:block;}
+.mockup-nfc-label{font-size:13px;color:rgba(255,255,255,.4);}
+.mockup-field{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:10px 14px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,.35);}
+.mockup-ssl{font-size:11.5px;color:rgba(255,255,255,.3);text-align:center;margin-top:10px;}
 
-  .cta-band{background:var(--gold);padding:80px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-  .cta-band h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);color:var(--black);line-height:.95;letter-spacing:1px;}
-  .cta-band p{color:rgba(0,0,0,0.6);font-size:16px;font-weight:300;margin-top:10px;}
-  .btn-dark{display:inline-flex;align-items:center;gap:8px;background:var(--black);color:var(--white);font-size:14px;font-weight:700;padding:18px 40px;border-radius:6px;text-decoration:none;white-space:nowrap;}
-  .btn-dark:hover{background:#222;}
+/* ── GOOGLE HERO BADGE ── */
+.hero-google-badge{
+  position:absolute;
+  bottom:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--white);
+  border-radius:100px;
+  padding:10px 18px 10px 14px;
+  box-shadow:0 8px 32px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.2);
+  text-decoration:none;
+  white-space:nowrap;
+  animation:riseUp .5s .3s cubic-bezier(.22,1,.36,1) both;
+  transition:transform .2s, box-shadow .2s;
+  z-index:10;
+}
+.hero-google-badge:hover{transform:translateX(-50%) translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.4);}
+.hero-google-badge img{height:18px;width:auto;display:block;flex-shrink:0;}
+.hgb-divider{width:1px;height:20px;background:rgba(0,0,0,.12);flex-shrink:0;}
+.hgb-stars{color:#f5a623;font-size:13px;letter-spacing:.5px;line-height:1;}
+.hgb-text{font-size:12px;font-weight:600;color:#444;line-height:1.2;}
+.hgb-sub{font-size:10.5px;font-weight:400;color:#888;margin-top:1px;}
 
-  footer{background:#060606;border-top:1px solid var(--border);padding:64px 48px 36px;}
-  .footer-inner{max-width:1200px;margin:0 auto;}
-  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:64px;padding-bottom:40px;border-bottom:1px solid var(--border);}
-  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--white);text-decoration:none;display:inline-block;margin-bottom:14px;}
-  .footer-logo span{color:var(--gold);}
-  .footer-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;max-width:280px;}
-  .footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:var(--white);margin-bottom:14px;}
-  .footer-col a{display:block;font-size:13px;font-weight:300;color:var(--muted);text-decoration:none;padding:4px 0;transition:color .2s;}
-  .footer-col a:hover{color:var(--gold);}
-  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;font-size:11px;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:10px;}
+/* ── BREADCRUMB (always below hero) ── */
+.breadcrumb{background:var(--black2);border-bottom:1px solid var(--border-dk);padding:12px 24px;}
+.breadcrumb-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35);}
+.breadcrumb-inner a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.breadcrumb-inner a:hover{color:var(--gold);}
+.breadcrumb-inner .current{color:var(--gold);}
 
-  @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-  .page-hero h1{animation:fadeUp .6s .1s both;}
+/* ── PAIN POINTS (light) ── */
+.pain-section{background:var(--offwhite);}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;}
+.pain-card{background:var(--white);border:1px solid var(--border-lt);border-radius:14px;padding:28px 24px;transition:border-color .2s;}
+.pain-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(218,179,103,.25);line-height:1;margin-bottom:14px;}
+.pain-card h3{color:var(--text);margin-bottom:10px;}
+/* [SANITY: painPoints[n].title] */
+.pain-card p{font-size:17px;font-weight:300;color:#444;line-height:1.72;max-width:none;}
+/* [SANITY: painPoints[n].body] 2-3 sentences. At least 2 of 4 cards use a realistic Lafayette business scenario. */
 
-  @media(max-width:768px){
-    nav{padding:0 24px;}.nav-links{display:none;}
-    .page-hero{padding:130px 24px 70px;}.page-hero-inner{grid-template-columns:1fr;}.checkout-mockup{display:none;}
-    .section-wrap{padding:70px 24px;}
-    .features-grid{grid-template-columns:1fr;}.int-grid{grid-template-columns:1fr 1fr;}.steps-grid{grid-template-columns:1fr;}
-    .security-grid{grid-template-columns:1fr;}
-    .cta-band{padding:64px 24px;flex-direction:column;align-items:flex-start;}
-    footer{padding:56px 24px 32px;}.footer-top{grid-template-columns:1fr;gap:36px;}
-  }
+/* ── SOLUTION (dark) ── */
+.solution-section{background:var(--black);}
+.solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.solution-content p{font-size:18px;color:rgba(255,255,255,.65);}
+.solution-content p strong{color:var(--white);}
+/* [SANITY: solution.heading] [SANITY: solution.body] */
+.solution-photo-wrap{position:relative;padding-bottom:32px;}
+.solution-photo{border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);}
+.solution-photo img{width:100%;height:480px;object-fit:cover;object-position:center top;display:block;}
+.solution-caption{position:absolute;bottom:0;left:16px;right:16px;background:var(--gold);border-radius:10px;padding:14px 18px;box-shadow:0 8px 24px rgba(0,0,0,.35);}
+.solution-caption-text{font-size:13.5px;font-weight:600;color:var(--black);line-height:1.4;}
+.solution-caption-stat{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--black);line-height:1;white-space:nowrap;}
+
+/* ── FEATURES (light) ── */
+.features-section{background:var(--white);}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.feature-card{background:var(--offwhite);border:1px solid var(--border-lt);border-radius:14px;padding:28px 24px;transition:border-color .2s,transform .2s;}
+.feature-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+.feature-icon{width:48px;height:48px;background:var(--black);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+.feature-card h3{color:var(--text);margin-bottom:10px;}
+/* [SANITY: features[n].title] */
+.feature-card p{font-size:16px;font-weight:300;color:var(--muted);line-height:1.7;max-width:none;}
+/* [SANITY: features[n].description] 2 sentences. At least 2 of 6 mention local delivery. */
+
+/* ── COMPARISON TABLE — dark section, white card ── */
+.comparison-section{background:var(--black);}
+/* White card floats on dark background */
+.comp-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.4);}
+.comp-table-wrap{margin-top:40px;}
+.comp-table{width:100%;border-collapse:collapse;}
+.comp-table th{padding:16px 20px;text-align:left;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.comp-table th:first-child{background:var(--offwhite);color:var(--muted);}
+.comp-table th:nth-child(2){background:#fff0f0;color:#c0392b;}
+.comp-table th:nth-child(3){background:rgba(218,179,103,.1);color:var(--gold2);}
+.comp-table td{padding:18px 20px;font-size:16px;border-top:1px solid var(--border-lt);}
+.comp-table td:first-child{font-weight:600;color:var(--text);background:var(--offwhite);}
+.comp-table td:nth-child(2){color:#c0392b;background:#fff0f0;}
+.comp-table td:nth-child(3){color:#219a52;font-weight:600;background:rgba(218,179,103,.06);}
+/* [SANITY: comparisonRows[] — minimum 6 rows. Every Typical cell = specific negative. Every HD cell = specific positive.] */
+
+/* ── BUSINESSES WE SERVE ── */
+.whofor-section{background:var(--offwhite);}
+.whofor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px;align-items:start;}
+.whofor-card{background:var(--white);border:1px solid var(--border-lt);border-radius:14px;padding:24px 20px;transition:border-color .2s,transform .2s;}
+.whofor-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.whofor-cat{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border-lt);}
+.whofor-icon{font-size:22px;flex-shrink:0;}
+.whofor-card h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text);line-height:1;}
+.whofor-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.whofor-list li a{font-size:13.5px;font-weight:400;color:var(--muted);text-decoration:none;transition:color .15s;display:block;padding:2px 0;}
+.whofor-list li a:hover{color:var(--gold2);}
+.whofor-arrow{display:inline-block;font-size:13px;font-weight:700;color:var(--gold2);text-decoration:none;margin-top:4px;}
+.whofor-arrow:hover{color:var(--gold);}
+@media(max-width:780px){.whofor-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.whofor-grid{grid-template-columns:1fr;}}
+.whofor-section{background:var(--offwhite);}
+.whofor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;}
+.whofor-card{background:var(--white);border:1px solid var(--border-lt);border-radius:14px;padding:24px 20px;transition:border-color .2s;}
+.whofor-card:hover{border-color:var(--gold);}
+.whofor-cat{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border-lt);}
+.whofor-icon{font-size:22px;flex-shrink:0;}
+.whofor-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--text);line-height:1;}
+.whofor-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.whofor-list li a{font-size:14px;font-weight:400;color:var(--muted);text-decoration:none;padding:7px 0;display:block;border-bottom:1px solid var(--border-lt);transition:color .18s;}
+.whofor-list li:last-child a{border-bottom:none;}
+.whofor-list li a:hover{color:var(--gold2);}
+
+/* ── FAQ (dark) ── */
+.faq-section{background:var(--black);}
+.faq-list{margin-top:40px;}
+.faq-item{border-bottom:1px solid var(--border-dk);}
+.faq-item:first-child{border-top:1px solid var(--border-dk);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;background:none;border:none;cursor:pointer;text-align:left;}
+.faq-q-text{font-size:17px;font-weight:500;color:var(--white);line-height:1.5;}
+/* [SANITY: faqItems[n].question] Every question must include service name + Lafayette or Acadiana */
+.faq-icon{width:30px;height:30px;border-radius:50%;border:1px solid rgba(218,179,103,.3);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:20px;flex-shrink:0;transition:transform .25s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{display:none;padding:16px 20px 20px;font-size:17px;font-weight:300;color:var(--text);line-height:1.78;max-width:none;background:var(--white);border-radius:0 0 12px 12px;margin-bottom:2px;}
+/* [SANITY: faqItems[n].answer] Start with direct 1-sentence answer. Then 3-4 sentences expanding. Written for AI citation (AEO). */
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-q{padding-bottom:0;}
+.faq-item.open{background:var(--white);border-radius:12px;padding:0 20px;border-color:transparent;}
+.faq-item.open .faq-q-text{color:var(--text);}
+
+/* ── BUSINESS INFO (light) ── */
+.biz-section{background:var(--offwhite);}
+.biz-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px;}
+.biz-info{}
+.biz-info-items{display:flex;flex-direction:column;gap:0;margin-top:24px;}
+.biz-info-item{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--border-lt);}
+.biz-info-item:last-child{border-bottom:none;}
+.biz-info-icon{width:40px;height:40px;background:var(--black);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;margin-top:2px;}
+.biz-info-label{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.biz-info-value{font-size:16px;font-weight:600;color:var(--text);text-decoration:none;display:block;transition:color .2s;}
+.biz-info-value:hover{color:var(--gold2);}
+.biz-info-note{font-size:13px;color:var(--muted);font-weight:300;margin-top:2px;}
+.biz-hours{margin-top:24px;background:var(--black);border-radius:12px;padding:20px;}
+.biz-hours-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.biz-hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border-dk);font-size:14px;}
+.biz-hours-row:last-child{border-bottom:none;}
+.biz-hours-day{color:rgba(255,255,255,.5);}
+.biz-hours-time{color:var(--white);font-weight:500;}
+.biz-hours-time.closed{color:rgba(255,255,255,.25);}
+.biz-map{border-radius:14px;overflow:hidden;border:1px solid var(--border-lt);box-shadow:0 4px 24px rgba(0,0,0,.08);}
+.biz-map iframe{width:100%;height:360px;border:none;display:block;}
+.biz-google-badge{display:inline-flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;text-decoration:none;margin-top:16px;transition:border-color .2s,box-shadow .2s;}
+.biz-google-badge:hover{border-color:#4285F4;box-shadow:0 2px 12px rgba(66,133,244,.15);}
+.gbadge-logo{height:22px;width:auto;display:block;}
+.gbadge-right{}
+.gbadge-stars{color:#f5a623;font-size:16px;letter-spacing:1px;line-height:1;}
+.gbadge-text{font-size:11.5px;font-weight:500;color:var(--muted);margin-top:2px;}
+
+/* ── GOLD CTA ── */
+.final-cta{background:var(--gold);padding:96px 24px;position:relative;overflow:hidden;}
+.final-cta::before{content:'';position:absolute;top:-140px;right:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(0,0,0,.08) 0%,transparent 65%);pointer-events:none;}
+.final-cta::after{content:'';position:absolute;bottom:-100px;left:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(0,0,0,.06) 0%,transparent 65%);pointer-events:none;}
+.final-cta-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
+.final-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7vw,72px);color:var(--black);line-height:.9;margin-bottom:20px;letter-spacing:.5px;}
+.final-cta-body{font-size:18px;font-weight:400;color:rgba(0,0,0,.62);line-height:1.72;max-width:480px;margin:0;}
+.final-cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:0;}
+.final-cta-btn{display:inline-block;background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;text-decoration:none;padding:20px 40px;border-radius:var(--r);transition:background .2s,transform .15s;box-shadow:0 8px 32px rgba(0,0,0,.2);margin-bottom:16px;}
+.final-cta-btn:hover{background:#1a1a1a;transform:translateY(-2px);}
+.final-cta-sub{font-size:13px;color:rgba(0,0,0,.45);}
+
+/* ── STICKY BAR ── *//* ── STICKY BAR ── */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:400;display:flex;transform:translateY(100%);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.sticky-bar.show{transform:translateY(0);}
+.sticky-call{flex:1;background:var(--black);color:var(--gold);font-size:14px;font-weight:700;text-decoration:none;text-align:center;padding:16px 12px;border-top:1px solid var(--border-dk);}
+.sticky-quote{flex:1;background:var(--gold);color:var(--black);font-size:14px;font-weight:700;text-decoration:none;text-align:center;padding:16px 12px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:48px;}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+  .mockup-card{max-width:440px;}
+  .pain-grid{grid-template-columns:1fr;}
+  .solution-grid{grid-template-columns:1fr;gap:40px;}
+  .features-grid{grid-template-columns:1fr 1fr;}
+  .whofor-grid{grid-template-columns:1fr 1fr;}
+  .biz-grid{grid-template-columns:1fr;}
+  .final-cta-inner{grid-template-columns:1fr;gap:36px;}
+  .final-cta-right{align-items:flex-start;}
+}
+@media(max-width:768px){
+  body{font-size:17px;}
+  p{font-size:17px;}
+  section{padding:56px 20px;}
+  .features-grid{grid-template-columns:1fr;}
+  .comp-table th,.comp-table td{padding:12px 14px;font-size:14px;}
+}
+@media(max-width:480px){
+  .whofor-grid{grid-template-columns:1fr;}
+}
 
 .top-bar{background:var(--gold);color:var(--black);text-align:center;padding:9px 20px;font-size:12.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;}
 .top-bar span{font-weight:400;opacity:.7;text-transform:none;margin-left:6px;letter-spacing:0;}
@@ -231,169 +469,575 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:96px;width:auto;display:block;filter:brightness(0) invert(1);"></a>
-  <ul class="nav-links">
-    <li class="dropdown"><a href="#" class="active">Solutions ▾</a>
-      <div class="dropdown-menu">
-        <a href="mobile.html">Mobile Processing</a>
-        <a href="pos.html">Point of Sale Systems</a>
-        <a href="ecommerce.html">Online Payments & Ecommerce</a>
+
+<!-- ░░ GLOBAL HEADER INJECTED HERE ░░ -->
+
+<!-- ══════════════════════════════════════════
+     SECTION 1: HERO (dark)
+     H1: City name included naturally — Lafayette, LA
+     StoryBrand: customer is the hero, problem framed first.
+     ══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <!-- [SANITY: hero.headline] -->
+      <h1>Online Payments in <span class="gold">Lafayette, LA</span></h1>
+      <!-- [SANITY: hero.subtext]
+           First 100 words must include:
+           • Primary keyword naturally
+           • Lafayette or Acadiana
+           • The core problem being solved
+           • HD Processing's key differentiator -->
+      <p class="hero-sub">Your Lafayette customers are ready to pay online — on your website, through a link you text them, or on a checkout page you didn't have to build yourself. HD Processing gives Acadiana businesses <strong>simple, affordable online payment tools with same-day funding and zero long-term contracts.</strong> No developer required. No surprise fees. Local support when you need it.</p>
+      <a href="/quote" class="hero-cta">Start Saving Money Today →</a>
+    </div>
+
+    <!-- ══ MOCKUP CARD — swap block per service ══ -->
+
+    <!-- ONLINE PAYMENTS MOCKUP -->
+    <div class="mockup-wrap">
+      <div class="mockup-card">
+        <div class="mockup-label">Checkout</div>
+        <div class="mockup-rows">
+          <div class="mockup-row"><span class="mockup-key">Catering Deposit</span><span class="mockup-val gold">$350.00</span></div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="mockup-field">marcus@broussards.com</div>
+          <div class="mockup-field">•••• •••• •••• 4242  12/27  •••</div>
+        </div>
+        <button class="mockup-btn">Pay $350.00 →</button>
+        <div class="mockup-ssl">🔒 Secured by SSL · All major cards accepted</div>
       </div>
-    </li>
-    <li><a href="quote.html">Request A Quote</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="support.html">Support Ticket</a></li>
-    <li><a href="tel:3373668550" class="nav-phone">📞 337-366-8550</a></li>
-    <li><a href="quote.html" class="nav-cta">Get Started</a></li>
-  </ul>
+      <!-- Google badge hovers below the mockup card -->
+      <a href="https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1"
+         target="_blank" rel="noopener" class="hero-google-badge">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google Reviews — HD Processing Lafayette LA">
+        <div class="hgb-divider"></div>
+        <div>
+          <div class="hgb-stars">★★★★★</div>
+          <div class="hgb-sub">Google Reviews</div>
+        </div>
+        <div>
+          <div class="hgb-text">5.0</div>
+          <div class="hgb-sub">Lafayette, LA</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BREADCRUMB — always below hero, never above
+     ══════════════════════════════════════════ -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a><span>›</span>
+    <a href="/services">Services</a><span>›</span>
+    <!-- [SANITY: breadcrumbLabel] -->
+    <span class="current">Online Payments</span>
+  </div>
 </nav>
 
-<div class="page-hero">
-  <div class="hero-grid"></div>
-  <div class="hero-orb"></div>
-  <div class="page-hero-inner">
-    <div>
-      <span class="section-tag">Online Payments & Ecommerce</span>
-      <h1>Sell Online<span>Without the Hassle</span></h1>
-      <p>In today's digital age, a robust online payment system is essential. We provide secure, reliable, and easy-to-integrate solutions that grow your online sales and keep customers coming back.</p>
-      <div class="btns">
-        <a href="quote.html" class="btn-gold">Get Started →</a>
-        <a href="#features" class="btn-ghost">See Features</a>
+<!-- ══════════════════════════════════════════
+     SECTION 2: PAIN POINTS (light)
+     Min 4 cards. 2-3 sentence body each.
+     At least 2 use a Lafayette business scenario.
+     ══════════════════════════════════════════ -->
+<section class="pain-section">
+  <div class="section-inner">
+    <!-- [SANITY: painSection.eyebrow] -->
+    <div class="section-label">The Problem</div>
+    <h2 class="on-light">Most Lafayette Businesses Are <span class="gold">Leaving Money Online</span></h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <!-- [SANITY: painPoints[0].title] -->
+        <h3>No Way to Accept Payments Online</h3>
+        <!-- [SANITY: painPoints[0].body] Lafayette scenario -->
+        <p>A Lafayette catering company was losing bookings every week because their only payment option was cash or check at pickup. Customers moved on. A simple online payment link would have saved every one of those sales — they just didn't know where to start.</p>
       </div>
-    </div>
-    <div class="checkout-mockup">
-      <div class="checkout-card">
-        <div class="checkout-top">
-          <div class="lock"><span>🔒</span> <span style="color:#4CAF50;">Secure</span> Checkout</div>
-          <div class="brand">HD Pay</div>
-        </div>
-        <div class="checkout-body">
-          <div class="checkout-summary">
-            <div class="cs-row"><span>Order #1042</span><span></span></div>
-            <div class="cs-row"><span>Product × 2</span><span>$98.00</span></div>
-            <div class="cs-row"><span>Shipping</span><span>$7.50</span></div>
-            <div class="cs-row total"><span>Total</span><span>$105.50</span></div>
-          </div>
-          <div class="checkout-field">
-            <label>Card Number</label>
-            <div class="field-box">•••• •••• •••• 4242</div>
-          </div>
-          <div class="field-row">
-            <div class="checkout-field"><label>Expiry</label><div class="field-box">MM / YY</div></div>
-            <div class="checkout-field"><label>CVV</label><div class="field-box">•••</div></div>
-          </div>
-          <button class="pay-btn">🔒 Pay $105.50</button>
-          <div class="badges">
-            <div class="badge">VISA</div>
-            <div class="badge">MC</div>
-            <div class="badge">AMEX</div>
-            <div class="badge">APPLE PAY</div>
-          </div>
-        </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <h3>Website Checkout Is Too Complicated</h3>
+        <p>Most ecommerce payment setups require a developer, a Stripe account, webhook configuration, and three days of troubleshooting. A gift shop owner in Scott shouldn't need a software engineer to sell candles online.</p>
       </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <h3>Payment Links Are Clunky or Nonexistent</h3>
+        <p>Texting a client a Venmo or Cash App link looks unprofessional and creates reconciliation headaches. Service providers in Acadiana need branded payment links that look like they came from a real business — not a personal account.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">04</div>
+        <h3>Funds Take Forever to Arrive</h3>
+        <p>Most online processors hold funds for 2–5 business days. For a Lafayette contractor who just invoiced $4,000 for a completed job, waiting a week to access that money while covering materials and labor costs isn't sustainable.</p>
+      </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);transition:background .2s,transform .15s;">Start Saving Money Today →</a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- FEATURES -->
-<div class="section-wrap" id="features">
-  <div class="inner">
-    <span class="section-tag">Features</span>
-    <h2 class="section-heading">Everything Your Online<br>Store Needs</h2>
-    <p class="section-body">From a simple payment link to a full e-commerce integration — we make online selling seamless, secure, and fast.</p>
+<!-- ══════════════════════════════════════════
+     SECTION 3: SOLUTION (dark)
+     2+ paragraphs. Lafayette-specific. Not generic.
+     ══════════════════════════════════════════ -->
+<section class="solution-section">
+  <div class="section-inner">
+    <div class="solution-grid">
+      <div class="solution-content">
+        <!-- [SANITY: solution.eyebrow] -->
+        <div class="section-label">We Understand — And We Have a Plan</div>
+        <h2 class="on-dark" style="color:var(--white);">We Make Getting Paid Online <span class="gold">Simple.</span></h2>
+        <p class="on-dark">HD Processing gives Lafayette and Acadiana businesses everything they need to accept payments online — without hiring a developer or wiring together three different platforms. Whether you need a checkout page on your website, a payment link you can text or email a customer, or a full ecommerce integration, we set it up and make sure it works.</p>
+        <p class="on-dark">Every online payment you process settles to your account the same business day — not 3–5 days later like most online processors. Rates are interchange-plus, the same transparent model we use for all of our Lafayette merchants. And when something breaks or a customer disputes a charge, you call our local Acadiana team directly. Not a support queue.</p>
+      </div>
+      <!-- [SANITY: solution.photo — team/local photo, ideally showing HD Processing staff with a business owner] -->
+      <div class="solution-photo-wrap">
+        <div class="solution-photo">
+          <img src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/69c1ddfa4415d6cb67992043.jpg"
+               alt="HD Processing owner — local merchant services Lafayette LA"
+               loading="lazy">
+        </div>
+        <div class="solution-caption">
+          <div class="solution-caption-text">Locally owned &amp; operated in Lafayette, LA since 2019</div>
+        </div>
+      </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);transition:background .2s,transform .15s;">Start Saving Money Today →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4: FEATURES (light)
+     6 cards. 2-sentence descriptions.
+     At least 2 of 6 mention local delivery.
+     ══════════════════════════════════════════ -->
+<section class="features-section">
+  <div class="section-inner">
+    <!-- [SANITY: featuresSection.eyebrow] -->
+    <div class="section-label">The Plan</div>
+    <h2 class="on-light">Everything You Need to <span class="gold">Get Paid Online</span></h2>
     <div class="features-grid">
-      <div class="feature-card"><div class="feat-icon">🔗</div><h3>Seamless Integration</h3><p>Connects with your existing website and back-end systems. Works with Shopify, WooCommerce, custom sites, and more.</p></div>
-      <div class="feature-card"><div class="feat-icon">💳</div><h3>All Payment Methods</h3><p>Accept Visa, Mastercard, Amex, Discover, Apple Pay, Google Pay, and ACH bank transfers — whatever your customers prefer.</p></div>
-      <div class="feature-card"><div class="feat-icon">🔒</div><h3>SSL & PCI Compliance</h3><p>Full SSL encryption, PCI DSS compliance, and advanced fraud detection keep every transaction and customer data protected.</p></div>
-      <div class="feature-card"><div class="feat-icon">🎨</div><h3>Branded Checkout</h3><p>Customize the checkout experience to match your brand — your logo, your colors, your domain. No third-party redirects.</p></div>
-      <div class="feature-card"><div class="feat-icon">⚡</div><h3>Real-Time Processing</h3><p>Instant transaction approvals and real-time reporting. Know the moment a sale hits — no delays, no batch processing lag.</p></div>
-      <div class="feature-card"><div class="feat-icon">📊</div><h3>Sales Analytics</h3><p>Detailed dashboards showing revenue, conversion rates, cart abandonment, top products, and customer behavior — all in one place.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- INTEGRATIONS -->
-<div class="section-wrap alt">
-  <div class="inner">
-    <span class="section-tag">Platform Integrations</span>
-    <h2 class="section-heading">Works With Your<br>Existing Stack</h2>
-    <p class="section-body">No need to rebuild your website. Our payment gateway plugs into the platforms you're already using.</p>
-    <div class="int-grid">
-      <div class="int-card"><div class="int-icon">🛍️</div><h3>Shopify</h3><p>Drop-in payment gateway integration for Shopify stores of any size.</p></div>
-      <div class="int-card"><div class="int-icon">🔧</div><h3>WooCommerce</h3><p>WordPress-native integration that works with your existing theme and product catalog.</p></div>
-      <div class="int-card"><div class="int-icon">🌐</div><h3>Custom Sites</h3><p>API and hosted payment page options for fully custom-built websites and apps.</p></div>
-      <div class="int-card"><div class="int-icon">📧</div><h3>Payment Links</h3><p>No website? Send a payment link via email or text — customers pay in seconds from any device.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- SECURITY SPLIT -->
-<div class="section-wrap">
-  <div class="inner">
-    <div class="security-grid">
-      <div>
-        <span class="section-tag">Security First</span>
-        <h2 class="section-heading">Protect Every<br>Transaction</h2>
-        <p class="section-body" style="margin-bottom:32px;">We take security seriously. Every transaction processed through HD Processing is protected by multiple layers of fraud prevention and compliance protocols.</p>
-        <a href="quote.html" class="btn-gold">Get Started Today →</a>
+      <!-- [SANITY: features[0-5].icon + .title + .description] -->
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Website Checkout</h3>
+        <p>A fully hosted, branded checkout page that connects directly to your website. No developer needed — we configure it, test it, and have you live same day.</p>
       </div>
-      <div class="sec-cards">
-        <div class="sec-card"><div class="icon">🔒</div><div><h4>SSL Encryption</h4><p>256-bit SSL encryption on every transaction — the same standard used by major banks.</p></div></div>
-        <div class="sec-card"><div class="icon">✅</div><div><h4>PCI DSS Compliant</h4><p>Fully compliant with Payment Card Industry Data Security Standards — required for all merchants.</p></div></div>
-        <div class="sec-card"><div class="icon">🛡️</div><div><h4>Fraud Detection</h4><p>Real-time fraud screening flags suspicious transactions before they become chargebacks.</p></div></div>
-        <div class="sec-card"><div class="icon">🔄</div><div><h4>Chargeback Support</h4><p>We help you respond to and dispute chargebacks — protecting your revenue and your merchant account.</p></div></div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Payment Links</h3>
+        <p>Generate a payment link in seconds and send it by text, email, or DM. Clients click, pay, and you get notified instantly. Perfect for invoicing, deposits, and service calls.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛒</div>
+        <h3>Ecommerce Integration</h3>
+        <p>Native integrations with Shopify, WooCommerce, Squarespace, and more. Your Lafayette online store connects to HD Processing in minutes with no custom code.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Same-Day Funding</h3>
+        <p>Online transactions settled before our daily cutoff hit your Lafayette bank account the same business day. Stop floating your business while you wait for funds to clear.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Fraud Protection Included</h3>
+        <p>Built-in fraud detection, 3D Secure authentication, and chargeback management tools — all included. No add-on fees, no separate fraud platform to manage.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛠️</div>
+        <h3>On-Site Setup & Training</h3>
+        <p>See every online transaction the moment it happens. Sales reports, refund history, and payout summaries all accessible from your phone or laptop.</p>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- STEPS -->
-<div class="section-wrap alt">
-  <div class="inner">
-    <span class="section-tag">How It Works</span>
-    <h2 class="section-heading">Launch in<br>3 Simple Steps</h2>
-    <div class="steps-grid">
-      <div class="step-card"><div class="step-num">01</div><h3>Build Your Custom Plan</h3><p>We assess your current website, your volume, and your goals — then we design the integration approach that fits your business best.</p></div>
-      <div class="step-card"><div class="step-num">02</div><h3>Integrate & Go Live</h3><p>Our team handles the technical setup. Whether it's a plugin, API, or payment link — we get you live fast with minimal disruption to your site.</p></div>
-      <div class="step-card"><div class="step-num">03</div><h3>Optimize & Grow</h3><p>With real-time analytics and local support, we help you identify what's working and continuously improve your checkout conversion.</p></div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);transition:background .2s,transform .15s;">Start Saving Money Today →</a>
     </div>
   </div>
-</div>
+</section>
 
+<!-- ══════════════════════════════════════════
+     STORYBRAND: 3-STEP PLAN (dark)
+     White cards on dark background.
+     Centered. Each card links to /quote.
+     ══════════════════════════════════════════ -->
+<section class="plan-section" style="background:var(--black);padding:72px 24px;">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label">How It Works</div>
+    <h2 style="color:var(--white);font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,6vw,54px);line-height:.95;margin-bottom:12px;">Getting Paid Online Is <span style="color:var(--gold);">Simple</span></h2>
+    <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.7;max-width:540px;margin:0 auto 48px;">Three steps between you and accepting payments online. No developer, no contracts, no pressure.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
 
-<!-- PHOTO STRIP -->
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;height:220px;">
-  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/578877206_25962691373318481_2489204236877024887_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OOAo1YmNZXoQ7kNvwF5fFcX&_nc_oc=AdnuhdPDjNg8yGzokDhHSmNAFMyOZQbV6oPhM3Cd_b_L8RBBy4BPTUty9U3E9B-X_iw&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=tMw0x-o0ehd75xN_gh01_g&_nc_ss=8&oh=00_AfwY4BFA-jak082p-pNi6fuDNdHQFb6vMSuk3IFd3yPo9g&oe=69BD68CD" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
-  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/577883481_25962691389985146_2920750985033225921_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3lAJiqMl2soQ7kNvwFNTEkU&_nc_oc=AdnTU0vFnEkxwcucjPEtc-xySHfAfNbPNr88NKkORHSyjldg9KomFG5EtkaGMTGs3p8&_nc_zt=23&_nc_ht=scontent-dfw5-1.xx&_nc_gid=Wkv3jgD0-ufk0oF-kAZWGg&_nc_ss=8&oh=00_AfwbRBqti8-TDBFNW8EnIT3VlJ4QTNUYXVOAxrRgh57NoA&oe=69BD4303" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
-  <div style="overflow:hidden;position:relative;"><img src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/577052772_25962691133318505_974522985546482481_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7YYTC8bhbx8Q7kNvwHe1I59&_nc_oc=AdmZKl8h89eXb1n91Y-x_JtGlcV_EbIMkw0pu_eQ_209bYKl42pmiW83v97QwUZjh6U&_nc_zt=23&_nc_ht=scontent-dfw5-2.xx&_nc_gid=wsL6Gn_fHJ0EqhjMGBe2YQ&_nc_ss=8&oh=00_Afwf8rMdq7xQm8JFB-NJsKLTJd0NTRT2lpfzeCRhW7DmBQ&oe=69BD6991" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
-</div>
+      <a href="/quote" style="background:var(--white);border-radius:16px;padding:36px 28px;text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.2);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(0,0,0,.2)'">
+        <div style="width:56px;height:56px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--black);margin-bottom:20px;flex-shrink:0;">1</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text);margin-bottom:10px;letter-spacing:.5px;">Send Us Your Statement</h3>
+        <p style="font-size:16px;font-weight:300;color:var(--muted);line-height:1.7;max-width:none;flex:1;">Email or photo of your most recent processing statement. Free, takes 30 seconds. No commitment required.</p>
+        <span style="margin-top:20px;font-size:13.5px;font-weight:700;color:var(--gold2);">Start Here →</span>
+      </a>
 
-<div class="cta-band">
-  <div><h2>Ready to Start Selling<br>Online with Confidence?</h2><p>Tired of hidden fees and complicated integrations? We make it simple.</p></div>
-  <a href="quote.html" class="btn-dark">Get Your Free Quote →</a>
-</div>
+      <a href="/quote" style="background:var(--white);border-radius:16px;padding:36px 28px;text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.2);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(0,0,0,.2)'">
+        <div style="width:56px;height:56px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--black);margin-bottom:20px;flex-shrink:0;">2</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text);margin-bottom:10px;letter-spacing:.5px;">We Show You the Numbers</h3>
+        <p style="font-size:16px;font-weight:300;color:var(--muted);line-height:1.7;max-width:none;flex:1;">Our Lafayette team breaks down what you currently pay vs. what you'd pay with HD Processing. Line by line, no surprises.</p>
+        <span style="margin-top:20px;font-size:13.5px;font-weight:700;color:var(--gold2);">Get Your Analysis →</span>
+      </a>
 
+      <a href="/quote" style="background:var(--white);border-radius:16px;padding:36px 28px;text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.2);" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(0,0,0,.2)'">
+        <div style="width:56px;height:56px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--black);margin-bottom:20px;flex-shrink:0;">3</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text);margin-bottom:10px;letter-spacing:.5px;">We Set Everything Up</h3>
+        <p style="font-size:16px;font-weight:300;color:var(--muted);line-height:1.7;max-width:none;flex:1;">If it's a fit, we come to your Lafayette location, install your equipment, train your staff, and have you live — usually the same day.</p>
+        <span style="margin-top:20px;font-size:13.5px;font-weight:700;color:var(--gold2);">Claim Your Quote →</span>
+      </a>
 
-<!-- MAP FOOTER STRIP -->
-<div style="width:100%;height:280px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.07);">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.6311264679593!2d-92.0174668!3d30.2190739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1773632798653!5m2!1sen!2sus" width="100%" height="100%" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  <div style="position:absolute;bottom:16px;left:20px;background:rgba(3,4,4,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;backdrop-filter:blur(10px);pointer-events:none;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#DAB367;margin-bottom:2px;">HD Processing</div>
-    <div style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:300;">1027 Johnston St, Lafayette, LA 70501</div>
-    <a href="https://maps.google.com/?q=HD+Processing+1027+Johnston+St+Lafayette+LA" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#DAB367;text-decoration:none;font-weight:600;margin-top:6px;pointer-events:all;">Get Directions →</a>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div><a href="index.html" class="footer-logo"><img src="http://hdprocessing.com/wp-content/uploads/2024/05/664d198914aec9e3120c5293.png" alt="HD Processing" style="height:40px;width:auto;display:block;margin-bottom:14px;filter:brightness(0) invert(1);"></a><p class="footer-desc">Committed to delivering secure and reliable credit card processing solutions tailored for your business.</p></div>
-      <div class="footer-col"><h4>Solutions</h4><a href="mobile.html">Mobile Processing</a><a href="pos.html">Point of Sale Systems</a><a href="ecommerce.html">Online & Ecommerce</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="quote.html">Request A Quote</a><a href="contact.html">Contact Us</a><a href="support.html">Support Ticket</a><a href="tel:3373668550">📞 337.366.8550</a><a href="mailto:support@hdprocessing.com">support@hdprocessing.com</a></div>
     </div>
-    <div class="footer-bottom"><span>©2024 HD Processing. All Rights Reserved.</span><span>Privacy Policy &nbsp;|&nbsp; Made By Amplify</span></div>
   </div>
-</footer>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5: COMPARISON TABLE
+     Section background: dark (var(--black))
+     Table sits in a WHITE CARD on the dark bg
+     so red/green colors read cleanly.
+     Min 6 rows. Specific negatives + positives.
+     ══════════════════════════════════════════ -->
+<section class="comparison-section">
+  <div class="section-inner">
+    <!-- [SANITY: comparisonSection.eyebrow] -->
+    <div class="section-label">See the Difference</div>
+    <h2 class="on-dark">HD Processing vs. <span class="gold">The Other Guys</span></h2>
+    <!-- White card floats on the dark background — keeps red/green legible -->
+    <div class="comp-table-wrap">
+      <div class="comp-card">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Typical Processor</th>
+              <th>HD Processing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Funding Speed</td><td>❌ 3–5 business days to your account</td><td>✓ Same business day, every time</td></tr>
+            <tr><td>Pricing Model</td><td>❌ Flat rate or tiered — never clear</td><td>✓ Interchange-plus — fully transparent</td></tr>
+            <tr><td>Contract Length</td><td>❌ 1–2 year processing agreement</td><td>✓ Month-to-month, no lock-in</td></tr>
+            <tr><td>Ecommerce Setup</td><td>❌ You configure it yourself</td><td>✓ We set it up for you</td></tr>
+            <tr><td>Payment Links</td><td>❌ Extra add-on, monthly fee</td><td>✓ Included, unlimited</td></tr>
+            <tr><td>Fraud Protection</td><td>❌ Separate platform, extra cost</td><td>✓ Built-in, no extra charge</td></tr>
+            <tr><td>Local Support</td><td>❌ 1-800 number or chat bot</td><td>✓ Lafayette team picks up same day</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);transition:background .2s,transform .15s;">Start Saving Money Today →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6: BUSINESSES WE SERVE
+     Dark offwhite bg, 4 clean cards.
+     Each business name links to its own page.
+     ══════════════════════════════════════════ -->
+<section class="whofor-section">
+  <div class="section-inner">
+    <div class="section-label">Built For</div>
+    <h2 class="on-light">Businesses We <span class="gold">Serve</span></h2>
+    <div class="whofor-grid">
+
+      <div class="whofor-card">
+        <div class="whofor-cat">
+          <span class="whofor-icon">🍽️</span>
+          <h3>Food &amp; Beverage</h3>
+        </div>
+        <ul class="whofor-list">
+          <li><a href="/industries/restaurants">Restaurants &amp; Bars</a></li>
+          <li><a href="/industries/restaurants/coffee-tea-shops">Coffee &amp; Tea Shops</a></li>
+          <li><a href="/industries/restaurants/pizzerias-sandwich-shops">Pizzerias &amp; Sandwich Shops</a></li>
+          <li><a href="/industries/restaurants/bakeries">Bakeries</a></li>
+          <li><a href="/industries/restaurants/breweries">Breweries</a></li>
+          <li><a href="/industries/restaurants/delis-meat-markets">Delis &amp; Meat Markets</a></li>
+        </ul>
+        <a href="/industries/restaurants" class="whofor-arrow">See all →</a>
+      </div>
+
+      <div class="whofor-card">
+        <div class="whofor-cat">
+          <span class="whofor-icon">🛍️</span>
+          <h3>Retail</h3>
+        </div>
+        <ul class="whofor-list">
+          <li><a href="/industries/retail/clothing-stores">Clothing Stores</a></li>
+          <li><a href="/industries/retail/grocery-stores">Grocery Stores</a></li>
+          <li><a href="/industries/retail/convenience-stores">Convenience Stores</a></li>
+          <li><a href="/industries/retail/gift-shops">Gift Shops</a></li>
+          <li><a href="/industries/retail/book-stores">Book Stores</a></li>
+          <li><a href="/industries/retail/small-large-retail">Small &amp; Large Retail</a></li>
+        </ul>
+        <a href="/industries/retail" class="whofor-arrow">See all →</a>
+      </div>
+
+      <div class="whofor-card">
+        <div class="whofor-cat">
+          <span class="whofor-icon">💆</span>
+          <h3>Services</h3>
+        </div>
+        <ul class="whofor-list">
+          <li><a href="/industries/services/hair-salons-spas">Hair Salons &amp; Spas</a></li>
+          <li><a href="/industries/services/mechanic-shops">Mechanic Shops</a></li>
+          <li><a href="/industries/services/gyms-fitness">Gyms &amp; Fitness</a></li>
+          <li><a href="/industries/services/healthcare">Healthcare</a></li>
+          <li><a href="/industries/services/doctors-lawyers">Doctors &amp; Lawyers</a></li>
+          <li><a href="/industries/services/professionals">Professionals</a></li>
+        </ul>
+        <a href="/industries/services" class="whofor-arrow">See all →</a>
+      </div>
+
+      <div class="whofor-card">
+        <div class="whofor-cat">
+          <span class="whofor-icon">🛒</span>
+          <h3>Online</h3>
+        </div>
+        <ul class="whofor-list">
+          <li><a href="/industries/online/ecommerce-stores">E-Commerce Stores</a></li>
+          <li><a href="/industries/online/online-retailers">Online Retailers</a></li>
+          <li><a href="/industries/online/service-providers">Service Providers</a></li>
+          <li><a href="/industries/online/subscription-businesses">Subscription Businesses</a></li>
+        </ul>
+        <a href="/industries/online" class="whofor-arrow">See all →</a>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);">Start Saving Money Today →</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 8: FAQ (dark)
+     5 questions minimum.
+     Every Q: service name + Lafayette or Acadiana.
+     Every A: direct 1-sentence answer first, then 3-4 sentences.
+     Written for AI citation (AEO/GEO).
+     ══════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div class="section-label">Common Questions</div>
+    <!-- [SANITY: faqSection.heading] -->
+    <h2 class="on-dark">Credit Card Processing <span class="gold">FAQ</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <!-- [SANITY: faqItems[0].question] Must include service name + Lafayette/Acadiana -->
+          <span class="faq-q-text">What online payment options does HD Processing offer for Lafayette businesses?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <!-- [SANITY: faqItems[0].answer] Direct answer first. Then 3-4 sentences. -->
+        <div class="faq-a">HD Processing offers three core online payment solutions for Lafayette businesses: a hosted checkout page for your website, shareable payment links you can send by text or email, and ecommerce integrations with platforms like Shopify and WooCommerce. We set everything up for you — no developer required. Most Lafayette businesses are live and accepting online payments the same day they reach out.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How fast will I receive funds from online payments at my Lafayette business?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">HD Processing offers same-day funding for online transactions, just like our in-person processing. Payments settled before our daily cutoff hit your Lafayette bank account the same business day. This is a significant advantage over most online processors, which typically hold funds for 3 to 5 business days.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Does HD Processing require a long-term contract for online payments in Lafayette?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">No — all HD Processing accounts are month-to-month with no early termination fees. This applies to online payments just like our in-person processing. You are never locked in. Over 97% of our Lafayette and Acadiana merchants stay with us because the service is worth it, not because a contract forces them.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can HD Processing integrate online payments with my existing Lafayette business website?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Yes — HD Processing integrates with most major website platforms including Shopify, WooCommerce, Squarespace, Wix, and custom-built sites. Our Lafayette team handles the integration for you. If you just need a simple payment link or hosted checkout page without a full ecommerce build, we can have you accepting payments in under an hour.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <!-- People Also Ask style -->
+          <span class="faq-q-text">How does HD Processing handle chargebacks and fraud for Lafayette online businesses?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">HD Processing includes built-in fraud detection and 3D Secure authentication on all online payment accounts at no extra charge. When a chargeback occurs, our Lafayette team helps you respond and gather evidence — we don't just send you a form letter and a deadline. Local support makes a real difference when dealing with disputes.</div>
+      </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--gold);color:var(--black);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);transition:background .2s,transform .15s;">Start Saving Money Today →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STORYBRAND: AVOID FAILURE + SUCCESS (light)
+     Show what's at stake both ways
+     ══════════════════════════════════════════ -->
+<section style="background:var(--white);padding:72px 24px;">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+
+      <!-- Avoid failure -->
+      <div style="background:#fff5f5;border:1px solid #ffd5d5;border-radius:16px;padding:36px 32px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c0392b;margin-bottom:14px;">Without HD Processing</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text);margin-bottom:20px;letter-spacing:.5px;">Every Month You Wait Costs You Money</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#c0392b;font-size:18px;flex-shrink:0;margin-top:2px;">✗</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">Hidden fees quietly growing on every statement</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#c0392b;font-size:18px;flex-shrink:0;margin-top:2px;">✗</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">Locked into a contract you can't afford to leave</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#c0392b;font-size:18px;flex-shrink:0;margin-top:2px;">✗</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">Waiting 2–3 days to access money you already earned</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#c0392b;font-size:18px;flex-shrink:0;margin-top:2px;">✗</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">Calling a 1-800 number when your terminal goes down mid-rush</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div style="background:rgba(218,179,103,.06);border:1px solid rgba(218,179,103,.3);border-radius:16px;padding:36px 32px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);margin-bottom:14px;">With HD Processing</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text);margin-bottom:20px;letter-spacing:.5px;">Clear Rates. More Cash. Local Support.</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#219a52;font-size:18px;flex-shrink:0;margin-top:2px;">✓</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">A statement you can actually read and understand</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#219a52;font-size:18px;flex-shrink:0;margin-top:2px;">✓</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">Month-to-month — leave anytime, no penalties</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#219a52;font-size:18px;flex-shrink:0;margin-top:2px;">✓</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">Same-day funding — your money available today</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#219a52;font-size:18px;flex-shrink:0;margin-top:2px;">✓</span>
+            <p style="font-size:16px;font-weight:300;color:#444;line-height:1.65;max-width:none;margin:0;">A Lafayette team member who picks up the phone</p>
+          </div>
+        </div>
+      </div>
+
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/quote" style="display:inline-block;background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;padding:16px 32px;border-radius:var(--r);transition:background .2s,transform .15s;">Start Saving Money Today →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 7: BUSINESS INFO (light)
+     Google Maps embed + contact info + hours
+     Google Reviews badge — real Google logo, NO stars
+     Links to GMB review page
+     ══════════════════════════════════════════ -->
+<section class="biz-section">
+  <div class="section-inner">
+    <div class="section-label">Find Us</div>
+    <h2 class="on-light">Locally Owned in <span class="gold">Lafayette, LA</span></h2>
+    <div class="biz-grid">
+
+      <!-- LEFT: Contact info + hours -->
+      <div class="biz-info">
+        <div class="biz-info-items">
+          <div class="biz-info-item">
+            <div class="biz-info-icon">📍</div>
+            <div>
+              <div class="biz-info-label">Address</div>
+              <!-- [SANITY: bizInfo.address] -->
+              <span class="biz-info-value">1027 Johnston St, Lafayette, LA 70501</span>
+              <div class="biz-info-note">By appointment — we also come to you</div>
+            </div>
+          </div>
+          <div class="biz-info-item">
+            <div class="biz-info-icon">📞</div>
+            <div>
+              <div class="biz-info-label">Phone</div>
+              <!-- [SANITY: bizInfo.phone] -->
+              <a href="tel:+13373668550" class="biz-info-value">337.366.8550</a>
+              <!-- [SANITY: bizInfo.phoneNote] -->
+              <div class="biz-info-note">Mon–Fri 8am–6pm · Sat 9am–1pm</div>
+            </div>
+          </div>
+          <div class="biz-info-item">
+            <div class="biz-info-icon">✉️</div>
+            <div>
+              <div class="biz-info-label">Email</div>
+              <!-- [SANITY: bizInfo.email] -->
+              <a href="mailto:info@hdprocessing.com" class="biz-info-value">info@hdprocessing.com</a>
+              <div class="biz-info-note">We respond within one business day</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hours -->
+        <!-- [SANITY: bizInfo.hours array] -->
+        <div class="biz-hours">
+          <div class="biz-hours-label">Business Hours</div>
+          <div class="biz-hours-row"><span class="biz-hours-day">Monday – Friday</span><span class="biz-hours-time">8:00 AM – 6:00 PM</span></div>
+          <div class="biz-hours-row"><span class="biz-hours-day">Saturday</span><span class="biz-hours-time">9:00 AM – 1:00 PM</span></div>
+          <div class="biz-hours-row"><span class="biz-hours-day">Sunday</span><span class="biz-hours-time closed">Closed</span></div>
+        </div>
+
+        <!-- Google Reviews badge — real Google logo, NO star emoji -->
+        <!-- Links to GMB review page -->
+        <a href="https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1" target="_blank" rel="noopener" class="biz-google-badge">
+          <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google Reviews — HD Processing Lafayette LA" class="gbadge-logo">
+          <div class="gbadge-right">
+            <div class="gbadge-stars">★★★★★</div>
+            <div class="gbadge-text">See our Google Reviews</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- RIGHT: Google Maps embed -->
+      <!-- [SANITY: bizInfo.googlePlaceId — used to generate embed URL] -->
+      <div class="biz-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.0!2d-92.0198!3d30.2241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86249d41ec5883cf%3A0x531d9a9ab15a1418!2sHD%20Processing!5e0!3m2!1sen!2sus!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="HD Processing — Lafayette, LA">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░ GLOBAL FOOTER INJECTED HERE ░░ -->
+
+<div class="sticky-bar" id="stickyBar">
+  <a href="tel:+13373668550" class="sticky-call">📞 Call Now</a>
+  <a href="/quote" class="sticky-quote">Start Saving Money Today →</a>
+</div>
+
+<script>
+var hero = document.querySelector('.hero');
+var bar  = document.getElementById('stickyBar');
+window.addEventListener('scroll',function(){
+  if(!hero||!bar)return;
+  bar.classList.toggle('show',hero.getBoundingClientRect().bottom<0);
+},{passive:true});
+
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
+  if(!isOpen)item.classList.add('open');
+}
+</script>
 </body>
 </html>
