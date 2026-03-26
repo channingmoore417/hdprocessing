@@ -413,7 +413,128 @@ section{padding:72px 24px;}
 </head>
 <body>
 
-<!-- ░░ GLOBAL HEADER INJECTED HERE ░░ -->
+<!-- TOP BAR -->
+<div class="top-bar">
+  Local Merchant Services <span>&middot; Lafayette, Louisiana &middot; <a href="tel:+13373668550">337.366.8550</a></span>
+</div>
+
+<!-- MAIN NAV -->
+<nav class="hd-nav" id="hdNav">
+  <a href="/" class="nav-logo">HD <span>Processing</span></a>
+
+  <ul class="nav-links">
+    <li class="nav-item has-dropdown">
+      <button class="nav-link">Services <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="nav-dropdown">
+        <a href="/services/credit-card-processing" class="dropdown-item">
+          <span class="di-icon">💳</span>
+          <span><strong>Credit Card Processing</strong><em>Transparent rates, no surprises</em></span>
+        </a>
+        <a href="/services/pos-systems" class="dropdown-item">
+          <span class="di-icon">🖥️</span>
+          <span><strong>POS Systems</strong><em>Modern hardware, full setup included</em></span>
+        </a>
+        <a href="/services/mobile-payments" class="dropdown-item">
+          <span class="di-icon">📱</span>
+          <span><strong>Mobile Payments</strong><em>Accept cards anywhere in Acadiana</em></span>
+        </a>
+        <a href="/services/online-payments" class="dropdown-item">
+          <span class="di-icon">🌐</span>
+          <span><strong>Online Payments</strong><em>Ecommerce &amp; payment links</em></span>
+        </a>
+      </div>
+    </li>
+    <li class="nav-item has-dropdown">
+      <button class="nav-link">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="nav-dropdown" style="min-width:320px;">
+        <a href="/industries/restaurants" class="dropdown-item">
+          <span class="di-icon">🍽️</span>
+          <span><strong>Restaurants</strong><em>Bakeries, breweries, coffee shops &amp; more</em></span>
+        </a>
+        <a href="/industries/retail" class="dropdown-item">
+          <span class="di-icon">🛍️</span>
+          <span><strong>Retail</strong><em>Clothing, grocery, convenience &amp; gift shops</em></span>
+        </a>
+        <a href="/industries/service-businesses/professionals" class="dropdown-item">
+          <span class="di-icon">🔧</span>
+          <span><strong>Service Businesses</strong><em>Salons, gyms, doctors, lawyers &amp; more</em></span>
+        </a>
+        <a href="/industries/online/ecommerce-stores" class="dropdown-item">
+          <span class="di-icon">🌐</span>
+          <span><strong>Online &amp; Ecommerce</strong><em>Online retailers, subscriptions &amp; SaaS</em></span>
+        </a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+    <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="tel:+13373668550" class="nav-phone">337.366.8550</a>
+    <a href="/quote" class="nav-cta">Get a Quote</a>
+    <button class="nav-hamburger" id="hdHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="hdDrawer">
+  <div class="drawer-inner">
+    <div class="drawer-section">
+      <div class="drawer-label">Services</div>
+      <a href="/services/credit-card-processing" class="drawer-link">Credit Card Processing</a>
+      <a href="/services/pos-systems" class="drawer-link">POS Systems</a>
+      <a href="/services/mobile-payments" class="drawer-link">Mobile Payments</a>
+      <a href="/services/online-payments" class="drawer-link">Online Payments</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Restaurants</div>
+      <a href="/industries/restaurants" class="drawer-link">All Restaurants</a>
+      <a href="/industries/restaurants/bakeries" class="drawer-link">Bakeries</a>
+      <a href="/industries/restaurants/breweries" class="drawer-link">Breweries</a>
+      <a href="/industries/restaurants/coffee-tea-shops" class="drawer-link">Coffee &amp; Tea Shops</a>
+      <a href="/industries/restaurants/delis-meat-markets" class="drawer-link">Delis &amp; Meat Markets</a>
+      <a href="/industries/restaurants/pizzerias-sandwich-shops" class="drawer-link">Pizzerias &amp; Sandwich Shops</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Retail</div>
+      <a href="/industries/retail" class="drawer-link">All Retail</a>
+      <a href="/industries/retail/book-stores" class="drawer-link">Book Stores</a>
+      <a href="/industries/retail/clothing-stores" class="drawer-link">Clothing Stores</a>
+      <a href="/industries/retail/convenience-stores" class="drawer-link">Convenience Stores</a>
+      <a href="/industries/retail/gift-shops" class="drawer-link">Gift Shops</a>
+      <a href="/industries/retail/grocery-stores" class="drawer-link">Grocery Stores</a>
+      <a href="/industries/retail/small-large-retail" class="drawer-link">Small &amp; Large Retail</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Service Businesses</div>
+      <a href="/industries/service-businesses/professionals" class="drawer-link">Professionals</a>
+      <a href="/industries/service-businesses/doctors-lawyers" class="drawer-link">Doctors &amp; Lawyers</a>
+      <a href="/industries/service-businesses/gyms-fitness" class="drawer-link">Gyms &amp; Fitness</a>
+      <a href="/industries/service-businesses/hair-salons-spas" class="drawer-link">Hair Salons &amp; Spas</a>
+      <a href="/industries/service-businesses/healthcare" class="drawer-link">Healthcare</a>
+      <a href="/industries/service-businesses/mechanic-shops" class="drawer-link">Mechanic Shops</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Online</div>
+      <a href="/industries/online/ecommerce-stores" class="drawer-link">Ecommerce Stores</a>
+      <a href="/industries/online/online-retailers" class="drawer-link">Online Retailers</a>
+      <a href="/industries/online/service-providers" class="drawer-link">Service Providers</a>
+      <a href="/industries/online/subscription-businesses" class="drawer-link">Subscription Businesses</a>
+    </div>
+    <div class="drawer-section">
+      <a href="/about" class="drawer-link">About</a>
+      <a href="/contact" class="drawer-link">Contact</a>
+    </div>
+    <div class="drawer-ctas">
+      <a href="tel:+13373668550" class="drawer-call">📞 337.366.8550</a>
+      <a href="/quote" class="drawer-quote">Get a Free Quote →</a>
+    </div>
+  </div>
+</div>
+<div class="drawer-overlay" id="hdOverlay"></div>
+
 
 <!-- ══════════════════════════════════════════
      SECTION 1: HERO (dark)
@@ -838,7 +959,63 @@ section{padding:72px 24px;}
   </div>
 </section>
 
-<!-- ░░ GLOBAL FOOTER INJECTED HERE ░░ -->
+<!-- FOOTER -->
+<footer class="hd-footer">
+  <div class="footer-inner">
+
+    <div class="footer-col footer-brand">
+      <div class="footer-logo">HD <span>Processing</span></div>
+      <p class="footer-tagline">Local payment processing for Lafayette, LA small businesses. No contracts. Honest pricing. Real support.</p>
+      <a href="tel:+13373668550" class="footer-phone">337.366.8550</a>
+      <div class="footer-address">1027 Johnston St &middot; Lafayette, LA 70501</div>
+      <a href="https://www.google.com/search?q=hd+processing#lrd=0x86249d41ec5883cf:0x531d9a9ab15a1418,1,,,,1" target="_blank" rel="noopener" class="footer-google-badge">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="footer-gbadge-logo">
+        <div>
+          <div class="footer-gbadge-stars">★★★★★</div>
+          <div class="footer-gbadge-text">See our Google Reviews</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-label">Services</div>
+      <a href="/services/credit-card-processing" class="footer-link">Credit Card Processing</a>
+      <a href="/services/pos-systems" class="footer-link">POS Systems</a>
+      <a href="/services/mobile-payments" class="footer-link">Mobile Payments</a>
+      <a href="/services/online-payments" class="footer-link">Online Payments</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-label">Industries</div>
+      <a href="/industries/restaurants" class="footer-link">Restaurants</a>
+      <a href="/industries/retail" class="footer-link">Retail</a>
+      <a href="/industries/service-businesses/professionals" class="footer-link">Service Businesses</a>
+      <a href="/industries/online/ecommerce-stores" class="footer-link">Online &amp; Ecommerce</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-label">Company</div>
+      <a href="/about" class="footer-link">About Us</a>
+      <a href="/contact" class="footer-link">Contact</a>
+      <a href="/quote" class="footer-link">Get a Quote</a>
+      <a href="/hidden-fees-guide" class="footer-link">Hidden Fees Guide</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span class="footer-copy">&copy; <span id="hdYear"></span> HD Processing. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="/privacy" class="footer-bottom-link">Privacy Policy</a>
+        <a href="/terms" class="footer-bottom-link">Terms</a>
+      </div>
+      <span class="footer-local-tag">📍 Lafayette, Louisiana</span>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('hdYear').textContent = new Date().getFullYear();</script>
+
 
 <div class="sticky-bar" id="stickyBar">
   <a href="tel:+13373668550" class="sticky-call">📞 Call Now</a>
@@ -859,6 +1036,30 @@ function toggleFaq(btn){
   document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
   if(!isOpen)item.classList.add('open');
 }
+</script>
+<script>
+// Hamburger / drawer
+var ham = document.getElementById('hdHamburger');
+var drawer = document.getElementById('hdDrawer');
+var overlay = document.getElementById('hdOverlay');
+function openDrawer(){drawer.classList.add('open');overlay.classList.add('show');ham.classList.add('active');document.body.style.overflow='hidden';}
+function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('show');ham.classList.remove('active');document.body.style.overflow='';}
+ham.addEventListener('click',function(){drawer.classList.contains('open')?closeDrawer():openDrawer();});
+overlay.addEventListener('click',closeDrawer);
+
+// Dropdowns
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
+});
+document.querySelectorAll('.has-dropdown > .nav-link').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    var item=btn.closest('.has-dropdown');
+    var was=item.classList.contains('open');
+    document.querySelectorAll('.has-dropdown').forEach(function(el){el.classList.remove('open');});
+    if(!was)item.classList.add('open');
+  });
+});
 </script>
 </body>
 </html>

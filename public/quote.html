@@ -304,18 +304,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);
     </li>
     <li class="nav-item has-dropdown">
       <button class="nav-link">Industries <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="nav-dropdown">
+      <div class="nav-dropdown" style="min-width:320px;">
         <a href="/industries/restaurants" class="dropdown-item">
           <span class="di-icon">🍽️</span>
-          <span><strong>Restaurants</strong><em>Tableside payments, tip adjust</em></span>
+          <span><strong>Restaurants</strong><em>Bakeries, breweries, coffee shops &amp; more</em></span>
         </a>
         <a href="/industries/retail" class="dropdown-item">
           <span class="di-icon">🛍️</span>
-          <span><strong>Retail</strong><em>Inventory, multi-lane checkout</em></span>
+          <span><strong>Retail</strong><em>Clothing, grocery, convenience &amp; gift shops</em></span>
         </a>
-        <a href="/industries/service-businesses" class="dropdown-item">
+        <a href="/industries/service-businesses/professionals" class="dropdown-item">
           <span class="di-icon">🔧</span>
-          <span><strong>Service Businesses</strong><em>Invoicing, mobile, recurring</em></span>
+          <span><strong>Service Businesses</strong><em>Salons, gyms, doctors, lawyers &amp; more</em></span>
+        </a>
+        <a href="/industries/online/ecommerce-stores" class="dropdown-item">
+          <span class="di-icon">🌐</span>
+          <span><strong>Online &amp; Ecommerce</strong><em>Online retailers, subscriptions &amp; SaaS</em></span>
         </a>
       </div>
     </li>
@@ -343,10 +347,39 @@ body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);
       <a href="/services/online-payments" class="drawer-link">Online Payments</a>
     </div>
     <div class="drawer-section">
-      <div class="drawer-label">Industries</div>
-      <a href="/industries/restaurants" class="drawer-link">Restaurants</a>
-      <a href="/industries/retail" class="drawer-link">Retail</a>
-      <a href="/industries/service-businesses" class="drawer-link">Service Businesses</a>
+      <div class="drawer-label">Restaurants</div>
+      <a href="/industries/restaurants" class="drawer-link">All Restaurants</a>
+      <a href="/industries/restaurants/bakeries" class="drawer-link">Bakeries</a>
+      <a href="/industries/restaurants/breweries" class="drawer-link">Breweries</a>
+      <a href="/industries/restaurants/coffee-tea-shops" class="drawer-link">Coffee &amp; Tea Shops</a>
+      <a href="/industries/restaurants/delis-meat-markets" class="drawer-link">Delis &amp; Meat Markets</a>
+      <a href="/industries/restaurants/pizzerias-sandwich-shops" class="drawer-link">Pizzerias &amp; Sandwich Shops</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Retail</div>
+      <a href="/industries/retail" class="drawer-link">All Retail</a>
+      <a href="/industries/retail/book-stores" class="drawer-link">Book Stores</a>
+      <a href="/industries/retail/clothing-stores" class="drawer-link">Clothing Stores</a>
+      <a href="/industries/retail/convenience-stores" class="drawer-link">Convenience Stores</a>
+      <a href="/industries/retail/gift-shops" class="drawer-link">Gift Shops</a>
+      <a href="/industries/retail/grocery-stores" class="drawer-link">Grocery Stores</a>
+      <a href="/industries/retail/small-large-retail" class="drawer-link">Small &amp; Large Retail</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Service Businesses</div>
+      <a href="/industries/service-businesses/professionals" class="drawer-link">Professionals</a>
+      <a href="/industries/service-businesses/doctors-lawyers" class="drawer-link">Doctors &amp; Lawyers</a>
+      <a href="/industries/service-businesses/gyms-fitness" class="drawer-link">Gyms &amp; Fitness</a>
+      <a href="/industries/service-businesses/hair-salons-spas" class="drawer-link">Hair Salons &amp; Spas</a>
+      <a href="/industries/service-businesses/healthcare" class="drawer-link">Healthcare</a>
+      <a href="/industries/service-businesses/mechanic-shops" class="drawer-link">Mechanic Shops</a>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Online</div>
+      <a href="/industries/online/ecommerce-stores" class="drawer-link">Ecommerce Stores</a>
+      <a href="/industries/online/online-retailers" class="drawer-link">Online Retailers</a>
+      <a href="/industries/online/service-providers" class="drawer-link">Service Providers</a>
+      <a href="/industries/online/subscription-businesses" class="drawer-link">Subscription Businesses</a>
     </div>
     <div class="drawer-section">
       <a href="/about" class="drawer-link">About</a>
@@ -673,7 +706,7 @@ var totalSteps = 3;
 var selectedVolume = null;
 
 // ── GHL Webhook URL ── [SANITY: form.webhookUrl]
-var GHL_WEBHOOK = 'YOUR_GHL_WEBHOOK_URL';
+var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/yNgtcVB50ZOTKtcYV8Lh/webhook-trigger/ac6d971c-f0df-4c61-a3fd-0614d51483b2';
 
 // Progress widths per step
 var progressWidths = { 1: '16%', 2: '50%', 3: '83%' };
