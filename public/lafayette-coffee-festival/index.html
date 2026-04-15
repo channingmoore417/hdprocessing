@@ -580,5 +580,6 @@ function handleSubmit(e){
   fetch('https://services.leadconnectorhq.com/hooks/yNgtcVB50ZOTKtcYV8Lh/webhook-trigger/94bb525c-9d86-456b-a22b-0ce7f5632910',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName:document.getElementById('firstName').value,bizName:document.getElementById('bizName').value,phone:document.getElementById('phone').value,email:document.getElementById('email').value,volume:document.getElementById('volume').value,source:'Lafayette Coffee Festival'})}).finally(function(){document.getElementById('mainPage').style.display='none';document.getElementById('stickyBar').style.display='none';document.getElementById('tyPage').classList.add('active');window.scrollTo(0,0);});
 }
 </script>
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69dfc07f0c3ae51e4f98aa07"></script>
 </body>
 </html>

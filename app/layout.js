@@ -54,6 +54,14 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         <Footer />
         <StickyBar />
+        {/* LeadConnector chat widget */}
+        <Script
+          id="leadconnector-chat-widget"
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="69dfc07f0c3ae51e4f98aa07"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

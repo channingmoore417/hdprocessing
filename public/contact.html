@@ -508,15 +508,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);
           <label for="bizName">Business Name</label>
           <input type="text" id="bizName" name="bizName" placeholder="Broussard's Café" autocomplete="organization" required>
         </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(337) 000-0000" autocomplete="tel" required>
-          </div>
-          <div class="field">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="marcus@example.com" autocomplete="email" required>
-          </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="marcus@example.com" autocomplete="email" required>
         </div>
         <!-- [SANITY: form.reasonOptions — editable dropdown list] -->
         <div class="field">
@@ -673,20 +667,11 @@ document.querySelectorAll('.nav-dropdown a, .nav-mega a').forEach(function(link)
 </script>
 
 <script>
-// Phone masking
-document.getElementById('phone').addEventListener('input', function(e){
-  var raw = e.target.value.replace(/\D/g,'').substring(0,10);
-  var out = raw;
-  if(raw.length >= 6) out = '('+raw.slice(0,3)+') '+raw.slice(3,6)+'-'+raw.slice(6);
-  else if(raw.length >= 3) out = '('+raw.slice(0,3)+') '+raw.slice(3);
-  e.target.value = out;
-});
-
 // Form submit
 function handleSubmit(e){
   e.preventDefault();
   var btn = document.getElementById('submitBtn');
-  var required = ['firstName','lastName','bizName','phone','email','reason'];
+  var required = ['firstName','lastName','bizName','email','reason'];
   var ok = required.every(function(id){ return document.getElementById(id).value.trim() !== ''; });
   if(!ok){
     btn.textContent = '← Please fill in all required fields';
@@ -799,5 +784,6 @@ function handleSubmit(e){
   };
 })();
 </script>
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69dfc07f0c3ae51e4f98aa07"></script>
 </body>
 </html>

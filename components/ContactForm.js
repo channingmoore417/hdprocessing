@@ -12,14 +12,6 @@ const REASON_OPTIONS = [
   'Something Else',
 ];
 
-function formatPhone(value) {
-  const digits = value.replace(/\D/g, '').slice(0, 10);
-  if (digits.length === 0) return '';
-  if (digits.length <= 3) return `(${digits}`;
-  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
-}
-
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -31,7 +23,6 @@ export default function ContactForm({
     firstName: '',
     lastName: '',
     bizName: '',
-    phone: '',
     email: '',
     reason: '',
     message: '',
@@ -42,11 +33,7 @@ export default function ContactForm({
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    if (name === 'phone') {
-      setForm((prev) => ({ ...prev, phone: formatPhone(value) }));
-    } else {
-      setForm((prev) => ({ ...prev, [name]: value }));
-    }
+    setForm((prev) => ({ ...prev, [name]: value }));
     // Clear error on change
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   }, []);
@@ -59,11 +46,6 @@ export default function ContactForm({
       errs.email = 'Email is required';
     } else if (!validateEmail(form.email)) {
       errs.email = 'Enter a valid email address';
-    }
-    if (!form.phone.trim()) {
-      errs.phone = 'Phone number is required';
-    } else if (form.phone.replace(/\D/g, '').length < 10) {
-      errs.phone = 'Enter a full 10-digit phone number';
     }
     if (!form.reason) errs.reason = 'Please select a reason';
     return errs;
@@ -86,7 +68,6 @@ export default function ContactForm({
             firstName: form.firstName.trim(),
             lastName: form.lastName.trim(),
             bizName: form.bizName.trim(),
-            phone: form.phone,
             email: form.email.trim(),
             reason: form.reason,
             message: form.message.trim(),
@@ -190,43 +171,23 @@ export default function ContactForm({
             onChange={handleChange}
           />
         </div>
-        <div className="field-row">
-          <div className={`field${errors.phone ? ' error' : ''}`}>
-            <label htmlFor="cf-phone">
-              Phone <span className="req">*</span>
-            </label>
-            <input
-              id="cf-phone"
-              type="tel"
-              name="phone"
-              placeholder="(337) 000-0000"
-              value={form.phone}
-              onChange={handleChange}
-            />
-            {errors.phone && (
-              <div className="field-error" style={{ display: 'block' }}>
-                {errors.phone}
-              </div>
-            )}
-          </div>
-          <div className={`field${errors.email ? ' error' : ''}`}>
-            <label htmlFor="cf-email">
-              Email <span className="req">*</span>
-            </label>
-            <input
-              id="cf-email"
-              type="email"
-              name="email"
-              placeholder="john@business.com"
-              value={form.email}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <div className="field-error" style={{ display: 'block' }}>
-                {errors.email}
-              </div>
-            )}
-          </div>
+        <div className={`field${errors.email ? ' error' : ''}`}>
+          <label htmlFor="cf-email">
+            Email <span className="req">*</span>
+          </label>
+          <input
+            id="cf-email"
+            type="email"
+            name="email"
+            placeholder="john@business.com"
+            value={form.email}
+            onChange={handleChange}
+          />
+          {errors.email && (
+            <div className="field-error" style={{ display: 'block' }}>
+              {errors.email}
+            </div>
+          )}
         </div>
         <div className={`field${errors.reason ? ' error' : ''}`}>
           <label htmlFor="cf-reason">
