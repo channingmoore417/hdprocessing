@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Application - New Client | HD Processing</title>
+<meta name="description" content="Complete your merchant services pre-application with HD Processing. Lafayette, Louisiana's locally owned payment processing company.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #030404;
+  --gold: #DAB367;
+  --gold-light: #E8C988;
+  --gold-dark: #B8944D;
+  --white: #FFFFFF;
+  --gray-50: #FAFAFA;
+  --gray-100: #F3F3F3;
+  --gray-200: #E5E5E5;
+  --gray-300: #D4D4D4;
+  --gray-400: #A3A3A3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  --error: #DC2626;
+  --success: #16A34A;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--gray-50);
+  color: var(--black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+.nav {
+  background: var(--black);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(218, 179, 103, 0.15);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-phone {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+.nav-phone:hover { color: var(--gold-light); }
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--black);
+  padding: 60px 40px 80px;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(218, 179, 103, 0.08), transparent 60%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.hero-eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.75);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ===== FORM CONTAINER ===== */
+.form-shell {
+  max-width: 900px;
+  margin: -40px auto 60px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+.form-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(3, 4, 4, 0.12);
+  overflow: hidden;
+}
+
+/* ===== PROGRESS ===== */
+.progress-bar {
+  background: var(--gray-50);
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.progress-track {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.progress-track::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: var(--gray-200);
+  z-index: 0;
+}
+.progress-fill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  height: 2px;
+  background: var(--gold);
+  z-index: 1;
+  transition: width 0.4s ease;
+  width: 0;
+}
+.progress-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+  cursor: default;
+}
+.progress-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--gray-300);
+  color: var(--gray-500);
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  transition: all 0.3s ease;
+}
+.progress-step.active .progress-dot {
+  background: var(--black);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.progress-step.complete .progress-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+.progress-step.complete .progress-dot::before {
+  content: "✓";
+  font-size: 16px;
+}
+.progress-step.complete .progress-dot span { display: none; }
+.progress-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+}
+.progress-step.active .progress-label,
+.progress-step.complete .progress-label { color: var(--black); }
+
+/* ===== STEPS ===== */
+.form-body { padding: 40px; }
+.step { display: none; animation: fadeIn 0.3s ease; }
+.step.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-header { margin-bottom: 32px; }
+.step-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 1.5px;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.step-subtitle { color: var(--gray-600); font-size: 15px; }
+
+/* ===== FIELDS ===== */
+.row {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.row-2 { grid-template-columns: 1fr 1fr; }
+.row-3 { grid-template-columns: 2fr 1fr 1fr; }
+.row-address { grid-template-columns: 2fr 1fr 1fr; }
+
+@media (max-width: 640px) {
+  .row-2, .row-3, .row-address { grid-template-columns: 1fr; }
+}
+
+.field { display: flex; flex-direction: column; }
+.field-full { grid-column: 1 / -1; }
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+label .req { color: var(--error); margin-left: 2px; }
+label .optional {
+  color: var(--gray-400);
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--black);
+  background: var(--white);
+  border: 1.5px solid var(--gray-300);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(218, 179, 103, 0.15);
+}
+input::placeholder, textarea::placeholder { color: var(--gray-400); }
+textarea { resize: vertical; min-height: 100px; font-family: inherit; }
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23525252' d='M6 8L0 0h12z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+input.error, select.error, textarea.error {
+  border-color: var(--error);
+  background: #FEF2F2;
+}
+.error-msg {
+  color: var(--error);
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+  display: none;
+}
+.field.has-error .error-msg { display: block; }
+
+/* Helper text */
+.helper {
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Section divider */
+.divider {
+  margin: 32px 0 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-200);
+}
+.divider-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+.divider-sub { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
+
+/* ===== SIGNATURE ===== */
+.sig-wrap {
+  border: 1.5px solid var(--gray-300);
+  border-radius: 6px;
+  background: var(--white);
+  overflow: hidden;
+}
+.sig-canvas {
+  width: 100%;
+  height: 180px;
+  display: block;
+  cursor: crosshair;
+  touch-action: none;
+  background: var(--gray-50);
+  background-image:
+    linear-gradient(var(--gray-200) 1px, transparent 1px);
+  background-size: 100% 30px;
+  background-position: 0 149px;
+  background-repeat: no-repeat;
+}
+.sig-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  font-size: 12px;
+  color: var(--gray-500);
+}
+.sig-clear {
+  background: transparent;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-700);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.sig-clear:hover { background: var(--gray-100); border-color: var(--gray-400); }
+
+.consent-box {
+  background: var(--gray-50);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+.consent-box p {
+  font-size: 14px;
+  color: var(--gray-700);
+  margin-bottom: 10px;
+}
+.consent-box p:last-child { margin-bottom: 0; }
+
+/* ===== BUTTONS ===== */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+  gap: 12px;
+}
+.btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--black);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(218, 179, 103, 0.35);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--gray-700);
+  border: 1.5px solid var(--gray-300);
+}
+.btn-secondary:hover {
+  background: var(--white);
+  border-color: var(--gray-500);
+  color: var(--black);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.step-indicator {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ===== SUCCESS ===== */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 40px;
+}
+.success-screen.active { display: block; }
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: var(--black);
+}
+.success-screen h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+.success-screen p {
+  color: var(--gray-600);
+  max-width: 500px;
+  margin: 0 auto 12px;
+}
+
+/* ===== FOOTER ===== */
+.disclaimer {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--gray-500);
+  font-size: 13px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.disclaimer a { color: var(--gray-700); }
+
+@media (max-width: 640px) {
+  .nav { padding: 16px 20px; }
+  .nav-logo { font-size: 22px; }
+  .hero { padding: 40px 20px 60px; }
+  .form-shell { margin-top: -30px; padding: 0 10px; }
+  .progress-bar { padding: 20px 16px; }
+  .progress-label { display: none; }
+  .form-body { padding: 28px 20px; }
+  .actions { padding: 20px; flex-direction: column-reverse; }
+  .actions .btn { width: 100%; justify-content: center; }
+  .step-indicator { order: -1; margin-bottom: 4px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">HD <span>PROCESSING</span></a>
+  <a href="tel:3373668550" class="nav-phone">337-366-8550</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Merchant Services Application</div>
+    <h1>Pre-Application — New Client</h1>
+    <p>Complete the sections below to begin your merchant account setup. This information is used to prepare your DocuSign merchant application, which will be sent to you for review.</p>
+  </div>
+</section>
+
+<div class="form-shell">
+  <div class="form-card">
+
+    <!-- PROGRESS -->
+    <div class="progress-bar">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-step active" data-step="1">
+          <div class="progress-dot"><span>1</span></div>
+          <div class="progress-label">Personal</div>
+        </div>
+        <div class="progress-step" data-step="2">
+          <div class="progress-dot"><span>2</span></div>
+          <div class="progress-label">Business</div>
+        </div>
+        <div class="progress-step" data-step="3">
+          <div class="progress-dot"><span>3</span></div>
+          <div class="progress-label">Banking</div>
+        </div>
+        <div class="progress-step" data-step="4">
+          <div class="progress-dot"><span>4</span></div>
+          <div class="progress-label">Processing</div>
+        </div>
+        <div class="progress-step" data-step="5">
+          <div class="progress-dot"><span>5</span></div>
+          <div class="progress-label">Review</div>
+        </div>
+      </div>
+    </div>
+
+    <form id="preApp" novalidate>
+      <div class="form-body">
+
+        <!-- =========================================== -->
+        <!-- STEP 1: PERSONAL -->
+        <!-- =========================================== -->
+        <div class="step active" data-step="1">
+          <div class="step-header">
+            <h2 class="step-title">Personal Information</h2>
+            <p class="step-subtitle">Tell us about yourself as the account signer.</p>
+          </div>
+
+          <div class="row row-2">
+            <div class="field">
+              <label for="firstName">First Name <span class="req">*</span></label>
+              <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+              <div class="error-msg">Please enter your first name.</div>
+            </div>
+            <div class="field">
+              <label for="lastName">Last Name <span class="req">*</span></label>
+              <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+              <div class="error-msg">Please enter your last name.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="example@example.com" autocomplete="email" required>
+              <div class="helper">This email will be used for your merchant account.</div>
+              <div class="error-msg">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div class="field">
+              <label for="cellPhone">Cell Phone <span class="req">*</span></label>
+              <input type="tel" id="cellPhone" name="cellPhone" placeholder="(337) 555-0100" autocomplete="tel" required>
+              <div class="error-msg">Please enter your cell phone number.</div>
+            </div>
+            <div class="field">
+              <label for="dob">Date of Birth <span class="req">*</span></label>
+              <input type="date" id="dob" name="dob" required>
+              <div class="error-msg">Please enter your date of birth.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="ssn">Social Security Number <span class="req">*</span></label>
+              <input type="text" id="ssn" name="ssn" placeholder="XXX-XX-XXXX" inputmode="numeric" maxlength="11" required>
+              <div class="helper">Required for underwriting and federal compliance.</div>
+              <div class="error-msg">Please enter a valid SSN.</div>
+            </div>
+          </div>
+
+          <div class="divider">
+            <h3 class="divider-title">Home Address</h3>
+            <p class="divider-sub">Your personal residence address.</p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="homeStreet">Street Address <span class="req">*</span></label>
+              <input type="text" id="homeStreet" name="homeStreet" autocomplete="address-line1" required>
+              <div class="error-msg">Please enter your street address.</div>
+            </div>
+          </div>
+
+          <div class="row row-address">
+            <div class="field">
+              <label for="homeCity">City <span class="req">*</span></label>
+              <input type="text" id="homeCity" name="homeCity" autocomplete="address-level2" required>
+              <div class="error-msg">Required</div>
+            </div>
+            <div class="field">
+              <label for="homeState">State <span class="req">*</span></label>
+              <select id="homeState" name="homeState" required>
+                <option value="">Select</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                <option>KY</option><option selected>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                <option>WI</option><option>WY</option>
+              </select>
+              <div class="error-msg">Required</div>
+            </div>
+            <div class="field">
+              <label for="homeZip">Zip Code <span class="req">*</span></label>
+              <input type="text" id="homeZip" name="homeZip" inputmode="numeric" maxlength="10" autocomplete="postal-code" required>
+              <div class="error-msg">Required</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================== -->
+        <!-- STEP 2: BUSINESS -->
+        <!-- =========================================== -->
+        <div class="step" data-step="2">
+          <div class="step-header">
+            <h2 class="step-title">Business Information</h2>
+            <p class="step-subtitle">Details about the business that will accept payments.</p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="legalBusinessName">Legal Name of Business <span class="req">*</span></label>
+              <input type="text" id="legalBusinessName" name="legalBusinessName" required>
+              <div class="helper">As registered with the IRS.</div>
+              <div class="error-msg">Please enter your legal business name.</div>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div class="field">
+              <label for="website">Website URL <span class="optional">(optional)</span></label>
+              <input type="text" id="website" name="website" placeholder="https://">
+            </div>
+            <div class="field">
+              <label for="businessPhone">Business Phone Number <span class="req">*</span></label>
+              <input type="tel" id="businessPhone" name="businessPhone" placeholder="(337) 555-0100" required>
+              <div class="error-msg">Please enter your business phone.</div>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div class="field">
+              <label for="ein">EIN / Tax ID Number <span class="req">*</span></label>
+              <input type="text" id="ein" name="ein" placeholder="XX-XXXXXXX" required>
+              <div class="helper">If Sole Proprietor, your SSN is acceptable.</div>
+              <div class="error-msg">Please enter your EIN or Tax ID.</div>
+            </div>
+            <div class="field">
+              <label for="businessStart">Business Start Date <span class="req">*</span></label>
+              <input type="date" id="businessStart" name="businessStart" required>
+              <div class="error-msg">Please enter your business start date.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="businessStructure">Type of Business Structure <span class="req">*</span></label>
+              <select id="businessStructure" name="businessStructure" required>
+                <option value="">Select business structure</option>
+                <option>Corporation</option>
+                <option>LLC / LLP</option>
+                <option>Sole Proprietor</option>
+                <option>Partnership</option>
+                <option>Non-Profit</option>
+              </select>
+              <div class="error-msg">Please select a business structure.</div>
+            </div>
+          </div>
+
+          <div class="divider">
+            <h3 class="divider-title">Business Legal Address</h3>
+            <p class="divider-sub">The registered address on file with the IRS.</p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="bizStreet">Street Address <span class="req">*</span></label>
+              <input type="text" id="bizStreet" name="bizStreet" required>
+              <div class="error-msg">Please enter your business street address.</div>
+            </div>
+          </div>
+
+          <div class="row row-address">
+            <div class="field">
+              <label for="bizCity">City <span class="req">*</span></label>
+              <input type="text" id="bizCity" name="bizCity" required>
+              <div class="error-msg">Required</div>
+            </div>
+            <div class="field">
+              <label for="bizState">State <span class="req">*</span></label>
+              <select id="bizState" name="bizState" required>
+                <option value="">Select</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                <option>KY</option><option selected>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                <option>WI</option><option>WY</option>
+              </select>
+              <div class="error-msg">Required</div>
+            </div>
+            <div class="field">
+              <label for="bizZip">Zip Code <span class="req">*</span></label>
+              <input type="text" id="bizZip" name="bizZip" inputmode="numeric" maxlength="10" required>
+              <div class="error-msg">Required</div>
+            </div>
+          </div>
+
+          <div class="divider">
+            <h3 class="divider-title">DBA Information</h3>
+            <p class="divider-sub">Complete only if different from your legal business name and address.</p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="dbaName">DBA Name <span class="optional">(if different from legal)</span></label>
+              <input type="text" id="dbaName" name="dbaName">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="dbaStreet">DBA Street Address <span class="optional">(if different)</span></label>
+              <input type="text" id="dbaStreet" name="dbaStreet">
+            </div>
+          </div>
+
+          <div class="row row-address">
+            <div class="field">
+              <label for="dbaCity">City</label>
+              <input type="text" id="dbaCity" name="dbaCity">
+            </div>
+            <div class="field">
+              <label for="dbaState">State</label>
+              <select id="dbaState" name="dbaState">
+                <option value="">Select</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                <option>WI</option><option>WY</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dbaZip">Zip Code</label>
+              <input type="text" id="dbaZip" name="dbaZip" inputmode="numeric" maxlength="10">
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================== -->
+        <!-- STEP 3: BANKING -->
+        <!-- =========================================== -->
+        <div class="step" data-step="3">
+          <div class="step-header">
+            <h2 class="step-title">Banking Information</h2>
+            <p class="step-subtitle">Where your processing deposits will be sent.</p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="bankName">Bank Name <span class="req">*</span></label>
+              <input type="text" id="bankName" name="bankName" required>
+              <div class="error-msg">Please enter your bank name.</div>
+            </div>
+          </div>
+
+          <div class="row row-2">
+            <div class="field">
+              <label for="routingNumber">Bank Account Routing Number <span class="req">*</span></label>
+              <input type="text" id="routingNumber" name="routingNumber" inputmode="numeric" maxlength="9" required>
+              <div class="helper">9-digit number on the bottom-left of your check.</div>
+              <div class="error-msg">Please enter a valid 9-digit routing number.</div>
+            </div>
+            <div class="field">
+              <label for="accountNumber">Bank Account Number <span class="req">*</span></label>
+              <input type="text" id="accountNumber" name="accountNumber" inputmode="numeric" required>
+              <div class="error-msg">Please enter your account number.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================== -->
+        <!-- STEP 4: PROCESSING -->
+        <!-- =========================================== -->
+        <div class="step" data-step="4">
+          <div class="step-header">
+            <h2 class="step-title">Processing Details</h2>
+            <p class="step-subtitle">Help us understand your transaction patterns.</p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="businessDescription">Type / Description of Business and Items Sold <span class="req">*</span></label>
+              <textarea id="businessDescription" name="businessDescription" rows="4" placeholder="Describe what your business does and what products or services you sell..." required></textarea>
+              <div class="error-msg">Please describe your business.</div>
+            </div>
+          </div>
+
+          <div class="row row-3">
+            <div class="field">
+              <label for="avgTicket">Average Transaction <span class="req">*</span></label>
+              <input type="number" id="avgTicket" name="avgTicket" placeholder="$" min="0" step="0.01" required>
+              <div class="helper">Dollar amount per individual sale.</div>
+              <div class="error-msg">Required</div>
+            </div>
+            <div class="field">
+              <label for="highTicket">High Transaction <span class="req">*</span></label>
+              <input type="number" id="highTicket" name="highTicket" placeholder="$" min="0" step="0.01" required>
+              <div class="helper">Largest individual sale amount.</div>
+              <div class="error-msg">Required</div>
+            </div>
+            <div class="field">
+              <label for="monthlyVolume">Monthly Volume <span class="req">*</span></label>
+              <input type="number" id="monthlyVolume" name="monthlyVolume" placeholder="$" min="0" step="0.01" required>
+              <div class="helper">Total monthly credit card charges.</div>
+              <div class="error-msg">Required</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="additionalInfo">Additional Information <span class="optional">(optional)</span></label>
+              <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Anything else we should know about your business?"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================== -->
+        <!-- STEP 5: REVIEW & SIGN -->
+        <!-- =========================================== -->
+        <div class="step" data-step="5">
+          <div class="step-header">
+            <h2 class="step-title">Review & Sign</h2>
+            <p class="step-subtitle">Acknowledge and sign to submit your pre-application.</p>
+          </div>
+
+          <div class="consent-box">
+            <p>The information provided will be used to create your DocuSign merchant application, which will be sent to you for review.</p>
+            <p>A member of the HD Processing team may reach out to verify any information or answer questions.</p>
+            <p><strong>Thank you for trusting HD Processing for your electronic payments needs.</strong></p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Signature <span class="req">*</span></label>
+              <div class="sig-wrap">
+                <canvas id="sigCanvas" class="sig-canvas"></canvas>
+                <div class="sig-controls">
+                  <span id="sigHint">Sign above using your mouse or finger</span>
+                  <button type="button" class="sig-clear" id="sigClear">Clear</button>
+                </div>
+              </div>
+              <input type="hidden" id="sigData" name="signature" required>
+              <div class="error-msg" id="sigError">Please provide your signature.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===== ACTIONS ===== -->
+      <div class="actions">
+        <button type="button" class="btn btn-secondary" id="backBtn" style="visibility:hidden;">← Back</button>
+        <div class="step-indicator">Step <span id="currentStepNum">1</span> of 5</div>
+        <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+      </div>
+    </form>
+
+    <!-- ===== SUCCESS ===== -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✓</div>
+      <h2>Application Received</h2>
+      <p>Thank you. Your pre-application has been submitted. A member of the HD Processing team will reach out shortly to verify your details and send your DocuSign merchant application for review.</p>
+      <p style="margin-top:24px;"><strong>Questions?</strong> Call us at <a href="tel:3373668550" style="color:var(--gold-dark);">337-366-8550</a></p>
+    </div>
+
+  </div>
+
+  <div class="disclaimer">
+    Your information is encrypted and used solely for preparing your merchant application. HD Processing • 1027 Johnston St, Lafayette, LA 70501 • <a href="mailto:info@hdprocessing.com">info@hdprocessing.com</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const totalSteps = 5;
+  let currentStep = 1;
+
+  const form = document.getElementById('preApp');
+  const steps = form.querySelectorAll('.step');
+  const progressSteps = document.querySelectorAll('.progress-step');
+  const progressFill = document.getElementById('progressFill');
+  const backBtn = document.getElementById('backBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const currentStepNum = document.getElementById('currentStepNum');
+
+  // ===== STEP NAV =====
+  function showStep(n) {
+    steps.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+    progressSteps.forEach(s => {
+      const sn = +s.dataset.step;
+      s.classList.toggle('active', sn === n);
+      s.classList.toggle('complete', sn < n);
+    });
+    progressFill.style.width = ((n - 1) / (totalSteps - 1)) * 100 + '%';
+    backBtn.style.visibility = n === 1 ? 'hidden' : 'visible';
+    nextBtn.textContent = n === totalSteps ? 'Submit Application' : 'Next →';
+    currentStepNum.textContent = n;
+    window.scrollTo({ top: document.querySelector('.form-shell').offsetTop - 20, behavior: 'smooth' });
+  }
+
+  // ===== VALIDATION =====
+  function validateStep(n) {
+    const step = form.querySelector(`.step[data-step="${n}"]`);
+    const required = step.querySelectorAll('[required]');
+    let valid = true;
+    let firstInvalid = null;
+
+    required.forEach(field => {
+      const fieldWrap = field.closest('.field');
+      let fieldValid = true;
+
+      if (!field.value.trim()) {
+        fieldValid = false;
+      } else if (field.type === 'email') {
+        fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+      } else if (field.id === 'routingNumber') {
+        fieldValid = /^\d{9}$/.test(field.value.replace(/\D/g, ''));
+      } else if (field.id === 'ssn') {
+        fieldValid = /^\d{3}-?\d{2}-?\d{4}$/.test(field.value);
+      }
+
+      fieldWrap.classList.toggle('has-error', !fieldValid);
+      field.classList.toggle('error', !fieldValid);
+
+      if (!fieldValid) {
+        valid = false;
+        if (!firstInvalid) firstInvalid = field;
+      }
+    });
+
+    // Signature check on final step
+    if (n === 5) {
+      const sigData = document.getElementById('sigData').value;
+      const sigErr = document.getElementById('sigError');
+      const sigField = sigErr.closest('.field');
+      if (!sigData) {
+        valid = false;
+        sigField.classList.add('has-error');
+        if (!firstInvalid) firstInvalid = document.getElementById('sigCanvas');
+      } else {
+        sigField.classList.remove('has-error');
+      }
+    }
+
+    if (firstInvalid) firstInvalid.focus({ preventScroll: true });
+    return valid;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+    } else {
+      // Final submit - just show success screen (no handler per request)
+      document.querySelector('.form-body').style.display = 'none';
+      document.querySelector('.actions').style.display = 'none';
+      document.querySelector('.progress-bar').style.display = 'none';
+      document.getElementById('successScreen').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  // Clear error on input
+  form.addEventListener('input', e => {
+    const fieldWrap = e.target.closest('.field');
+    if (fieldWrap && fieldWrap.classList.contains('has-error')) {
+      fieldWrap.classList.remove('has-error');
+      e.target.classList.remove('error');
+    }
+  });
+
+  // ===== INPUT FORMATTERS =====
+  const phoneFmt = (v) => {
+    const d = v.replace(/\D/g, '').slice(0, 10);
+    if (d.length < 4) return d;
+    if (d.length < 7) return `(${d.slice(0,3)}) ${d.slice(3)}`;
+    return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+  };
+  ['cellPhone', 'businessPhone'].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => { el.value = phoneFmt(el.value); });
+  });
+
+  // SSN formatter
+  const ssnEl = document.getElementById('ssn');
+  ssnEl.addEventListener('input', () => {
+    const d = ssnEl.value.replace(/\D/g, '').slice(0, 9);
+    if (d.length < 4) ssnEl.value = d;
+    else if (d.length < 6) ssnEl.value = `${d.slice(0,3)}-${d.slice(3)}`;
+    else ssnEl.value = `${d.slice(0,3)}-${d.slice(3,5)}-${d.slice(5)}`;
+  });
+
+  // EIN formatter
+  const einEl = document.getElementById('ein');
+  einEl.addEventListener('input', () => {
+    const d = einEl.value.replace(/\D/g, '').slice(0, 9);
+    if (d.length < 3) einEl.value = d;
+    else einEl.value = `${d.slice(0,2)}-${d.slice(2)}`;
+  });
+
+  // Routing (digits only, max 9)
+  const routEl = document.getElementById('routingNumber');
+  routEl.addEventListener('input', () => {
+    routEl.value = routEl.value.replace(/\D/g, '').slice(0, 9);
+  });
+  // Account number (digits only)
+  const accEl = document.getElementById('accountNumber');
+  accEl.addEventListener('input', () => {
+    accEl.value = accEl.value.replace(/\D/g, '').slice(0, 20);
+  });
+
+  // Zip formatters
+  ['homeZip', 'bizZip', 'dbaZip'].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => {
+      el.value = el.value.replace(/[^\d-]/g, '').slice(0, 10);
+    });
+  });
+
+  // ===== SIGNATURE PAD =====
+  const canvas = document.getElementById('sigCanvas');
+  const ctx = canvas.getContext('2d');
+  const sigHint = document.getElementById('sigHint');
+  const sigDataInput = document.getElementById('sigData');
+  let drawing = false, hasDrawn = false;
+
+  function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    // Preserve drawing
+    const img = canvas.toDataURL();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    ctx.strokeStyle = '#030404';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    if (hasDrawn) {
+      const image = new Image();
+      image.onload = () => ctx.drawImage(image, 0, 0, rect.width, rect.height);
+      image.src = img;
+    }
+  }
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    if (e.touches && e.touches[0]) {
+      return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+    }
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    drawing = true;
+    hasDrawn = true;
+    sigHint.textContent = 'Signed ✓';
+    const p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  }
+
+  function moveDraw(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  }
+
+  function endDraw() {
+    if (!drawing) return;
+    drawing = false;
+    sigDataInput.value = canvas.toDataURL('image/png');
+  }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', moveDraw);
+  canvas.addEventListener('mouseup', endDraw);
+  canvas.addEventListener('mouseleave', endDraw);
+  canvas.addEventListener('touchstart', startDraw, { passive: false });
+  canvas.addEventListener('touchmove', moveDraw, { passive: false });
+  canvas.addEventListener('touchend', endDraw);
+
+  document.getElementById('sigClear').addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sigDataInput.value = '';
+    hasDrawn = false;
+    sigHint.textContent = 'Sign above using your mouse or finger';
+  });
+
+  // Init canvas when step 5 is first shown (so size is accurate)
+  const observer = new MutationObserver(() => {
+    const step5 = form.querySelector('.step[data-step="5"]');
+    if (step5.classList.contains('active') && canvas.width === 300) {
+      setTimeout(resizeCanvas, 50);
+    }
+  });
+  observer.observe(form.querySelector('.step[data-step="5"]'), { attributes: true });
+
+  window.addEventListener('resize', () => {
+    if (form.querySelector('.step[data-step="5"]').classList.contains('active')) {
+      resizeCanvas();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
