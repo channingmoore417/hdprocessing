@@ -47,7 +47,7 @@ export default function Header() {
       <nav className="hd-nav" id="hdNav" ref={navRef}>
         <Link href="/" className="nav-logo" onClick={closeAll} aria-label="HD Processing home">
           <img
-            src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/6a0ca451143737c4352c53b1.png"
+            src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/6a0cb081143737c4352eec88.png"
             alt="HD Processing"
             className="nav-logo-img"
           />
