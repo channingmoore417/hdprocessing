@@ -10,7 +10,13 @@ export default function Footer() {
       <div className="footer-inner">
 
         <div className="footer-col footer-brand">
-          <div className="footer-logo">HD <span>Processing</span></div>
+          <Link href="/" className="footer-logo" aria-label="HD Processing home">
+            <img
+              src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/6a0ca451143737c4352c53b1.png"
+              alt="HD Processing"
+              className="footer-logo-img"
+            />
+          </Link>
           <p className="footer-tagline">Local payment processing for Lafayette, LA small businesses. No contracts. Honest pricing. Real support.</p>
           <a href="tel:+13373668550" className="footer-phone">337.366.8550</a>
           <div className="footer-address">1027 Johnston St · Lafayette, LA 70501</div>
