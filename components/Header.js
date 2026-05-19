@@ -45,8 +45,12 @@ export default function Header() {
 
       {/* Main Nav */}
       <nav className="hd-nav" id="hdNav" ref={navRef}>
-        <Link href="/" className="nav-logo" onClick={closeAll}>
-          HD <span>Processing</span>
+        <Link href="/" className="nav-logo" onClick={closeAll} aria-label="HD Processing home">
+          <img
+            src="https://assets.cdn.filesafe.space/yNgtcVB50ZOTKtcYV8Lh/media/6a0ca451143737c4352c53b1.png"
+            alt="HD Processing"
+            className="nav-logo-img"
+          />
         </Link>
 
         <ul className="nav-links">
